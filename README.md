@@ -1,7 +1,8 @@
-# Tämä on README:
+## Ohjelmistotekniikka, harjoitystyö
 
-Tervetuloa harjoitustyöhöni maailmaan! Opin jo paljon uutta, esimerkiksi **tämän** sekä *tämän*!
-## jännää, eikö vain?
+## Tehtävät  :memo:
+
+### Viikko 1
 
 
 [gitlog.txt](https://github.com/johannaval/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
