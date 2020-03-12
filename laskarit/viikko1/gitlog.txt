@@ -1,4 +1,3 @@
-:)
 
 valminen@lx9-fuxi100:~/ot_viikko1/tiedostoja$ git log --stat | cat
 commit 9813c9877e443fed151c176f086359867cff2066
