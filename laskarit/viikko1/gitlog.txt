@@ -1,0 +1,116 @@
+valminen@lx9-fuxi100:~/ot_viikko1/tiedostoja$ git log --stat | cat
+commit 9813c9877e443fed151c176f086359867cff2066
+Author: johannaval <johanna.valminen@gmail.com>
+Date:   Thu Mar 12 15:52:45 2020 +0200
+
+    muutoksia tehty!
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ tiedostoja/file3             | 1 +
+ 3 files changed, 1 insertion(+)
+
+commit 8fd47feb319455209f125a3ec561a97c3f948f7f
+Author: johannaval <johanna.valminen@gmail.com>
+Date:   Thu Mar 12 15:46:50 2020 +0200
+
+    Tiedostoja hakemisto sisältöineen luotu
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 5136223dae1882a0175aad38d6f780ac9a750308
+Author: johannaval <johanna.valminen@gmail.com>
+Date:   Thu Mar 12 15:23:07 2020 +0200
+
+    tallennettu muutokset git add -p
+
+ eka.txt    | 2 +-
+ kolmas.txt | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+commit 8a303e59a159181386b5b11a188572a4fa9b7636
+Author: johannaval <johanna.valminen@gmail.com>
+Date:   Thu Mar 12 14:59:00 2020 +0200
+
+    muutetty tiedosto.txt nimeä eka.txt:ksi
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 08f7cdd438444bfca05319864bde3b164a773831
+Author: johannaval <johanna.valminen@gmail.com>
+Date:   Thu Mar 12 14:57:49 2020 +0200
+
+    poistettu toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit d82bc3583859e76c8f48d1acef6f33deffed1303
+Author: johannaval <johanna.valminen@gmail.com>
+Date:   Thu Mar 12 14:53:38 2020 +0200
+
+    muutokset tehty
+
+ tiedosto.txt | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+commit 6bc911e14aac3827eb73217d05482c181328e9ce
+Author: johannaval <johanna.valminen@gmail.com>
+Date:   Thu Mar 12 14:52:36 2020 +0200
+
+    Runo luotu
+
+ tiedosto.txt | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+commit 72feff95a82dc39e62df8937917f43b07100e6d0
+Author: johannaval <johanna.valminen@gmail.com>
+Date:   Thu Mar 12 14:43:00 2020 +0200
+
+    stuff luotu
+
+ stuff/tiedosto | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e39b5d13d520f6dccc76690e2568836a7f19e11b
+Author: johannaval <johanna.valminen@gmail.com>
+Date:   Thu Mar 12 14:03:04 2020 +0200
+
+    Tallennetaan muutokset
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 2660ce266856c6cffa16e4fe2d9252fae50590c2
+Author: johannaval <johanna.valminen@gmail.com>
+Date:   Thu Mar 12 14:01:33 2020 +0200
+
+    Kolmas luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 40db7011eff1d54596c5105ab1ade47cc67d07a6
+Author: johannaval <johanna.valminen@gmail.com>
+Date:   Thu Mar 12 13:57:45 2020 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 2 ++
+ toinen.txt   | 0
+ 2 files changed, 2 insertions(+)
+
+commit 785a304e1073c740c8056de9b989b61b6cb2d5af
+Author: johannaval <johanna.valminen@gmail.com>
+Date:   Thu Mar 12 13:53:42 2020 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
