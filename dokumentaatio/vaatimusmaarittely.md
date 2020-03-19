@@ -13,6 +13,7 @@ Sovelluksen ideana on matopeli. Käyttäjä luo tunnuksen (ellei sitä jo ole), 
 Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjautumaan omalla käyttäjänimellä sekä salasanalla sisään mikäli käyttäjän on jo luonut. Jos käyttäjää ei ole vielä luotu, käyttäjä painaa kohdasta "Create new user", jolloin aukeaa uusi kuvake, jossa pyydetään syöttämään käyttäjänimi ja salasana. Tämän jälkeen painetaan OK, josta palataan aikaisempaan tilaan, ja syötetään juuri luodut tunnukset sinne. Kun tämä onnistuu, eli tunnukset ovat kelvolliset, siirtyy ohjelma peli-tilaan. Pelin päätyttyä siirrytään viimeiseen näkymään, jossa listataan parhaimmat tulokset. Tässä kohdassa on myös mahdollisuus kirjautua ulos.
 
 
+
 ## Perusversion tarjoama toiminnallisuus:
 
 #### Ennen kirjautumista:
@@ -30,6 +31,7 @@ Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjau
 #### Pelin loputtua:
 * tulostuu matopelin top 10, eli siihen kootaan pelistä saadut 10 kaikkein suurinta pistettä ja pisteiden saaneiden käyttäjänmimet. 
 * Sama käyttäjä voi saada nimensä listaan useamman kerran, mikäli pisteet siihen johtavat.
+
 
 ## Jatkokehitysideoita:
 
