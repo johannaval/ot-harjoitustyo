@@ -4,7 +4,7 @@
 
 Sovelluksen ideana on matopeli. Käyttäjä luo tunnuksen (ellei sitä jo ole), ja pääsee pelaamaan. Käyttäjä myös näkee oman ennätyksensä ja sen, milloin se on tullut. Peliä pystyy pelaamaan usea käyttäjä, ja jokaisen henkilökohtainen paras tulos näkyy hänellä itsellään. Kun peli loppuu, näytölle tulee top 10 lista, jossa näkyy pelin 10 korkeinta pistettä saanutta pelaajaa ja heidän pisteensä.
 
-![kuva](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/ohte.jpg| width=100)
+![kuva](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/ohte.jpg | width=100)
 
 ## Käyttöliittymäluonnos:
 Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjautumaan omalla käyttäjänimellä sekä salasanalla sisään mikäli käyttäjän on jo luonut, tai luomaan uuden käyttäjän. Jos käyttäjä luo uuden tunnuksen, aukeaa uusi kuvake jossa pyydetään syöttämään käyttäjänimi ja salasana, sen jälkeen painetaan OK, josta palataan aikaisempaan tilaan, ja syötetään juuri luodut tunnukset sinne. Kun tämä onnistuu, siirtyy ohjelma peli-tilaan, ja pelin päätyttyä viimeiseen, jossa listataan parhaimmat tulokset sekä on mahdollisuus kirjautua ulos.
