@@ -11,3 +11,8 @@
 #### Viikko 2
 
 [Vaatimusmäärittely](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+
+
+
+
+[Työaikakirjanpito](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
