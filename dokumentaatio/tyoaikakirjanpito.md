@@ -1,22 +1,15 @@
-Päivä: 
-  Aika:
 
-Päivä:
-  Aika:
-
-| Päivä  | Aika || Mitä tein? |
-| ------------- | ------------- | ------------- |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  |
+| Päivä: | Aika: | Mitä tein? |
+| :---         |     :---:      |          ---: |
+| git status   | git status     | git status    |
+| git diff     | git diff       | git diff      |
+| git diff     | git diff       | git diff      |
+| git diff     | git diff       | git diff      |
+| git diff     | git diff       | git diff      |
+| git diff     | git diff       | git diff      |
+| git diff     | git diff       | git diff      |
+| git diff     | git diff       | git diff      |
+| git diff     | git diff       | git diff      |
+| git diff     | git diff       | git diff      |
+| git diff     | git diff       | git diff      |
+| git diff     | git diff       | git diff      |
