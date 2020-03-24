@@ -10,9 +10,11 @@
 
 #### Viikko 2
 
+[Laskarit](https://github.com/johannaval/ot-harjoitustyo/tree/master/laskarit/viikko22)
+
 [Vaatimusmäärittely](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 
-
+#
 
 [Työaikakirjanpito](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
