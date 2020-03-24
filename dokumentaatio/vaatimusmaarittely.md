@@ -4,7 +4,9 @@
 
 Sovelluksen ideana on matopeli. Käyttäjä luo tunnuksen (ellei sitä jo ole), ja pääsee pelaamaan. Käyttäjä myös näkee oman ennätyksensä ja peliä pelatessa kasvavat pisteet. Peliä pystyy pelaamaan usea käyttäjä, ja jokaisen oma henkilökohtainen paras tulos näkyy hänellä itsellään. Kun peli loppuu, näytölle tulee top 10 lista, jossa näkyy pelissa saadut 10 korkeinta pistettä ja kyseiset pisteet saaneet pelaajat.
 
+## Käyttäjät
 
+Kaikki käyttäjät yhdenlaisia käyttäjiä
 
 ## Käyttöliittymäluonnos:
 
