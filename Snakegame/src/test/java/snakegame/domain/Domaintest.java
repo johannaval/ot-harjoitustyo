@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import snakegame.domain.GameDomain;
+import snakegame.domain.game;
 
 
 public class Domaintest {
@@ -31,14 +31,14 @@ public class Domaintest {
     public void tearDown() {
     }
     
-       @Test
-    public void testi() {
-
-        GameDomain uu = new GameDomain();
-
-        assertEquals("C", uu.toString());
-
-    }
+  //     @Test
+//    public void testi() {
+//
+//        game uu = new game();
+//
+//        assertEquals("C", uu.toString());
+//
+//    }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
