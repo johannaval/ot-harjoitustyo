@@ -1,10 +1,11 @@
 package snakegame.dao;
 
-import java.sql.SQLException;
+//import java.sql.SQLException;
 import java.util.List;
 import snakegame.domain.Player;
 import java.util.*;
 import java.sql.*;
+
 
 public class PlayerDao implements Dao<Player, Integer> {
 
@@ -18,8 +19,8 @@ public class PlayerDao implements Dao<Player, Integer> {
                 + " VALUES (?, ?, ?)");
         stmt.setString(1, Player.getUserName());
         stmt.setString(2, Player.getPassword());
-        //    stmt.setInt(4, Player.getEnnatys());
-        
+        //stmt.setInt(4, Player.getEnnatys());
+
         System.out.println("tääl");
 
         stmt.executeUpdate();
@@ -29,28 +30,8 @@ public class PlayerDao implements Dao<Player, Integer> {
 
     @Override
     public Player read(Integer key) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:moi");
+        return null;
 
-        PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Pelaajat WHERE id = ?");
-        stmt.setInt(1, key);
-        ResultSet rs = stmt.executeQuery();
-
-        // Mikäli tulostaulussa ei ole yhtäkään riviä,
-        // palautetaan null-viite
-        if (!rs.next()) {
-            return null;
-        }
-
-        // Edellä siirryttiin ensimmäiselle tulostaulun
-        // riville -- luodaan asiakas
-        Player uusi = new Player(rs.getInt("id"), rs.getString("kayttajanimi"),
-                rs.getString("salasana"));
-
-        stmt.close();
-        rs.close();
-        connection.close();
-
-        return uusi;
     }
 
     @Override

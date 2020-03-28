@@ -1,6 +1,5 @@
 package snakegame.dao;
 
-import java.sql.Statement;
 
 public class Player {
 

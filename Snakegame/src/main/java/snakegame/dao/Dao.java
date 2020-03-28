@@ -1,7 +1,8 @@
 package snakegame.dao;
 
-import java.sql.*;
 import java.util.*;
+import java.sql.*;
+
 
 interface Dao<T, K> {
 
@@ -15,3 +16,5 @@ interface Dao<T, K> {
 
     List<T> list() throws SQLException;
 }
+
+
