@@ -12,7 +12,7 @@ public class TopListViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }
+    } // mikä tää on?
 
     public void setApplication(GameUi application) {
         this.application = application;
@@ -26,7 +26,7 @@ public class TopListViewController implements Initializable {
 
     @FXML
     private void handleBackToGame(ActionEvent event) {
-      //  application.setGameScene();
+       application.setGameScene();
 
     }
 

@@ -32,9 +32,7 @@ public class Daotest {
     @Test
     public void testi() {
 
-        GameDao uu = new GameDao();
-
-        assertEquals("B", uu.toString());
+      
 
     }
 }

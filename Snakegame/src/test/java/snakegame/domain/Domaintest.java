@@ -31,18 +31,5 @@ public class Domaintest {
     public void tearDown() {
     }
     
-  //     @Test
-//    public void testi() {
-//
-//        game uu = new game();
-//
-//        assertEquals("C", uu.toString());
-//
-//    }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }

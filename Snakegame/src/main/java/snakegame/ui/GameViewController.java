@@ -12,7 +12,6 @@ public class GameViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }
 
     public void setApplication(GameUi application) {

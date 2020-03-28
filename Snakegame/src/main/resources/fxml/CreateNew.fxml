@@ -10,17 +10,16 @@
         
         
         <Label layoutX="60.0" layoutY="118.0" prefHeight="26.0" prefWidth="290.0" text="Username: (must contain at least 3 letters)" />
-        <TextField layoutX="62.0" layoutY="150.0" />
+        <TextField fx:id="username" layoutX="62.0" layoutY="150.0" />
         
-        <Label layoutX="60.0" layoutY="187.0" prefHeight="26.0" prefWidth="94.0" text="Password: " />
-        <TextField layoutX="62.0" layoutY="217.0" />
-      
+        <Label layoutX="60.0" layoutY="176.0" prefHeight="26.0" prefWidth="94.0" text="Password: " />
+        <TextField fx:id="password" layoutX="62.0" layoutY="202.0" />
       
       
         <Button layoutX="414.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleBack" text="Return" />
-        <Button layoutX="62.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleCreate"  text="Create user" />
+        <Button layoutX="60.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleCreate"  text="Create user" />
 
-        
-        <Label fx:id="errorMessage" layoutX="74.0" layoutY="26.0" prefHeight="17.0" prefWidth="167.0" textFill="#c62323" />
+        <Label fx:id="error" layoutX="62.0" layoutY="234.0" prefHeight="17.0" prefWidth="285.0" text="" />
+
     </children>
 </AnchorPane>

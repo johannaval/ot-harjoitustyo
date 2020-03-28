@@ -4,46 +4,26 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import java.util.Properties;
-import javafx.event.EventType;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import snakegame.domain.Player;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.shape.Polygon;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 
 public class GameUi extends Application {
 
-    private Stage ikkuna;
+    private Stage stage;
     private Scene nakymaLogin;
     private Scene nakymaCreateNew;
-    private Parent root;
     private Scene nakymaGame;
     private Scene nakymatoplista;
 
     @Override
-    public void start(Stage ikkuna) throws IOException {
+    public void start(Stage stage) throws IOException {
 
-        this.ikkuna = ikkuna;
+        this.stage = stage;
 
-        ikkuna.setTitle("Ma-to-pe-li");
+        stage.setTitle("Ma-to-pe-li");
         setloginScene();
-        ikkuna.show();
+        stage.show();
     }
 
     public static void main(String[] args) {
@@ -87,18 +67,19 @@ public class GameUi extends Application {
     }
 
     public void setloginScene() {
-        ikkuna.setScene(nakymaLogin);
+        stage.setScene(nakymaLogin);
     }
 
     public void setNewUserScene() {
-        ikkuna.setScene(nakymaCreateNew);
+        stage.setScene(nakymaCreateNew);
     }
 
     public void setGameScene() {
-        ikkuna.setScene(nakymaGame);
+        stage.setScene(nakymaGame);
     }
-     public void setTopListScene() {
-        ikkuna.setScene(nakymatoplista);
-    
-}
+
+    public void setTopListScene() {
+        stage.setScene(nakymatoplista);
+
+    }
 }
