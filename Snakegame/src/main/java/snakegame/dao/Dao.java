@@ -12,8 +12,6 @@ interface Dao<T, K> {
 
     T update(T object) throws SQLException;
 
-    void delete(K key) throws SQLException;
-
     List<T> list() throws SQLException;
 }
 

@@ -1,15 +1,20 @@
 package snakegame.ui;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import snakegame.dao.Player;
+import snakegame.dao.PlayerDao;
+import snakegame.ui.GameViewController;
 
 public class LogInViewController implements Initializable {
-    
+
+
     private GameUi application;
     
     @FXML
@@ -30,36 +35,56 @@ public class LogInViewController implements Initializable {
     }
     
     @FXML
-    private void handleLogin(ActionEvent event) {
-        
-        //hae käyttäjän tiedot
+    private void handleLogin(ActionEvent event) throws SQLException {
 
-        // luo boolean userFound() jolla katsotaan onko pelaaja jo rekisteröitynyt ja onko tiedot tietokannassa
-        
-        if (password.getText().contains("ABC")) {
-            error.setText("Create your account first");
-        } else {
+
+        String name = username.getText();
+        String passw = password.getText();
+
+        PlayerDao dd = new PlayerDao();
+        GameViewController GVC = new GameViewController();
+
+        Player player = dd.findUser(name);
+
+
+        if (player == null) {
             username.setText("");
             password.setText("");
-            application.setGameScene();
+            error.setText("Create your account first!");
+
+        } else {
+            player = dd.isLogInOK(name, passw);
+
+            if (player != null) {
+
+                application.setGameScene();
+         //       GVC.showHighscore(player.getHighscore());
+
+                username.setText("");
+                password.setText("");
+                error.setText("");
+
+            } else {
+                error.setText("Wrong password!");
+            }
         }
     }
-    
-    @FXML
-    private void handleNewUser(ActionEvent event) {
-        username.setText("");
-        password.setText("");
-        error.setText("");
-        application.setNewUserScene();
-        
+
+        @FXML
+        private void handleNewUser (ActionEvent event){
+            username.setText("");
+            password.setText("");
+            error.setText("");
+            application.setNewUserScene();
+
+        }
+
+        @FXML
+        private void startGame (ActionEvent event){
+            username.setText("");
+            password.setText("");
+            error.setText("");
+            application.setGameScene();
+        }
+
     }
-    
-    @FXML
-    private void startGame(ActionEvent event) {
-        username.setText("");
-        password.setText("");
-        error.setText("");
-        application.setGameScene();
-    }
-    
-}

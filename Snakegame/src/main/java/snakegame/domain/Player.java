@@ -4,7 +4,7 @@ package snakegame.domain;
 
 public class Player {
 
-    public static String getNimi() {
+    public static String getName() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

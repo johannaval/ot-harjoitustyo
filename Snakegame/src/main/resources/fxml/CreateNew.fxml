@@ -5,11 +5,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
+
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="snakegame.ui.CreateNewController">
     <children>
         
         
-        <Label layoutX="60.0" layoutY="118.0" prefHeight="26.0" prefWidth="290.0" text="Username: (must contain at least 3 letters)" />
+        <Label fx:id="usernameLabel" layoutX="60.0" layoutY="118.0" prefHeight="26.0" prefWidth="400.0" text="Username: (must contain at least 3 letters)" />
         <TextField fx:id="username" layoutX="62.0" layoutY="150.0" />
         
         <Label layoutX="60.0" layoutY="176.0" prefHeight="26.0" prefWidth="94.0" text="Password: " />

@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import snakegame.dao.GameDao;
 
+import java.sql.SQLException;
+
 public class Daotest {
 
     public Daotest() {
@@ -27,12 +29,5 @@ public class Daotest {
 
     @AfterEach
     public void tearDown() {
-    }
-
-    @Test
-    public void testi() {
-
-      
-
     }
 }

@@ -1,27 +1,45 @@
 package snakegame.dao;
 
-
 public class Player {
 
     int id;
-    String kayttajanimi;
-    String salasana;
-    int ennatys;
+    String username;
+    String password;
+    int highscore;
+    //ArrayList<Player>t;
 
-    public String getNimi() {
-        return this.kayttajanimi;
+    public Player(String username, String password, int highscore){
+        this.username=username;
+        this.password=password;
+        this.highscore=highscore;
 
     }
 
-    public int getEnnatys() {
-        return this.ennatys;
+
+
+    public String getName() {
+        return this.username;
+
+    }
+
+    public int getHighscore() {
+
+        return this.highscore;
     }
 
     public int getId() {
+
         return this.id;
     }
 
-    public String getSalasana() {
-        return this.salasana;
+    public String getPassword() {
+
+        return this.password;
     }
+    public int increaseHighscore(int amount){
+        this.highscore=this.highscore+amount;
+        return this.highscore;
+    }
+
+
 }

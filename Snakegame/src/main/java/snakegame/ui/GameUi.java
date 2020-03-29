@@ -29,12 +29,12 @@ public class GameUi extends Application {
     public static void main(String[] args) {
 
         launch(args);
-        System.out.println("Tervetuloa");
     }
 
     @Override
     public void stop() {
-        System.out.println("Heippa! ");
+        System.out.println("moikka");
+
     }
 
     @Override
