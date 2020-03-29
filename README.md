@@ -5,5 +5,5 @@ Peliin luodaan ensin omat tunnukset, joilla kirjaudutaan sisään. Pelissä ker�
 
 
 ### Dokumentaatio:
-[Työaikakirjanpito](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
-[Vaativuusmäärittely](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+* [Työaikakirjanpito](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
+* [Vaativuusmäärittely](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
