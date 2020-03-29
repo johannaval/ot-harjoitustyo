@@ -10,11 +10,11 @@ import snakegame.dao.GameDao;
 
 import java.sql.SQLException;
 
-public class Daotest {
+public class DaoTest {
 
     PlayerDao pd;
 
-    public Daotest() {
+    public DaoTest() {
 
        this.pd = new PlayerDao("jdbc:sqlite:thisIsForUnittests.db");
 
