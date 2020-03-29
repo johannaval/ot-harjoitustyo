@@ -13,6 +13,7 @@ public class TopListViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
+
     public void setApplication(GameUi application) {
         this.application = application;
     }

@@ -38,8 +38,8 @@ public class LogInViewController implements Initializable {
     private void handleLogin(ActionEvent event) throws SQLException {
 
 
-        String name = username.getText();
-        String passw = password.getText();
+        String name = username.getText().toLowerCase();
+        String passw = password.getText().toLowerCase();
 
         PlayerDao dd = new PlayerDao();
         GameViewController GVC = new GameViewController();

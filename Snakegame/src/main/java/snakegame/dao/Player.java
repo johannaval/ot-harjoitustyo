@@ -1,5 +1,7 @@
 package snakegame.dao;
 
+import java.util.Objects;
+
 public class Player {
 
     int id;
@@ -12,10 +14,7 @@ public class Player {
         this.username=username;
         this.password=password;
         this.highscore=highscore;
-
     }
-
-
 
     public String getName() {
         return this.username;
@@ -39,7 +38,21 @@ public class Player {
     public int increaseHighscore(int amount){
         this.highscore=this.highscore+amount;
         return this.highscore;
+
+
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return username.equals(player.username) &&
+                password.equals(player.password);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, password);
+    }
 }

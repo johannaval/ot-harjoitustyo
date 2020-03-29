@@ -25,7 +25,6 @@ public class GameViewController implements Initializable {
     }
 
     public void showHighscore(Integer hs){
-
         highscore.setText("Your highscore is: " + hs);
 
 }
@@ -40,8 +39,4 @@ public class GameViewController implements Initializable {
         application.setTopListScene();
         
     }
-
-
-
-
 }

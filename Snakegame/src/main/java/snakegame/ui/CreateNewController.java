@@ -34,7 +34,6 @@ public class CreateNewController implements Initializable {
 
     public void setApplication(GameUi application) {
 
-
         this.application = application;
     }
 
@@ -54,8 +53,8 @@ public class CreateNewController implements Initializable {
         String name = username.getText();
 
         if(name.length()<3){
-            usernameLabel.setText("Username: (must contain at least 3 letters) !!!!!!!!!!!!!");
-          //  error.setText("Practice your reading skills....");
+           // usernameLabel.setText("Username: (must contain at least 3 letters) !!!!!!!!!!!!!");
+            error.setText("Practice your reading skills....");
             return;
         }
 
@@ -65,14 +64,13 @@ public class CreateNewController implements Initializable {
 
         } else {
 
-            Player p = new Player(username.getText(), password.getText(), 0);
+            Player p = new Player(username.getText().toLowerCase(), password.getText().toLowerCase(), 0);
 
             d.create(p);
             username.setText("");
             password.setText("");
-            usernameLabel.setText("Username: (must contain at least 3 letters)");
+        //    usernameLabel.setText("Username: (must contain at least 3 letters)");
             error.setText("");
-
             application.setloginScene();
 
         }

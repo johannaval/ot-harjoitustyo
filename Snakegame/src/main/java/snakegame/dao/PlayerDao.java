@@ -10,8 +10,19 @@ import snakegame.dao.Player;
 
 public class PlayerDao implements Dao<Player, Integer> {
 
-    private static final String URL = "jdbc:sqlite:testsql.db";
-    private static final Connection db = createConnection();
+    private static String URL = "jdbc:sqlite:testsql.db";
+    private static Connection db = createConnection();
+
+    public PlayerDao(){
+        this.db=db;
+        this.URL=URL;
+    }
+
+    public PlayerDao(String URL){
+        this.URL=URL; //TESTEJÄ VARTEN, ETTEI OIKEA TIETOKANTA SEKOTU
+        this.db=db;
+    }
+
 
     private static Connection createConnection() {
         try {
@@ -22,7 +33,6 @@ public class PlayerDao implements Dao<Player, Integer> {
     }
 
     public static Connection getConnection() {
-
         return db;
     }
 
@@ -31,18 +41,14 @@ public class PlayerDao implements Dao<Player, Integer> {
 
     }
 
-
     public void createTable() throws SQLException {
-        {
-             getConnection();
 
             Statement s = db.createStatement();
 
             s.execute("CREATE TABLE IF NOT EXISTS Players (player_id INTEGER PRIMARY KEY, username TEXT unique, password TEXT, highscore INTEGER)");
 
             s.close();
-            // stopConnection();
-        }
+
     }
 
     @Override
@@ -50,33 +56,25 @@ public class PlayerDao implements Dao<Player, Integer> {
 
         createTable();
 
-        //    getConnection();
-
         Statement s = db.createStatement();
 
-        PreparedStatement p = db.prepareStatement("INSERT INTO Players(username, password, highscore) VALUES (?,?,?)");
+        try {
+        PreparedStatement p = db.prepareStatement("INSERT OR ABORT INTO Players(username, password, highscore) VALUES (?,?,?)");
             p.setString(1, player.getName());
             p.setString(2, player.getPassword());
             p.setInt(3, player.getHighscore());
 
             p.executeUpdate();
 
-
+        } catch (SQLException e) {
+        }
         s.close();
-
-        //    stopConnection();
     }
 
     @Override
     public Player read(Integer key) throws SQLException {
 
-        //  getConnection();
-
-
-        //    stopConnection();
-
         return null;
-
     }
 
     public Player findUser(String username) throws SQLException {
@@ -107,7 +105,6 @@ public class PlayerDao implements Dao<Player, Integer> {
 
     @Override
     public List<Player> list() throws SQLException {
-
         return null;
     }
 
@@ -127,7 +124,6 @@ public class PlayerDao implements Dao<Player, Integer> {
         okay.increaseHighscore(1);
         stmt.close();
         rs.close();
-        //  connection.close();
 
         return okay;
     }

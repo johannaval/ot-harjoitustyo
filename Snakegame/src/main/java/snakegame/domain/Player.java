@@ -4,20 +4,32 @@ package snakegame.domain;
 
 public class Player {
 
-    public static String getName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    String name;
+    String password;
+    Integer highscore;
+
+    public Player() {
+        this.name = name;
+        this.password = password;
+        this.highscore = highscore;
+    }
+}
+/*
+    public  String getName() {
+        return name;
     }
 
-    public static String getUserName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getPassword() {
+        return this.password;
     }
 
-    public static String getPassword() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public  String getPassword() {
+         return this.password;
     }
 
     public Player(int aInt, String string, String string0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
     
 }
+*/
