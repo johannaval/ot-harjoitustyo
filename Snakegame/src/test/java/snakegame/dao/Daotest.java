@@ -80,13 +80,4 @@ public class Daotest {
         assertEquals(pd.isLogInOK("notInTable","test"),null);
 
     }
-    @Test
-    public void creatingSqlTableWorks() {
-
-        try {
-            pd.createTable();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }
