@@ -6,7 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import snakegame.dao.GameDao;
+import org.testng.annotations.AfterTest;
+import snakegame.dao.PlayerDao;
+import snakegame.dao.Player;
 
 import java.sql.SQLException;
 
@@ -37,6 +39,11 @@ public class DaoTest {
     }
 
     @Test
+    public void testParse() {
+
+    }
+
+    @Test
     public void creatingNewPersonWorks() throws SQLException {
 
         Player player = new Player("TestName3", "test", 0);
@@ -59,6 +66,17 @@ public class DaoTest {
 
     }
     @Test
+    public void passwordIsCorrect() throws SQLException {
+
+        Player player = new Player("TestName5", "test", 0);
+
+        pd.createTable();
+        pd.create(player);
+
+        assertEquals(pd.findUser("TestName5").password, "test");
+
+    }
+    @Test
     public void logInReturnTrueIfPlayerIsInTable() throws SQLException {
 
         Player playerNew = new Player("TestName1", "test", 0);
@@ -75,9 +93,7 @@ public class DaoTest {
     public void logInreturnNullIfPlayerIsNotInTable() throws SQLException {
 
         pd.createTable();
-        Player notInTable = pd.isLogInOK("TestaajaFake","test");
-
-        assertEquals(pd.isLogInOK("notInTable","test"),null);
+        assertNull(pd.isLogInOK("UserNotInTable","test"));
 
     }
 }

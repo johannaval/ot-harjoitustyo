@@ -30,6 +30,9 @@ public class DomainTest {
     @AfterEach
     public void tearDown() {
     }
-    
 
+    @Test
+    public void testi() {
+
+    }
 }
