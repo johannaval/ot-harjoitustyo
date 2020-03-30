@@ -7,3 +7,21 @@ Peliin luodaan ensin omat tunnukset, joilla kirjaudutaan sisään. Pelissä ker�
 ### Dokumentaatio:
 * [Työaikakirjanpito](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 * [Vaativuusmäärittely](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+
+
+## Komentorivin toiminnot:
+
+### * Ohjelman suoritus 
+   * mvn compile exec:java -Dexec.mainClass=snakegame.Main
+   
+* Testaus 
+   * mvn test
+   
+* Testikattavuusraportti 
+   * mvn jacoco:report (raportti löytyy avaamalla target/site/jacoco/index.html)
+   
+* Jar ohjelman luominen 
+   * mvn package 
+   
+* Jar ohjelman suorittaminen target-kansion sisällä 
+   * java -jar Snakegame-1.0-SNAPSHOT.jar
