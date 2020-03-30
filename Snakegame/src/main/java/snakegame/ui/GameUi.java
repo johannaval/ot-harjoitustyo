@@ -33,8 +33,7 @@ public class GameUi extends Application {
 
     @Override
     public void stop() {
-        System.out.println("moikkelikoikkeli");
-
+        
     }
 
     @Override
