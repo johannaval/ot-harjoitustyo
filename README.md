@@ -21,7 +21,7 @@ Peliin luodaan ensin omat tunnukset, joilla kirjaudutaan sisään. Pelissä ker�
    
 * Testikattavuusraportti (raportti löytyy avaamalla target/site/jacoco/index.html)
 
-   ```mvn jacoco:report``` 
+   ```mvn test jacoco:report```
    
 * Jar ohjelman luominen 
 
