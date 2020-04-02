@@ -2,11 +2,14 @@ package snakegame.ui;
 
 import java.io.IOException;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
+import snakegame.domain.gameService;
 
 public class GameUi extends Application {
 
@@ -15,6 +18,8 @@ public class GameUi extends Application {
     private Scene nakymaCreateNew;
     private Scene nakymaGame;
     private Scene nakymatoplista;
+    private Scene nakymaGameBoard;
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -51,11 +56,17 @@ public class GameUi extends Application {
         newUserSceneController.setApplication(this);
         nakymaCreateNew = new Scene(newUserPane);
 
-        FXMLLoader gameboardLoader = new FXMLLoader(getClass().getResource("/fxml/GameView.fxml"));
-        Parent gamePane = gameboardLoader.load();
-        GameViewController gameSceneController = gameboardLoader.getController();
+        FXMLLoader gameStartLoader = new FXMLLoader(getClass().getResource("/fxml/GameView.fxml"));
+        Parent gamePane = gameStartLoader.load();
+        GameViewController gameSceneController = gameStartLoader.getController();
         gameSceneController.setApplication(this);
         nakymaGame = new Scene(gamePane);
+
+        FXMLLoader gameboardLoader = new FXMLLoader(getClass().getResource("/fxml/GameBoardView.fxml"));
+        Parent gameboardPane = gameboardLoader.load();
+        GameBoardViewController gameBoardSceneController = gameboardLoader.getController();
+        gameBoardSceneController.setApplication(this);
+        nakymaGameBoard = new Scene(gameboardPane);
 
         FXMLLoader toplistLoader = new FXMLLoader(getClass().getResource("/fxml/TopListView.fxml"));
         Parent listPane = toplistLoader.load();
@@ -66,19 +77,30 @@ public class GameUi extends Application {
     }
 
     public void setloginScene() {
+
         stage.setScene(nakymaLogin);
     }
 
     public void setNewUserScene() {
+
         stage.setScene(nakymaCreateNew);
     }
 
     public void setGameScene() {
+
         stage.setScene(nakymaGame);
     }
 
     public void setTopListScene() {
         stage.setScene(nakymatoplista);
 
+    }
+    public void setGameBoardScene() {
+
+        GameBoardViewController GBVC = new GameBoardViewController();
+
+        stage.setScene(nakymaGameBoard);
+
+        GBVC.start();
     }
 }
