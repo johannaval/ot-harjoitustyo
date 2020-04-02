@@ -11,17 +11,22 @@ Peliin luodaan ensin omat tunnukset, joilla kirjaudutaan sisään. Pelissä ker�
 
 ## Komentorivin toiminnot:
 
-### * Ohjelman suoritus 
-   * mvn compile exec:java -Dexec.mainClass=snakegame.Main
+ * Ohjelman suoritus 
+ 
+   ```mvn compile exec:java -Dexec.mainClass=snakegame.Main```
    
 * Testaus 
-   * mvn test
+
+   ```mvn test```
    
-* Testikattavuusraportti 
-   * mvn jacoco:report (raportti löytyy avaamalla target/site/jacoco/index.html)
+* Testikattavuusraportti (raportti löytyy avaamalla target/site/jacoco/index.html)
+
+   ```mvn test jacoco:report```
    
 * Jar ohjelman luominen 
-   * mvn package 
+
+   ```mvn package```
    
 * Jar ohjelman suorittaminen target-kansion sisällä 
-   * java -jar Snakegame-1.0-SNAPSHOT.jar
+
+   ```java -jar Snakegame-1.0-SNAPSHOT.jar```
