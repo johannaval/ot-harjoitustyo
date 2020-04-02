@@ -19,6 +19,7 @@ public class LogInViewController implements Initializable {
     
     @FXML
     private TextField username;
+
     
     @FXML
     private TextField password;

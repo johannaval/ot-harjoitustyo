@@ -48,6 +48,11 @@ public class GameViewController implements Initializable {
     }
     @FXML
     private void handleStartGame(ActionEvent event) {
+
         application.setGameBoardScene();
+
+        GameBoardViewController GBVC = new GameBoardViewController();
+
+        GBVC.start();
     }
 }

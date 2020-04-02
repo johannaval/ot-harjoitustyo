@@ -18,9 +18,9 @@ public class gameService {
 
     public void startGame() {
 
-        double koko =AP.getMaxHeight();
-        Text text = new Text(10, 20, "Toimii jos näkyy");
-        AP.getChildren().add(text);
+     //   double koko =AP.getMaxHeight();
+     //   Text text = new Text(10, 20, "Toimii jos näkyy");
+     //   AP.getChildren().add(text);
     }
 
 

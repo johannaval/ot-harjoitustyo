@@ -97,10 +97,8 @@ public class GameUi extends Application {
     }
     public void setGameBoardScene() {
 
-        GameBoardViewController GBVC = new GameBoardViewController();
 
         stage.setScene(nakymaGameBoard);
 
-        GBVC.start();
     }
 }

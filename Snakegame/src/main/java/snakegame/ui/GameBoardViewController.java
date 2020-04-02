@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import snakegame.domain.gameService;
 
 import java.net.URL;
@@ -12,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class GameBoardViewController implements Initializable {
 
-   // private snakegame.domain.gameService service;
+   private gameService service;
 
     private GameUi application;
 
@@ -52,7 +53,13 @@ public class GameBoardViewController implements Initializable {
     public void start () {
 
         gameService gs = new gameService(AP);
+
         gs.startGame();
+
+        Text text = new Text(10, 20, "Toimii jos näkyy");
+       AP.getChildren().add(text);
+
+     //   service.startGame();
 
     }
 }
