@@ -1,5 +1,12 @@
 # Vaatimusmäärittely
 
+- [x] Kirjautumisnäkymä
+- [x] Pystytään luomaan uusi käyttäjä tai kirjautua sisään jo olemassa olevalla tunnuksella
+- [x] Voidaan aloittaa peli
+- [ ] Matoa pystyy liikuttaa ja se pystyy syömään ruokaa
+- [ ] Mato kuolee osuessaan itseensä tai seinään
+- [ ] Näkyviin tulee top10 lista sisältöineen
+
 ## Sovelluksen tarkoitus:
 
 Sovelluksen ideana on matopeli. Käyttäjä luo tunnuksen (ellei sitä jo ole), ja pääsee pelaamaan. Käyttäjä myös näkee oman ennätyksensä ja peliä pelatessa kasvavat pisteet. Peliä pystyy pelaamaan usea käyttäjä, ja jokaisen oma henkilökohtainen paras tulos näkyy hänellä itsellään. Kun peli loppuu, näytölle tulee top 10 lista, jossa näkyy pelissa saadut 10 korkeinta pistettä ja kyseiset pisteet saaneet pelaajat.
@@ -20,13 +27,14 @@ Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjau
 
 ## Perusversion tarjoama toiminnallisuus:
 
-#### Ennen kirjautumista:
+
+#### Ennen kirjautumista: :white_check_mark:
 * jos käyttäjällä on jo tunnus, hän kirjautuu sisään, muuten hän  luo uuden tunnuksen.
 * käyttäjänimi ei saa olla jo varattu, sen pituus tulee olla yli 3 merkkiä ja se saa sisältää erikoismerkkejä
 * kirjautuminen onnistuu, mikäli käyttäjätunnus on jo rekisteröity. Muuten ohjelma ilmoittaa tästä.
 
 
-#### Kirjautumisen jälkeen:
+#### Kirjautumisen jälkeen: :white_check_mark:
 * käyttäjä pystyy aloittamaan pelin painamalla “aloita”
 
 ### Pelin aloitettua:
