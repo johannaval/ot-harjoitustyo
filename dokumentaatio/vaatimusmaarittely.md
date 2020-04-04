@@ -11,8 +11,10 @@ Kaikki käyttäjät yhdenlaisia käyttäjiä
 ## Käyttöliittymäluonnos:
 
  <img src="https://raw.githubusercontent.com/johannaval/ot-harjoitustyo/master/dokumentaatio/kuvat/ohte.jpg" width="300" height="400">
+ 
+ // Kuvan teon jälkeen päätin vielä lisätä sisään kirjautumisen jälkeen näkymän, jossa pelaaja voi aloittaa pelin painamalla nappia. Näin itse pelialue ei tarvitse ylimääräisiä nappeja viemään tilaa ja on selkeämpi. 
 
-Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjautumaan omalla käyttäjänimellä sekä salasanalla sisään mikäli käyttäjän on jo luonut. Jos käyttäjää ei ole vielä luotu, käyttäjä painaa kohdasta "Create new user", jolloin aukeaa uusi kuvake, jossa pyydetään syöttämään käyttäjänimi ja salasana. Tämän jälkeen painetaan OK, josta palataan aikaisempaan tilaan, ja syötetään juuri luodut tunnukset sinne. Kun tämä onnistuu, eli tunnukset ovat kelvolliset, siirtyy ohjelma peli-tilaan. Pelin päätyttyä siirrytään viimeiseen näkymään, jossa listataan parhaimmat tulokset. Tässä kohdassa on myös mahdollisuus kirjautua ulos.
+Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjautumaan omalla käyttäjänimellä sekä salasanalla sisään mikäli käyttäjän on jo luonut. Jos käyttäjää ei ole vielä luotu, käyttäjä painaa kohdasta "Create new user", jolloin aukeaa uusi kuvake, jossa pyydetään syöttämään käyttäjänimi ja salasana. Tämän jälkeen painetaan OK, josta palataan aikaisempaan tilaan, ja syötetään juuri luodut tunnukset sinne. Kun tämä onnistuu, eli tunnukset ovat kelvolliset, siirtyy ohjelma pelin alkuun, ja painamalla START peli käynnistyy. Pelin päätyttyä siirrytään viimeiseen näkymään, jossa listataan parhaimmat tulokset. Tässä kohdassa on myös mahdollisuus kirjautua ulos.
 
 
 
@@ -26,7 +28,9 @@ Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjau
 
 #### Kirjautumisen jälkeen:
 * käyttäjä pystyy aloittamaan pelin painamalla “aloita”
-* toimii matopelin idealla, mato kerää satunnaisesti tulevia “palloja”, joista se saa pisteitä. Samalla mato kasvaa pituutta, ja sen liikenopeus kasvaa. 
+
+### Pelin aloitettua:
+* peli toimii matopelin idealla, mato kerää satunnaisesti tulevia “palloja”, joista se saa pisteitä. Samalla mato kasvaa pituutta, ja sen liikenopeus kasvaa. 
 * Peli päättyy, kun mato kuolee. Mato voi kuolla jos se osuu itseensä tai jos mato osuu pelialueen reunaan.
 
 
