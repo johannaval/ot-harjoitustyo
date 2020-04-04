@@ -3,6 +3,7 @@ package snakegame.ui;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,25 +16,25 @@ public class LogInViewController implements Initializable {
 
 
     private GameUi application;
-    
+
     @FXML
     private TextField username;
 
-    
+
     @FXML
     private TextField password;
-    
+
     @FXML
     private Label error;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }
-    
+
     public void setApplication(GameUi application) {
         this.application = application;
     }
-    
+
     @FXML
     private void handleLogin(ActionEvent event) throws SQLException {
 
@@ -58,7 +59,7 @@ public class LogInViewController implements Initializable {
             if (player != null) {
 
                 application.setGameScene();
-         //       GVC.showHighscore(player.getHighscore());
+                //       GVC.showHighscore(player.getHighscore());
 
                 username.setText("");
                 password.setText("");
@@ -70,21 +71,21 @@ public class LogInViewController implements Initializable {
         }
     }
 
-        @FXML
-        private void handleNewUser (ActionEvent event){
-            username.setText("");
-            password.setText("");
-            error.setText("");
-            application.setNewUserScene();
-
-        }
-
-        @FXML
-        private void startGame (ActionEvent event){
-            username.setText("");
-            password.setText("");
-            error.setText("");
-            application.setGameScene();
-        }
+    @FXML
+    private void handleNewUser(ActionEvent event) {
+        username.setText("");
+        password.setText("");
+        error.setText("");
+        application.setNewUserScene();
 
     }
+
+    @FXML
+    private void startGame(ActionEvent event) {
+        username.setText("");
+        password.setText("");
+        error.setText("");
+        application.setGameScene();
+    }
+
+}

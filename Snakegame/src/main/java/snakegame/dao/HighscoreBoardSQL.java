@@ -3,9 +3,10 @@ package snakegame.dao;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
+
 import snakegame.domain.Player;
 
-public class HighscoreBoardSQL implements DaoHighscoreBoard{
+public class HighscoreBoardSQL implements DaoHighscoreBoard {
 
     public void comingsoon() {
     }

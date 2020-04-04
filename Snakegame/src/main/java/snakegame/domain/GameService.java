@@ -4,16 +4,21 @@ package snakegame.domain;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import snakegame.ui.GameBoardViewController;
+
+
+import static javafx.scene.input.KeyEvent.*;
 
 public class GameService {
 
-
     @FXML
     public AnchorPane pane;
+
 
     private int boardLength;
     private int boardWidth;
@@ -49,6 +54,19 @@ public class GameService {
         timer.start();
 
 
+        pane.addEventHandler(KEY_PRESSED, new EventHandler<KeyEvent>() {
+
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                //        System.out.println("pressed " + keyEvent.getCode());
+            }
+        });
+
+        pane.requestFocus();
+    }
+}
+/*
+
         pane.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.UP)) {
                 area.head.switchDirection("UP");
@@ -66,4 +84,4 @@ public class GameService {
     }
 }
 
-
+*/

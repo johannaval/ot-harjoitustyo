@@ -3,7 +3,7 @@ package snakegame.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface DaoHighscoreBoard <T,K> {
+public interface DaoHighscoreBoard<T, K> {
 
     void create(T object) throws SQLException;
 

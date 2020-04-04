@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import snakegame.domain.GameService;
 
@@ -26,6 +27,8 @@ public class GameBoardViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        AP.setFocusTraversable(true);
         start();
     }
 
@@ -55,7 +58,21 @@ public class GameBoardViewController implements Initializable {
 
         GameService gs = new GameService(AP);
         gs.startGame();
+        AP.requestFocus();
 
+    }
+
+    @FXML
+    public void handleKeyPressed(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ALT)) {
+            application.setGameScene();
+        }
+    }
+
+    public void handleKeyDown(KeyEvent keyEvent) {
 
     }
 }
+
+
+

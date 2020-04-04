@@ -2,12 +2,15 @@ package snakegame.ui;
 
 import java.io.IOException;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
+import org.w3c.dom.ls.LSOutput;
 
 public class GameUi extends Application {
 
@@ -66,6 +69,7 @@ public class GameUi extends Application {
         gameBoardSceneController.setApplication(this);
         nakymaGameBoard = new Scene(gameboardPane);
 
+
         FXMLLoader toplistLoader = new FXMLLoader(getClass().getResource("/fxml/TopListView.fxml"));
         Parent listPane = toplistLoader.load();
         TopListViewController listSceneController = toplistLoader.getController();
@@ -73,7 +77,6 @@ public class GameUi extends Application {
         nakymatoplista = new Scene(listPane);
 
     }
-
     public void setloginScene() {
 
         stage.setScene(nakymaLogin);
@@ -101,7 +104,7 @@ public class GameUi extends Application {
 
         stage.setScene(nakymaGameBoard);
         stage.setResizable(false);
-        stage.setTitle("Let's play!");
+        stage.setTitle("Let's play! (press ALT to go back)");
 
     }
 }

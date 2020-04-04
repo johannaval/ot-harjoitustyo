@@ -83,4 +83,76 @@ public class DomainTest {
 
         assertEquals(head.parts.size(),20);
     }
+    @Test
+    public void goingUpMakesYSmaller() {
+
+        AnchorPane pane = new AnchorPane();
+        GameService gs = new GameService(pane);
+        Area area = new Area(300,600,pane);
+
+        SnakeHead head = new SnakeHead(20,area);
+        area.addNewSnake(head);
+
+        SnakePart p = new SnakePart(20,20,null,area);
+
+        p.goUp();
+        p.goUp();
+        p.goUp();
+
+        assertEquals(p.newY,17);
+    }
+    @Test
+    public void goingDownMakesYBigger() {
+
+        AnchorPane pane = new AnchorPane();
+        GameService gs = new GameService(pane);
+        Area area = new Area(300,600,pane);
+
+        SnakeHead head = new SnakeHead(20,area);
+        area.addNewSnake(head);
+
+        SnakePart p = new SnakePart(20,20,null,area);
+
+        p.goDown();
+        p.goDown();
+        p.goDown();
+
+        assertEquals(p.newY,23);
+    }
+    @Test
+    public void goingLeftMakesXSmaller() {
+
+        AnchorPane pane = new AnchorPane();
+        GameService gs = new GameService(pane);
+        Area area = new Area(300,600,pane);
+
+        SnakeHead head = new SnakeHead(20,area);
+        area.addNewSnake(head);
+
+        SnakePart p = new SnakePart(20,20,null,area);
+
+        p.goLeft();
+        p.goLeft();
+        p.goLeft();
+
+        assertEquals(p.newX,17);
+    }
+    @Test
+    public void goingRightMakesXBigger() {
+
+        AnchorPane pane = new AnchorPane();
+        GameService gs = new GameService(pane);
+        Area area = new Area(300,600,pane);
+
+        SnakeHead head = new SnakeHead(20,area);
+        area.addNewSnake(head);
+
+        SnakePart p = new SnakePart(20,20,null,area);
+
+        p.goRight();
+        p.goRight();
+        p.goRight();
+
+        assertEquals(p.newX,23);
+    }
 }

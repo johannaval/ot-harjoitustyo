@@ -66,11 +66,11 @@ public class SnakePart extends Rectangle {
         setTranslateY(newY);
     }
 
-
     public void goUp() {
         newY = newY - 1;
         if (newY < 0) {
             newY = maxSizeY - 1;
+
         }
     }
 

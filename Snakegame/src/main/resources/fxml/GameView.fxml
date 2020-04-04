@@ -2,14 +2,18 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane fx:id="AP" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="snakegame.ui.GameViewController">
 <children>
-<Label fx:id="highscore" layoutX="238.0" layoutY="360.0" prefHeight="26.0" prefWidth="290.0" text="Your highscore: " textFill="black"/>
-    <Label layoutX="238.0" layoutY="180.0" prefHeight="26.0" prefWidth="207.0" text="Welcome! " textFill="#4b8d48"/>
+<Label fx:id="highscore" layoutX="238.0" layoutY="360.0" prefHeight="26.0" prefWidth="290.0" text="Your highscore: " textFill="black" />
+    <Label layoutX="176.0" layoutY="22.0" prefHeight="26.0" prefWidth="207.0" textFill="#4b8d48" />
     <Button layoutX="503.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleExit" text="Log out" />
     <Button layoutX="474.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleTopList" text="Show top10" />
-    <Button layoutX="500.0" layoutY="100.0" mnemonicParsing="false" onAction="#handleStartGame" text="Start game!" />
+    <Button layoutX="232.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleStartGame" text="Start game!" textFill="#132211" textOverrun="CLIP">
+         <effect>
+            <Reflection />
+         </effect></Button>
 </children>
 </AnchorPane>
