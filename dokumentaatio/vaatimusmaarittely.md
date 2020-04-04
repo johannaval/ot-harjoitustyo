@@ -35,7 +35,7 @@ Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjau
 
 
 #### Kirjautumisen jälkeen: :white_check_mark:
-* käyttäjä pystyy aloittamaan pelin painamalla “aloita”
+* käyttäjä pystyy aloittamaan pelin painamalla “START”
 
 ### Pelin aloitettua:
 * peli toimii matopelin idealla, mato kerää satunnaisesti tulevia “palloja”, joista se saa pisteitä. Samalla mato kasvaa pituutta, ja sen liikenopeus kasvaa. 
@@ -49,10 +49,10 @@ Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjau
 
 ## Jatkokehitysideoita:
 
-- Kun perusversio on tehty, voin jatkaa sovellusta esim tälläisillä osilla
+- Kun perusversio on tehty, voisi sovellusta esimerkiksi jatkaa tälläisillä osilla:
 
 * Kun peli loppuu, top 10-listan lisäksi voisi tulostua päivän top 10, jossa näkyisi viimeisen 24h ajan parhaimmat pisteet saaneet pelaajat.
-* Pelaaja voisi oman ennätyksensä lisäksi nähdä, milloin ennätys on tullut.
+* Pelaaja voisi oman ennätys pistemäärän lisäksi nähdä, milloin ennätys on tullut.
 * Vaikeustasoja, esim 1-3. Taso 1 on helpoin, 3 vaikein. Helpoimmassa mato liikkuu hitaiten, 3. taas mato liikkuu jo reilusti nopeammin, jolloin pelaaminen on jo vaikeampaa.
    * Tällöin myös top 10 listauksissa tulee lukea, millä vaikeustasolla pelaaja on pelannut.
 
