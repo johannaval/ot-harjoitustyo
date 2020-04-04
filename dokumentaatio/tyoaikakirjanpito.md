@@ -7,7 +7,7 @@
 | 28.3              |  7h           |  Tappelua NetBeanssin kanssa              |
 | 29.3              |  4h           |  Unit testejä ja SQL tietokanta käyttöön          |
 | 3.3               |   4h          |  Domainin suunnittelua ja sen aloitus              |
-|                |             |                |
+| 4.3               |   3h          |  Domainiin näppäinten tunnistusta              |
 |                |             |                |
 |                |             |                |
 |                |             |                |
