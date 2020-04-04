@@ -8,18 +8,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
-import snakegame.dao.*;
 import snakegame.dao.Player;
-import snakegame.dao.PlayerDao;
+import snakegame.dao.PlayerSQL;
 
 public class CreateNewController implements Initializable {
 
-    private PlayerDao dao;
+    private PlayerSQL dao;
 
     private Player p;
 
     private GameUi application;
+
     @FXML
     private TextField username;
 
@@ -48,7 +47,7 @@ public class CreateNewController implements Initializable {
     @FXML
     private void handleCreate(ActionEvent event) throws SQLException {
 
-        PlayerDao d = new PlayerDao();
+        PlayerSQL d = new PlayerSQL();
 
         String name = username.getText();
 

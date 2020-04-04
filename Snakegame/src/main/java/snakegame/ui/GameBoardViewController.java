@@ -3,17 +3,18 @@ package snakegame.ui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
-import snakegame.domain.gameService;
+import snakegame.domain.GameService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GameBoardViewController implements Initializable {
 
-   private gameService service;
+    private GameService service;
 
     private GameUi application;
 
@@ -25,7 +26,7 @@ public class GameBoardViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        start();
     }
 
     public void setApplication(GameUi application) {
@@ -50,16 +51,11 @@ public class GameBoardViewController implements Initializable {
     }
 
     @FXML
-    public void start () {
+    public void start() {
 
-        gameService gs = new gameService(AP);
-
+        GameService gs = new GameService(AP);
         gs.startGame();
 
-        Text text = new Text(10, 20, "Toimii jos näkyy");
-       AP.getChildren().add(text);
-
-     //   service.startGame();
 
     }
 }

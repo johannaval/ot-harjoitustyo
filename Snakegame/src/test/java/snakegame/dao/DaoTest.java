@@ -7,19 +7,15 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import static org.junit.jupiter.api.Assertions.*;
-//import org.junit.jupiter.api.Test;
-//import org.testng.annotations.AfterTest;
-import snakegame.dao.PlayerDao;
-import snakegame.dao.Player;
 import java.sql.SQLException;
 
 public class DaoTest {
 
-    PlayerDao pd;
+    PlayerSQL pd;
 
     public DaoTest() {
 
-       this.pd = new PlayerDao("jdbc:sqlite:thisIsForUnittests.db");
+       this.pd = new PlayerSQL("jdbc:sqlite:thisIsForUnittests.db");
 
     }
     @BeforeAll

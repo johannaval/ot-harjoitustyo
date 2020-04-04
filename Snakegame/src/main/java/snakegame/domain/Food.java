@@ -1,7 +1,4 @@
-
 package snakegame.domain;
 
-
-public class game {
-    
+public class Food {
 }

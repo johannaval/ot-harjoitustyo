@@ -6,15 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import snakegame.domain.gameService;
+import snakegame.domain.GameService;
 
 public class GameViewController implements Initializable {
 
     private GameUi application;
 
-    private gameService gs;
+    private GameService gs;
 
     @FXML
     public AnchorPane AP;
@@ -48,11 +47,7 @@ public class GameViewController implements Initializable {
     }
     @FXML
     private void handleStartGame(ActionEvent event) {
-
         application.setGameBoardScene();
 
-        GameBoardViewController GBVC = new GameBoardViewController();
-
-        GBVC.start();
     }
 }

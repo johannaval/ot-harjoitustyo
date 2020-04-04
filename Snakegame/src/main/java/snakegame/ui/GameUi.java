@@ -2,14 +2,12 @@ package snakegame.ui;
 
 import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
-import snakegame.domain.gameService;
 
 public class GameUi extends Application {
 
@@ -79,26 +77,31 @@ public class GameUi extends Application {
     public void setloginScene() {
 
         stage.setScene(nakymaLogin);
+        stage.setTitle("Log in");
     }
 
     public void setNewUserScene() {
 
         stage.setScene(nakymaCreateNew);
+        stage.setTitle("Create new");
     }
 
     public void setGameScene() {
 
         stage.setScene(nakymaGame);
+        stage.setTitle("Start!");
     }
 
     public void setTopListScene() {
-        stage.setScene(nakymatoplista);
 
+        stage.setScene(nakymatoplista);
+        stage.setTitle("Top10");
     }
     public void setGameBoardScene() {
 
-
         stage.setScene(nakymaGameBoard);
+        stage.setResizable(false);
+        stage.setTitle("Let's play!");
 
     }
 }

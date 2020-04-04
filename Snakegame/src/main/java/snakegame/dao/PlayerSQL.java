@@ -2,31 +2,28 @@ package snakegame.dao;
 
 import java.sql.SQLException;
 import java.util.List;
-//import snakegame.domain.Player;
 import java.sql.*;
-import javafx.scene.control.TextField;
-import snakegame.dao.Player;
 
 
-public class PlayerDao implements Dao<Player, Integer> {
+public class PlayerSQL implements DaoPlayer<Player, Integer> {
 
-    private static String URL = "jdbc:sqlite:testsql.db";
+    private static String url = "jdbc:sqlite:testsql.db";
     private static Connection db = createConnection();
 
-    public PlayerDao(){
-        this.db=db;
-        this.URL=URL;
+    public PlayerSQL() {
+        this.db = db;
+        this.url = url;
     }
 
-    public PlayerDao(String URL){
-        this.URL=URL; //TESTEJÄ VARTEN, ETTEI OIKEA TIETOKANTA SEKOTU
-        this.db=db;
+    public PlayerSQL(String url) {
+        this.url = url; //TESTEJÄ VARTEN, ETTEI OIKEA TIETOKANTA SEKOTU
+        this.db = db;
     }
 
 
     private static Connection createConnection() {
         try {
-            return DriverManager.getConnection(URL);
+            return DriverManager.getConnection(url);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -38,28 +35,21 @@ public class PlayerDao implements Dao<Player, Integer> {
 
     public static void stopConnection() throws SQLException {
         db.close();
-
     }
 
     public void createTable() throws SQLException {
-
-            Statement s = db.createStatement();
-
-            s.execute("CREATE TABLE IF NOT EXISTS Players (player_id INTEGER PRIMARY KEY, username TEXT unique, password TEXT, highscore INTEGER)");
-
-            s.close();
-
+        Statement s = db.createStatement();
+        s.execute("CREATE TABLE IF NOT EXISTS Players (player_id INTEGER PRIMARY KEY, username TEXT unique, password TEXT, highscore INTEGER)");
+        s.close();
     }
 
     @Override
     public void create(Player player) throws SQLException {
 
         createTable();
-
         Statement s = db.createStatement();
-
         try {
-        PreparedStatement p = db.prepareStatement("INSERT OR ABORT INTO Players(username, password, highscore) VALUES (?,?,?)");
+            PreparedStatement p = db.prepareStatement("INSERT OR ABORT INTO Players(username, password, highscore) VALUES (?,?,?)");
             p.setString(1, player.getName());
             p.setString(2, player.getPassword());
             p.setInt(3, player.getHighscore());
@@ -73,7 +63,6 @@ public class PlayerDao implements Dao<Player, Integer> {
 
     @Override
     public Player read(Integer key) throws SQLException {
-
         return null;
     }
 
@@ -85,10 +74,10 @@ public class PlayerDao implements Dao<Player, Integer> {
         stmt.setString(1, username);
         ResultSet rs = stmt.executeQuery();
 
-        if(!rs.next()) {
+        if (!rs.next()) {
             return null;
         }
-        Player pp = new Player( rs.getString("username"),
+        Player pp = new Player(rs.getString("username"),
                 rs.getString("password"), rs.getInt("highscore"));
 
         stmt.close();
@@ -112,13 +101,13 @@ public class PlayerDao implements Dao<Player, Integer> {
 
         PreparedStatement stmt = db.prepareStatement("SELECT * FROM Players WHERE username =? AND password =?");
         stmt.setString(1, username);
-        stmt.setString(2,passw);
+        stmt.setString(2, passw);
         ResultSet rs = stmt.executeQuery();
 
-        if(!rs.next()) {
+        if (!rs.next()) {
             return null;
         }
-        Player okay = new Player( rs.getString("username"),
+        Player okay = new Player(rs.getString("username"),
                 rs.getString("password"), rs.getInt("highscore"));
 
         okay.increaseHighscore(1);
@@ -127,4 +116,4 @@ public class PlayerDao implements Dao<Player, Integer> {
 
         return okay;
     }
-    }
+}

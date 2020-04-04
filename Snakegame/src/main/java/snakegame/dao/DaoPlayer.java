@@ -4,7 +4,7 @@ import java.util.*;
 import java.sql.*;
 
 
-interface Dao<T, K> {
+interface DaoPlayer<T, K> {
 
     void create(T object) throws SQLException;
 

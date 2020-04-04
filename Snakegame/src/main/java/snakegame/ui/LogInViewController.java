@@ -9,8 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import snakegame.dao.Player;
-import snakegame.dao.PlayerDao;
-import snakegame.ui.GameViewController;
+import snakegame.dao.PlayerSQL;
 
 public class LogInViewController implements Initializable {
 
@@ -42,7 +41,7 @@ public class LogInViewController implements Initializable {
         String name = username.getText().toLowerCase();
         String passw = password.getText().toLowerCase();
 
-        PlayerDao dd = new PlayerDao();
+        PlayerSQL dd = new PlayerSQL();
         GameViewController GVC = new GameViewController();
 
         Player player = dd.findUser(name);
