@@ -31,6 +31,11 @@ public class SnakePart extends Rectangle {
 
     public void setDirection(String direction) {
         this.direction = direction;
+        switchDirection();
+    }
+
+    public String getDirection() {
+        return this.direction;
     }
 
     public void switchDirection() {
@@ -67,6 +72,7 @@ public class SnakePart extends Rectangle {
     }
 
     public void goUp() {
+
         newY = newY - 1;
         if (newY < 0) {
             newY = maxSizeY - 1;

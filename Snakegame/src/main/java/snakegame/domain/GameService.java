@@ -25,6 +25,7 @@ public class GameService {
     private long start = System.nanoTime();
     public int partSize = 10;
     public int snakeSize = 5;
+    public Area area;
 
     public GameService(AnchorPane pane) {
         this.pane = pane;
@@ -36,7 +37,7 @@ public class GameService {
 
     public void startGame() {
 
-        Area area = new Area(400, 600, pane);
+        this.area = new Area(400, 600, pane);
         area.addNewSnake(new SnakeHead(50, area));
         Text text = new Text(500, 370, "Points: 0");
         pane.getChildren().add(text);
@@ -53,35 +54,61 @@ public class GameService {
         };
         timer.start();
 
+        area.head.setDirection("RIGHT");
+        move();
+    }
+
+    public void move() {
 
         pane.addEventHandler(KEY_PRESSED, new EventHandler<KeyEvent>() {
 
             @Override
-            public void handle(KeyEvent keyEvent) {
-                //        System.out.println("pressed " + keyEvent.getCode());
+            public void handle(KeyEvent event) {
+
+                if (event.getCode().equals(KeyCode.DOWN)) {
+                    goDown();
+                }
+                if (event.getCode().equals(KeyCode.RIGHT)) {
+                    goRigh();
+                }
+                if (event.getCode().equals(KeyCode.LEFT)) {
+                    goLeft();
+                }
+                if (event.getCode().equals(KeyCode.UP)) {
+                    goUp();
+                }
+                if (event.getCode().equals(KeyCode.ENTER)) {
+                    goUp();
+                }
+                if (event.getCode().equals(KeyCode.CONTROL)) {
+                    goLeft();
+                }
             }
         });
-
         pane.requestFocus();
+        //  System.out.println("pressed " + event.getCode());
+    }
+
+    public void goDown() {
+        area.head.setDirection("DOWN");
+        area.head.switchDirection("DOWN");
+    }
+
+    public void goRigh() {
+        area.head.setDirection("RIGHT");
+        area.head.switchDirection("RIGHT");
+    }
+
+    public void goLeft() {
+        area.head.setDirection("LEFT");
+        area.head.switchDirection("LEFT");
+
+    }
+
+    public void goUp() {
+        area.head.setDirection("UP");
+        area.head.switchDirection("UP");
+
     }
 }
-/*
 
-        pane.setOnKeyPressed(event -> {
-            if (event.getCode().equals(KeyCode.UP)) {
-                area.head.switchDirection("UP");
-            }
-            if (event.getCode().equals(KeyCode.DOWN)) {
-                area.head.switchDirection("DOWN");
-            }
-            if (event.getCode().equals(KeyCode.RIGHT)) {
-                area.head.switchDirection("RIGHT");
-            }
-            if (event.getCode().equals(KeyCode.LEFT)) {
-                area.head.switchDirection("LEFT");
-            }
-        });
-    }
-}
-
-*/

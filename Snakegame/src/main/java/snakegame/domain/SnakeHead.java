@@ -10,6 +10,7 @@ public class SnakeHead {
     private int y;
     public Area area;
     private int size;
+    private String direction;
 
     public SnakeHead(int size, Area area) {
 
@@ -37,5 +38,15 @@ public class SnakeHead {
 
     public void switchDirection(String direction) {
 
+        for (SnakePart part : parts) {
+            part.setDirection(direction);
+            //     part.switchDirection();
+
+        }
+    }
+
+
+    public void setDirection(String direction) {
+        this.direction = direction;
     }
 }
