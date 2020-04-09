@@ -64,6 +64,9 @@ public class GameBoardViewController implements Initializable {
 
     @FXML
     public void handleKeyPressed(KeyEvent keyEvent) {
+      //  if(keyEvent.getCode().equals(KeyCode.UP)){
+        //    System.out.println("<3");
+     //   }
         if (keyEvent.getCode().equals(KeyCode.ALT)) {
             application.setGameScene();
         }

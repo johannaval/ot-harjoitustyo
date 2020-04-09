@@ -49,7 +49,7 @@ public class GameService {
                 int points = area.getPoints();
                 text.setText("Points: " + points);
 
-                if (now - start > 10000000) {
+                if (now - start > 7000000) {
                     area.update();
                     start = now;
                 }
@@ -67,6 +67,9 @@ public class GameService {
 
             @Override
             public void handle(KeyEvent event) {
+
+                System.out.println("pressed " + event.getCode());
+
 
                 if (event.getCode().equals(KeyCode.DOWN)) {
                     goDown();
@@ -89,7 +92,6 @@ public class GameService {
             }
         });
         pane.requestFocus();
-        //  System.out.println("pressed " + event.getCode());
     }
 
     public void goDown() {

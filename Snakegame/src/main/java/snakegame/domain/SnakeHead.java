@@ -22,19 +22,24 @@ public class SnakeHead {
         this.y = 200;
         this.area = area;
         addHead();
-        addParts();
-    }
+        addBody();
 
+
+    }
     public void addHead() {
-        head = new SnakePart(x, y, null, area);
-        parts.add(head);
-        body = head;
-    }
 
-    public void addParts() {
+        head = new SnakePart(x, y, null, area);
+        head.setStroke(Color.AQUA);
+        head.setFill(Color.AQUA);
+        parts.add(head);
+
+        this.body = head;
+    }
+    public void addBody(){
 
         for (int i = 1; i < size; i++) {
-            SnakePart part = new SnakePart(x + 10, y, body, area);
+            SnakePart part = new SnakePart(this.x + 100, this.y, body, area);
+        //    part.setStroke(Color.AQUA);
             parts.add(part);
             body = part;
         }

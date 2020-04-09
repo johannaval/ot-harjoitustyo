@@ -14,6 +14,7 @@ public class Food extends Rectangle {
         this.y = y;
         setTranslateX(x);
         setTranslateY(y);
+        setFill(Color.AQUA);
     }
 
     public int getXposition() {

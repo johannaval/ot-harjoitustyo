@@ -1,5 +1,6 @@
 package snakegame.domain;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class SnakePart extends Rectangle {
@@ -27,6 +28,13 @@ public class SnakePart extends Rectangle {
         previous = part;
         maxSizeX = area.getAreaWidth();
         maxSizeY = area.getAreaLength();
+
+      //  setStroke(Color.BLACK);
+     //   setFill(Color.GREENYELLOW);
+        setArcWidth(10);
+        setArcHeight(10);
+
+
     }
 
     public void setDirection(String direction) {
@@ -35,6 +43,7 @@ public class SnakePart extends Rectangle {
     }
 
     public String getDirection() {
+
         return this.direction;
     }
 
@@ -100,10 +109,12 @@ public class SnakePart extends Rectangle {
             newX = 0;
         }
     }
-    public int getXposition(){
+
+    public int getXposition() {
         return this.x;
     }
-    public int getYposition(){
+
+    public int getYposition() {
         return this.y;
     }
 

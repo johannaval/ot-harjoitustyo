@@ -29,7 +29,7 @@ public class Area {
         this.points = 0;
         addFood();
         pane.setMinSize(width, length);
-        pane.setBorder(new Border(new BorderStroke(Color.DARKOLIVEGREEN, BorderStrokeStyle.SOLID, null, new BorderWidths(10))));
+        pane.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
         pane.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
     }
 
@@ -70,22 +70,22 @@ public class Area {
 
     public void addNewPart() {
 
-        SnakePart newPart = new SnakePart(head.body.x+200, head.body.y+200, head.body, this);
-        System.out.println(" :(( mix ei toimi");
-        head.body = newPart;
-        addParts(newPart);
-        System.out.println(parts.size());
+        for(int i = 1 ; i<15;i++) {
 
-
+            SnakePart newPart = new SnakePart(head.body.x, head.body.y, head.body, this);
+            head.body = newPart;
+            head.body.setStroke(Color.AQUA);
+            addParts(newPart);
+        }
     }
 
     public void addFood() {
 
         Random random = new Random();
-        int x = random.nextInt(width);
-        int y = random.nextInt(length);
+        int x = random.nextInt(width-60);
+        int y = random.nextInt(length-60);
 
-        Food newFood = new Food(x, y);
+        Food newFood = new Food(30+x, 30+y);
         pane.getChildren().add(newFood);
         pane.getChildren().remove(food);
         food = newFood;
