@@ -39,13 +39,16 @@ public class GameService {
 
         this.area = new Area(400, 600, pane);
         area.addNewSnake(new SnakeHead(50, area));
-        Text text = new Text(500, 370, "Points: 0");
+        Text text = new Text(500, 370, "Points: " + area.getPoints());
         pane.getChildren().add(text);
 
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                int points = area.getPoints();
+                text.setText("Points: " + points);
+
                 if (now - start > 10000000) {
                     area.update();
                     start = now;

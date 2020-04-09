@@ -4,10 +4,10 @@ import javafx.scene.shape.Rectangle;
 
 public class SnakePart extends Rectangle {
 
-    int newX;
-    int newY;
-    int x;
-    int y;
+    public int newX;
+    public int newY;
+    public int x;
+    public int y;
     private String up = "UP";
     private String down = "DOWN";
     private String right = "RIGHT";
@@ -19,7 +19,7 @@ public class SnakePart extends Rectangle {
 
 
     public SnakePart(int x, int y, SnakePart part, Area area) {
-        super(10, 10);
+        super(15, 15);
         this.newX = x;
         this.newY = y;
         setTranslateX(newX);
@@ -99,6 +99,12 @@ public class SnakePart extends Rectangle {
         if (newX >= maxSizeX) {
             newX = 0;
         }
+    }
+    public int getXposition(){
+        return this.x;
+    }
+    public int getYposition(){
+        return this.y;
     }
 
 }

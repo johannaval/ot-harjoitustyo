@@ -6,6 +6,5 @@
 <AnchorPane fx:id="AP" prefHeight="400.0" prefWidth="600.0" onKeyPressed="#handleKeyPressed" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="snakegame.ui.GameBoardViewController">
     <children>
         <TextField fx:id="" layoutX="600.0" layoutY="400.0" />
-        <Label layoutX="20.0" layoutY="50.0" prefHeight="26.0" prefWidth="500.0" text="Olen vielä vähän vaiheessa.. mutta toimin ENTERILLÄ ja CTRL:llä... t. mato!" />
     </children>
 </AnchorPane>
