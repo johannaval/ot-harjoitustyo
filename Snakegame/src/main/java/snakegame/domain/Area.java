@@ -43,6 +43,7 @@ public class Area {
     }
 
     public int getAreaLength() {
+
         return this.length;
     }
 
@@ -59,6 +60,9 @@ public class Area {
 
         pane.getChildren().add(sp);
         parts.add(sp);
+        if(parts.size()>53){
+            sp.setStroke(food.color);
+        }
     }
 
     public void update() {
@@ -104,7 +108,7 @@ public class Area {
 
     public boolean hitWall() {
 
-        if ((head.head.getXposition() >= this.width-15  || head.head.getXposition() <=15 || head.head.getYposition()<=15 || head.head.getYposition()>this.length-15)) {
+        if ((head.head.getXposition() >= this.width-15  || head.head.getXposition() <=15 || head.head.getYposition()<=15 || head.head.getYposition()>=this.length-15)) {
             return true;
         }
 
@@ -129,6 +133,7 @@ public class Area {
                 (food.getYposition() == head.head.getYposition() || food.getYposition() == head.head.getYposition() + 1 || food.getYposition() == head.head.getYposition() - 1 || food.getYposition() == head.head.getYposition() - 2 || food.getYposition() == head.head.getYposition() + 2 || (food.getYposition() == head.head.getYposition() + 3 || food.getYposition() == head.head.getYposition() - 3)))) {
 
             firstEaten = true;
+            System.out.println("!nam");
             return true;
         }
         return false;

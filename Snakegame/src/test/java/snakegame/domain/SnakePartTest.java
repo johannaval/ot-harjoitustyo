@@ -150,7 +150,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
             head.parts.get(0).goRight();
 
-            assertEquals(15, head.parts.get(0).newX);
+            assertEquals(10, head.parts.get(0).newX);
 
         }
 
@@ -169,7 +169,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
             head.parts.get(0).goLeft();
 
-            assertEquals(area.getAreaWidth()-30, head.parts.get(0).newX);
+            assertEquals(area.getAreaWidth()-20, head.parts.get(0).newX);
 
         }
         @Test
@@ -187,7 +187,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
             head.parts.get(0).goUp();
 
-            assertEquals(area.getAreaLength()-30, head.parts.get(0).newY);
+            assertEquals(area.getAreaLength()-20, head.parts.get(0).newY);
 
         }
         @Test
@@ -205,7 +205,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
             head.parts.get(0).goDown();
 
-            assertEquals(15, head.parts.get(0).newY);
+            assertEquals(10, head.parts.get(0).newY);
 
         }
         }

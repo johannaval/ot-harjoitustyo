@@ -17,6 +17,7 @@ public class SnakePart extends Rectangle {
     SnakePart previous;
     int maxSizeX;
     int maxSizeY;
+    boolean fistEaten=false;
 
 
     public SnakePart(int x, int y, SnakePart part, Area area) {
@@ -83,8 +84,8 @@ public class SnakePart extends Rectangle {
     public void goUp() {
 
         newY = newY - 1;
-        if (newY <= 15) {
-            newY = maxSizeY - 30;
+        if (newY <= 15 ) {
+            newY = maxSizeY - 20;
         }
     }
 
@@ -92,21 +93,21 @@ public class SnakePart extends Rectangle {
 
         newY = newY + 1;
         if (newY >= maxSizeY-30) {
-            newY = 15;
+            newY = 10;
         }
     }
 
     public void goLeft() {
         newX = newX - 1;
         if (newX <= 15) {
-            newX = maxSizeX - 30;
+            newX = maxSizeX - 20;
         }
     }
 
     public void goRight() {
         newX = newX + 1;
         if (newX >= maxSizeX - 30) {
-            newX = 15;
+            newX = 10;
         }
     }
 
