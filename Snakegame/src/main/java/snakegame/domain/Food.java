@@ -18,10 +18,12 @@ public class Food extends Rectangle {
     }
 
     public int getXposition() {
+
         return this.x;
     }
 
     public int getYposition() {
+
         return this.y;
     }
 }

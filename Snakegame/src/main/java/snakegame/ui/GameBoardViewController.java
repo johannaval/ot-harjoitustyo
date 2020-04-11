@@ -30,7 +30,6 @@ public class GameBoardViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
      //   AP.setFocusTraversable(true);
-        System.out.println("! :(((");
         start();
     }
 
@@ -60,7 +59,6 @@ public class GameBoardViewController implements Initializable {
     @FXML
     public void start() {
 
-        System.out.println("millon tääl");
         GameService gs = new GameService(AP, (this));
             gs.startGame();
             AP.requestFocus();

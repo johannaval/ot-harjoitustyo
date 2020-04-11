@@ -65,20 +65,16 @@ public class Area {
         for (SnakePart part : parts) {
             part.switchDirection();
         }
-        if (firstEaten) {
-            if (hitWall() == true) {
-                gameOver=true;
-                pane.getChildren().remove(head);
-                System.out.println(":D");
-                pane.getChildren().removeAll();
-                pane.getChildren().remove(parts);
-                return;
-            }
-        }
         if (ateFood(food) == true) {
             points = points + 50;
             addFood();
             addNewPart();
+        }
+        if (firstEaten) {
+            if (hitWall() || hitItself()) {
+                gameOver=true;
+                return;
+            }
         }
     }
 
@@ -95,8 +91,6 @@ public class Area {
 
     public void addFood() {
 
-        System.out.println("!! :D omppu");
-
         Random random = new Random();
         int x = random.nextInt(width - 60);
         int y = random.nextInt(length - 60);
@@ -110,13 +104,19 @@ public class Area {
 
     public boolean hitWall() {
 
-        if ((head.head.getXposition() >= this.width  || head.head.getXposition() <=0 || head.head.getYposition()<=0 || head.head.getYposition()>this.length)) {
-            //    System.out.println("osui!");
-            //   System.out.println(head.head.getXposition() + "," + head.head.getYposition());
-            System.out.println("osu");
+        if ((head.head.getXposition() >= this.width-15  || head.head.getXposition() <=15 || head.head.getYposition()<=15 || head.head.getYposition()>this.length-15)) {
             return true;
         }
+
         return false;
+    }
+    public boolean hitItself(){
+
+       for(SnakePart part: parts){
+           if(head.head.newX==part.getXposition() && head.head.newY==part.getYposition()){
+               return true;
+           }
+       } return false;
     }
 
     public boolean ateFood(Food food) {
@@ -138,6 +138,7 @@ public class Area {
         return this.points;
     }
     public boolean gameOver(){
+
         return gameOver;
     }
 }

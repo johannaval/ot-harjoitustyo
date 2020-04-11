@@ -15,7 +15,7 @@ public class DaoTest {
 
     public DaoTest() throws SQLException {
 
-       this.pd = new PlayerSQL("jdbc:sqlite:thisIsForUnittests.db");
+       this.pd = new PlayerSQL("jdbc:sqlite:thisIsForUnittestss.db");
 
     }
     @BeforeAll
@@ -32,16 +32,18 @@ public class DaoTest {
     }
 
     @AfterEach
-    public void tearDown() {
+    public void tearDown() throws SQLException {
+        pd.clear();
     }
 
     @Test
     public void testParse() {
-
     }
 
     @Test
     public void creatingNewPersonWorks() throws SQLException {
+
+        tearDown();
 
         Player player = new Player("TestName3", "test", 0);
 
@@ -54,6 +56,8 @@ public class DaoTest {
     @Test
     public void tableGetPlayer() throws SQLException {
 
+        tearDown();
+
         Player player = new Player("TestName2", "test", 0);
 
         pd.createTable();
@@ -65,6 +69,8 @@ public class DaoTest {
     @Test
     public void passwordIsCorrect() throws SQLException {
 
+        tearDown();
+
         Player player = new Player("TestName5", "test", 0);
 
         pd.createTable();
@@ -75,6 +81,9 @@ public class DaoTest {
     }
     @Test
     public void logInReturnTrueIfPlayerIsInTable() throws SQLException {
+
+        tearDown();
+
 
         Player playerNew = new Player("TestName1", "test", 0);
 

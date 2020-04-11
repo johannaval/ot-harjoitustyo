@@ -91,6 +91,7 @@ public class PlayerSQL implements DaoPlayer<Player, Integer> {
 
         ps = db.prepareStatement("SELECT * FROM Players WHERE username =?");
         ps.setString(1, username);
+
         ResultSet rs = ps.executeQuery();
 
         if (!rs.next()) {
@@ -148,20 +149,10 @@ public class PlayerSQL implements DaoPlayer<Player, Integer> {
        // players.add(player);
     }
 
-    public ArrayList getEntiia() throws SQLException {
-
-        ps = db.prepareStatement("SELECT * FROM Players ");
-        ResultSet rs = ps.executeQuery();
-
-        if(!rs.next()){
-            return null;
-        } else {
-        //    Player p = rs.
-
-       //     players.add(rs.next());
 
 
-        }
-        return players;
+    public void clear() throws SQLException {
+
+        statement.execute("DROP TABLE IF EXISTS PLAYERS");
     }
 }

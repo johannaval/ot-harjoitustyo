@@ -38,7 +38,6 @@ public class GameService {
         this.snakeSize = 5;
         gameOver = false;
         this.controller = controller;
-        System.out.println("tuleex ätne? 1");
 
     }
 
@@ -49,7 +48,6 @@ public class GameService {
         area.addNewSnake(new SnakeHead(50, area));
         Text text = new Text(500, 370, "Points: " + area.getPoints());
         pane.getChildren().add(text);
-        System.out.println("tuleex tänne ? 2");
 
         AnimationTimer timer = new AnimationTimer() {
 
@@ -65,8 +63,6 @@ public class GameService {
                         start = now;
                     }
                 } else {
-                    System.out.println("tuleex ätne? 3");
-
                     stop();
                     gameIsOver();
                 }
@@ -92,16 +88,18 @@ public class GameService {
         pane.addEventFilter(KeyEvent.KEY_PRESSED,
                 event -> {
 
-                    if (event.getCode().equals(KeyCode.DOWN)) {
+                    String direction = area.head.direction;
+
+                    if (event.getCode().equals(KeyCode.DOWN) && direction!="UP") {
                         goDown();
                     }
-                    if (event.getCode().equals(KeyCode.RIGHT)) {
+                    if (event.getCode().equals(KeyCode.RIGHT) && direction!="LEFT") {
                         goRigh();
                     }
-                    if (event.getCode().equals(KeyCode.LEFT)) {
+                    if (event.getCode().equals(KeyCode.LEFT) && direction!="RIGHT") {
                         goLeft();
                     }
-                    if (event.getCode().equals(KeyCode.UP)) {
+                    if (event.getCode().equals(KeyCode.UP) && direction!="DOWN") {
                         goUp();
                     }
                 });

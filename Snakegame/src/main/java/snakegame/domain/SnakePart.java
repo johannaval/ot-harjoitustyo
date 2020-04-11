@@ -29,8 +29,8 @@ public class SnakePart extends Rectangle {
         maxSizeX = area.getAreaWidth();
         maxSizeY = area.getAreaLength();
 
-      //  setStroke(Color.BLACK);
-     //   setFill(Color.GREENYELLOW);
+        //  setStroke(Color.BLACK);
+        //   setFill(Color.GREENYELLOW);
         setArcWidth(10);
         setArcHeight(10);
 
@@ -83,39 +83,61 @@ public class SnakePart extends Rectangle {
     public void goUp() {
 
         newY = newY - 1;
-        if (newY < 0) {
-            newY = maxSizeY - 1;
-
+        if (newY <= 15) {
+            newY = maxSizeY - 30;
         }
     }
 
     public void goDown() {
+
         newY = newY + 1;
-        if (newY >= maxSizeY) {
-            newY = 0;
+        if (newY >= maxSizeY-30) {
+            newY = 15;
         }
     }
 
     public void goLeft() {
         newX = newX - 1;
-        if (newX < 0) {
-            newX = maxSizeX - 1;
+        if (newX <= 15) {
+            newX = maxSizeX - 30;
         }
     }
 
     public void goRight() {
         newX = newX + 1;
-        if (newX >= maxSizeX) {
-            newX = 0;
+        if (newX >= maxSizeX - 30) {
+            newX = 15;
         }
     }
 
     public int getXposition() {
+
         return this.x;
     }
 
     public int getYposition() {
+
         return this.y;
+    }
+
+    //testei varten
+    public void setXposition(Integer x) {
+        this.x = x;
+    }
+
+    //tstei varten
+    public void setYposition(Integer y) {
+        this.y = y;
+    }
+
+    //testei varten
+    public void setNewXposition(Integer x) {
+        this.newX = x;
+    }
+
+    //tstei varten
+    public void setNewYposition(Integer y) {
+        this.newY = y;
     }
 
 }

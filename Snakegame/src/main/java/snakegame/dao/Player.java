@@ -51,10 +51,4 @@ public class Player {
         return username.equals(player.username) &&
                 password.equals(player.password);
     }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(username, password);
-    }
 }
