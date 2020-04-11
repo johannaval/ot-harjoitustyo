@@ -20,7 +20,6 @@ public class LogInViewController implements Initializable {
     @FXML
     private TextField username;
 
-
     @FXML
     private TextField password;
 
@@ -59,7 +58,7 @@ public class LogInViewController implements Initializable {
             if (player != null) {
 
                 application.setGameScene();
-                //       GVC.showHighscore(player.getHighscore());
+           //     GVC.m(player);
 
                 username.setText("");
                 password.setText("");

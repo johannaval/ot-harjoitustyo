@@ -13,7 +13,7 @@ public class DaoTest {
 
     PlayerSQL pd;
 
-    public DaoTest() {
+    public DaoTest() throws SQLException {
 
        this.pd = new PlayerSQL("jdbc:sqlite:thisIsForUnittests.db");
 
@@ -48,7 +48,7 @@ public class DaoTest {
         pd.createTable();
         pd.create(player);
 
-        assertEquals(pd.findUser("TestName3").getName(),"TestName3");
+        assertEquals(pd.findUser("TestName3").getUsername(),"TestName3");
     }
 
     @Test

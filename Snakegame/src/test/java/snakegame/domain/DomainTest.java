@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
+import snakegame.ui.GameBoardViewController;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,6 +19,7 @@ public class DomainTest {
     SnakePart part;
     SnakeHead head;
     AnchorPane pane;
+    GameBoardViewController controller;
     
     public DomainTest() {
 
@@ -44,7 +46,7 @@ public class DomainTest {
     public void areaGetRightNumberOfSnakeparts() {
 
         AnchorPane pane = new AnchorPane();
-        GameService gs = new GameService(pane);
+        GameService gs = new GameService(pane, controller);
         Area area = new Area(300,600,pane);
 
         SnakeHead head = new SnakeHead(20,area);
@@ -56,7 +58,7 @@ public class DomainTest {
     public void areaHaveRightLength(){
 
         AnchorPane pane = new AnchorPane();
-        GameService gs = new GameService(pane);
+        GameService gs = new GameService(pane, controller);
         Area area = new Area(300,600,pane);
 
         assertEquals(area.getAreaLength(),300);
@@ -66,7 +68,7 @@ public class DomainTest {
     public void areaHaveRightWidth(){
 
         AnchorPane pane = new AnchorPane();
-        GameService gs = new GameService(pane);
+        GameService gs = new GameService(pane, controller);
         Area area = new Area(300,600,pane);
 
         assertEquals(area.getAreaWidth(),600);
@@ -75,7 +77,7 @@ public class DomainTest {
     public void snakeHeadGetRightNumberOfSnakeparts() {
 
         AnchorPane pane = new AnchorPane();
-        GameService gs = new GameService(pane);
+        GameService gs = new GameService(pane, controller);
         Area area = new Area(300,600,pane);
 
         SnakeHead head = new SnakeHead(20,area);
@@ -87,7 +89,7 @@ public class DomainTest {
     public void goingUpMakesYSmaller() {
 
         AnchorPane pane = new AnchorPane();
-        GameService gs = new GameService(pane);
+        GameService gs = new GameService(pane, controller);
         Area area = new Area(300,600,pane);
 
         SnakeHead head = new SnakeHead(20,area);
@@ -105,7 +107,7 @@ public class DomainTest {
     public void goingDownMakesYBigger() {
 
         AnchorPane pane = new AnchorPane();
-        GameService gs = new GameService(pane);
+        GameService gs = new GameService(pane, controller);
         Area area = new Area(300,600,pane);
 
         SnakeHead head = new SnakeHead(20,area);
@@ -123,7 +125,7 @@ public class DomainTest {
     public void goingLeftMakesXSmaller() {
 
         AnchorPane pane = new AnchorPane();
-        GameService gs = new GameService(pane);
+        GameService gs = new GameService(pane, controller);
         Area area = new Area(300,600,pane);
 
         SnakeHead head = new SnakeHead(20,area);
@@ -141,7 +143,7 @@ public class DomainTest {
     public void goingRightMakesXBigger() {
 
         AnchorPane pane = new AnchorPane();
-        GameService gs = new GameService(pane);
+        GameService gs = new GameService(pane, controller);
         Area area = new Area(300,600,pane);
 
         SnakeHead head = new SnakeHead(20,area);

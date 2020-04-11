@@ -1,64 +1,81 @@
 package snakegame.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
+import java.sql.DriverManager;
 
 
 public class PlayerSQL implements DaoPlayer<Player, Integer> {
 
-    private static String url = "jdbc:sqlite:testsql.db";
-    private static Connection db = createConnection();
+    private String url = "jdbc:sqlite:testsql.db";
+    private Connection db;
+    private PreparedStatement ps;
+    private Statement statement;
+    public ArrayList<Player> players = new ArrayList<>();
 
-    public PlayerSQL() {
+    public PlayerSQL() throws SQLException {
         this.db = db;
         this.url = url;
+        getConnection();
     }
 
-    public PlayerSQL(String url) {
+    public PlayerSQL(String url) throws SQLException {
         this.url = url; //TESTEJÄ VARTEN, ETTEI OIKEA TIETOKANTA SEKOTU
         this.db = db;
+        getConnection();
     }
 
 
-    private static Connection createConnection() {
+    /*private static Connection createConnection() {
+
+
         try {
             return DriverManager.getConnection(url);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    } */
+
+    public void getConnection() throws SQLException {
+
+        db = DriverManager.getConnection(url);
+        statement = db.createStatement();
     }
 
-    public static Connection getConnection() {
-        return db;
-    }
+    public void stopConnection() throws SQLException {
 
-    public static void stopConnection() throws SQLException {
+        statement.close();
         db.close();
     }
 
     public void createTable() throws SQLException {
+
+  //      getConnection();
+
         Statement s = db.createStatement();
         s.execute("CREATE TABLE IF NOT EXISTS Players (player_id INTEGER PRIMARY KEY, username TEXT unique, password TEXT, highscore INTEGER)");
         s.close();
+
+   //     stopConnection();
     }
 
     @Override
     public void create(Player player) throws SQLException {
 
+     //   getConnection();
         createTable();
-        Statement s = db.createStatement();
-        try {
-            PreparedStatement p = db.prepareStatement("INSERT OR ABORT INTO Players(username, password, highscore) VALUES (?,?,?)");
-            p.setString(1, player.getName());
-            p.setString(2, player.getPassword());
-            p.setInt(3, player.getHighscore());
 
-            p.executeUpdate();
+        ps = db.prepareStatement("INSERT OR ABORT INTO Players(username, password, highscore) VALUES (?,?,?)");
+        ps.setString(1, player.getUsername());
+        ps.setString(2, player.getPassword());
+        ps.setInt(3, player.getHighscore());
 
-        } catch (SQLException e) {
-        }
-        s.close();
+        ps.executeUpdate();
+        ps.close();
+
+   //     stopConnection();
     }
 
     @Override
@@ -68,21 +85,26 @@ public class PlayerSQL implements DaoPlayer<Player, Integer> {
 
     public Player findUser(String username) throws SQLException {
 
+  //      getConnection();
+
         createTable();
 
-        PreparedStatement stmt = db.prepareStatement("SELECT * FROM Players WHERE username =?");
-        stmt.setString(1, username);
-        ResultSet rs = stmt.executeQuery();
+        ps = db.prepareStatement("SELECT * FROM Players WHERE username =?");
+        ps.setString(1, username);
+        ResultSet rs = ps.executeQuery();
 
         if (!rs.next()) {
+
+   //         stopConnection();
             return null;
         }
         Player pp = new Player(rs.getString("username"),
                 rs.getString("password"), rs.getInt("highscore"));
 
-        stmt.close();
+        ps.close();
         rs.close();
 
+  //      stopConnection();
         return pp;
     }
 
@@ -99,21 +121,47 @@ public class PlayerSQL implements DaoPlayer<Player, Integer> {
 
     public Player isLogInOK(String username, String passw) throws SQLException {
 
-        PreparedStatement stmt = db.prepareStatement("SELECT * FROM Players WHERE username =? AND password =?");
-        stmt.setString(1, username);
-        stmt.setString(2, passw);
-        ResultSet rs = stmt.executeQuery();
+   //     getConnection();
+
+        ps = db.prepareStatement("SELECT * FROM Players WHERE username =? AND password =?");
+        ps.setString(1, username);
+        ps.setString(2, passw);
+        ResultSet rs = ps.executeQuery();
 
         if (!rs.next()) {
+
+   //         stopConnection();
             return null;
         }
         Player okay = new Player(rs.getString("username"),
                 rs.getString("password"), rs.getInt("highscore"));
 
         okay.increaseHighscore(1);
-        stmt.close();
+        ps.close();
         rs.close();
 
+     //   stopConnection();
         return okay;
+    }
+
+    public void lopetettua(){
+       // players.add(player);
+    }
+
+    public ArrayList getEntiia() throws SQLException {
+
+        ps = db.prepareStatement("SELECT * FROM Players ");
+        ResultSet rs = ps.executeQuery();
+
+        if(!rs.next()){
+            return null;
+        } else {
+        //    Player p = rs.
+
+       //     players.add(rs.next());
+
+
+        }
+        return players;
     }
 }

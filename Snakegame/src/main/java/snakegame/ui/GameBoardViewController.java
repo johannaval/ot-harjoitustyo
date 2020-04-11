@@ -19,6 +19,7 @@ public class GameBoardViewController implements Initializable {
 
     private GameUi application;
 
+
     @FXML
     private Label highscore;
 
@@ -28,7 +29,8 @@ public class GameBoardViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        AP.setFocusTraversable(true);
+     //   AP.setFocusTraversable(true);
+        System.out.println("! :(((");
         start();
     }
 
@@ -38,42 +40,42 @@ public class GameBoardViewController implements Initializable {
     }
 
     public void showHighscore(Integer hs) {
+
         highscore.setText("Your highscore is: " + hs);
     }
 
     @FXML
-    private void handleExit(ActionEvent event) {
+    public void handleExit(ActionEvent event) {
         application.setloginScene();
 
     }
 
     @FXML
-    private void handleTopList(ActionEvent event) {
-        application.setTopListScene();
-
+    public void handleTopList(ActionEvent event) {
+        if (service.gameOver == true) {
+            application.setTopListScene();
+        }
     }
 
     @FXML
     public void start() {
 
-        GameService gs = new GameService(AP);
-        gs.startGame();
-        AP.requestFocus();
-
+        System.out.println("millon tääl");
+        GameService gs = new GameService(AP, (this));
+            gs.startGame();
+            AP.requestFocus();
     }
-
     @FXML
     public void handleKeyPressed(KeyEvent keyEvent) {
-      //  if(keyEvent.getCode().equals(KeyCode.UP)){
-        //    System.out.println("<3");
-     //   }
+
         if (keyEvent.getCode().equals(KeyCode.ALT)) {
             application.setGameScene();
         }
     }
 
-    public void handleKeyDown(KeyEvent keyEvent) {
+    public void handleTopList(){
 
+        application.setTopListScene();
     }
 }
 

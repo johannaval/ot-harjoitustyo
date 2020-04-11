@@ -26,32 +26,49 @@ public class GameService {
     public int partSize = 10;
     public int snakeSize = 5;
     public Area area;
+    public boolean gameOver;
 
-    public GameService(AnchorPane pane) {
+    public GameBoardViewController controller;
+
+    public GameService(AnchorPane pane, GameBoardViewController controller) {
         this.pane = pane;
         this.boardLength = 400;
         this.boardWidth = 600;
         this.partSize = 10;
         this.snakeSize = 5;
+        gameOver = false;
+        this.controller = controller;
+        System.out.println("tuleex ätne? 1");
+
     }
 
     public void startGame() {
+
 
         this.area = new Area(400, 600, pane);
         area.addNewSnake(new SnakeHead(50, area));
         Text text = new Text(500, 370, "Points: " + area.getPoints());
         pane.getChildren().add(text);
-
+        System.out.println("tuleex tänne ? 2");
 
         AnimationTimer timer = new AnimationTimer() {
+
             @Override
             public void handle(long now) {
                 int points = area.getPoints();
                 text.setText("Points: " + points);
 
-                if (now - start > 7000000) {
-                    area.update();
-                    start = now;
+
+                if (area.gameOver() == false) {
+                    if (now - start > 7000000) {
+                        area.update();
+                        start = now;
+                    }
+                } else {
+                    System.out.println("tuleex ätne? 3");
+
+                    stop();
+                    gameIsOver();
                 }
             }
         };
@@ -59,38 +76,35 @@ public class GameService {
 
         area.head.setDirection("RIGHT");
         move();
+
+    }
+
+    public void gameIsOver() {
+        System.out.println("peli loppui sait pisteitä " + area.getPoints());
+        gameOver = true;
+        pane.getChildren().clear();
+        startGame();
+        controller.handleTopList();
     }
 
     public void move() {
 
-        pane.addEventHandler(KEY_PRESSED, new EventHandler<KeyEvent>() {
+        pane.addEventFilter(KeyEvent.KEY_PRESSED,
+                event -> {
 
-            @Override
-            public void handle(KeyEvent event) {
-
-                System.out.println("pressed " + event.getCode());
-
-
-                if (event.getCode().equals(KeyCode.DOWN)) {
-                    goDown();
-                }
-                if (event.getCode().equals(KeyCode.RIGHT)) {
-                    goRigh();
-                }
-                if (event.getCode().equals(KeyCode.LEFT)) {
-                    goLeft();
-                }
-                if (event.getCode().equals(KeyCode.UP)) {
-                    goUp();
-                }
-                if (event.getCode().equals(KeyCode.ENTER)) {
-                    goUp();
-                }
-                if (event.getCode().equals(KeyCode.CONTROL)) {
-                    goLeft();
-                }
-            }
-        });
+                    if (event.getCode().equals(KeyCode.DOWN)) {
+                        goDown();
+                    }
+                    if (event.getCode().equals(KeyCode.RIGHT)) {
+                        goRigh();
+                    }
+                    if (event.getCode().equals(KeyCode.LEFT)) {
+                        goLeft();
+                    }
+                    if (event.getCode().equals(KeyCode.UP)) {
+                        goUp();
+                    }
+                });
         pane.requestFocus();
     }
 

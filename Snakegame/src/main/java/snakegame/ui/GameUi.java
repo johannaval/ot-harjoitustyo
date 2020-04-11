@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import org.w3c.dom.ls.LSOutput;
+import snakegame.dao.Player;
 
 public class GameUi extends Application {
 

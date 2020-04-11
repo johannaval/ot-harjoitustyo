@@ -5,30 +5,27 @@ import java.util.Objects;
 public class Player {
 
     int id;
-    String username;
+    public String username;
     String password;
     int highscore;
     //ArrayList<Player>t;
 
-    public Player(String username, String password, int highscore) {
+    public Player( String username, String password, int highscore) {
         this.username = username;
         this.password = password;
         this.highscore = highscore;
     }
 
-    public String getName() {
+    public String getUsername() {
         return this.username;
     }
+
 
     public int getHighscore() {
 
         return this.highscore;
     }
 
-    public int getId() {
-
-        return this.id;
-    }
 
     public String getPassword() {
 

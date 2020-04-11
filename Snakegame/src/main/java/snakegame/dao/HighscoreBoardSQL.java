@@ -11,6 +11,7 @@ public class HighscoreBoardSQL implements DaoHighscoreBoard {
     public void comingsoon() {
     }
 
+
     @Override
     public void create(Object object) throws SQLException {
 
