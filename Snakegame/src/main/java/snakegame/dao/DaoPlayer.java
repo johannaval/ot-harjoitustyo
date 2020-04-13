@@ -1,18 +1,27 @@
 package snakegame.dao;
 
-import java.util.*;
 import java.sql.*;
+import snakegame.domain.Player;
 
 
-interface DaoPlayer<T, K> {
+public interface DaoPlayer {
 
-    void create(T object) throws SQLException;
+    void create(Player player) throws SQLException;
 
-    T read(K key) throws SQLException;
+    Player update(Player player) throws SQLException;
 
-    T update(T object) throws SQLException;
+    void clear() throws SQLException;
 
-    List<T> list() throws SQLException;
+    boolean isThereAccountWithThisName(String username) throws SQLException;
+
+    Player isLogInOK(String username, String passw) throws SQLException;
+
+    Player findUser(String username) throws SQLException;
+
+     void createTable() throws SQLException;
+
+    void getConnection() throws SQLException;
 }
+
 
 

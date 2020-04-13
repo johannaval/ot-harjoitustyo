@@ -10,6 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import snakegame.ui.GameBoardViewController;
 
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -44,7 +46,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         public void tearDown() {
         }
         @Test
-        public void snakeHeadGetRightNumberOfSnakeparts() {
+        public void snakeHeadGetRightNumberOfSnakeparts() throws SQLException {
 
             AnchorPane pane = new AnchorPane();
             GameService gs = new GameService(pane, controller);
@@ -56,7 +58,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
             assertEquals(head.parts.size(), 20);
         }
         @Test
-        public void settingHeadsDirectionSetRightDirection() {
+        public void settingHeadsDirectionSetRightDirection() throws SQLException {
 
             AnchorPane pane = new AnchorPane();
             GameService gs = new GameService(pane, controller);

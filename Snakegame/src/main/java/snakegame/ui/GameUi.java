@@ -2,16 +2,12 @@ package snakegame.ui;
 
 import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
-import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
-import org.w3c.dom.ls.LSOutput;
-import snakegame.dao.Player;
+import snakegame.domain.PlayerService;
+
 
 public class GameUi extends Application {
 
@@ -21,6 +17,7 @@ public class GameUi extends Application {
     private Scene nakymaGame;
     private Scene nakymatoplista;
     private Scene nakymaGameBoard;
+    private PlayerService ps;
 
 
     @Override
@@ -28,7 +25,7 @@ public class GameUi extends Application {
 
         this.stage = stage;
 
-        stage.setTitle("Ma-to-pe-li");
+        stage.setTitle("Snake game");
         setloginScene();
         stage.show();
     }
@@ -58,26 +55,14 @@ public class GameUi extends Application {
         newUserSceneController.setApplication(this);
         nakymaCreateNew = new Scene(newUserPane);
 
-        FXMLLoader gameStartLoader = new FXMLLoader(getClass().getResource("/fxml/GameView.fxml"));
-        Parent gamePane = gameStartLoader.load();
-        GameViewController gameSceneController = gameStartLoader.getController();
-        gameSceneController.setApplication(this);
-        nakymaGame = new Scene(gamePane);
-
         FXMLLoader gameboardLoader = new FXMLLoader(getClass().getResource("/fxml/GameBoardView.fxml"));
         Parent gameboardPane = gameboardLoader.load();
         GameBoardViewController gameBoardSceneController = gameboardLoader.getController();
         gameBoardSceneController.setApplication(this);
         nakymaGameBoard = new Scene(gameboardPane);
 
-
-        FXMLLoader toplistLoader = new FXMLLoader(getClass().getResource("/fxml/TopListView.fxml"));
-        Parent listPane = toplistLoader.load();
-        TopListViewController listSceneController = toplistLoader.getController();
-        listSceneController.setApplication(this);
-        nakymatoplista = new Scene(listPane);
-
     }
+
     public void setloginScene() {
 
         stage.setScene(nakymaLogin);
@@ -90,22 +75,44 @@ public class GameUi extends Application {
         stage.setTitle("Create new");
     }
 
-    public void setGameScene() {
+    public void setGameScene() throws IOException {
+
+        FXMLLoader gameStartLoader = new FXMLLoader(getClass().getResource("/fxml/GameView.fxml"));
+        Parent gamePane = gameStartLoader.load();
+        GameViewController gameSceneController = gameStartLoader.getController();
+        gameSceneController.setApplication(this);
+        nakymaGame = new Scene(gamePane);
 
         stage.setScene(nakymaGame);
         stage.setTitle("Start!");
+
     }
 
-    public void setTopListScene() {
+    public void setTopListScene() throws IOException {
+
+        FXMLLoader toplistLoader = new FXMLLoader(getClass().getResource("/fxml/TopListView.fxml"));
+        Parent listPane = toplistLoader.load();
+        TopListViewController listSceneController = toplistLoader.getController();
+        listSceneController.setApplication(this);
+        nakymatoplista = new Scene(listPane);
 
         stage.setScene(nakymatoplista);
-        stage.setTitle("Top10");
+        stage.setTitle("Score board");
     }
+
     public void setGameBoardScene() {
 
         stage.setScene(nakymaGameBoard);
         stage.setResizable(false);
-        stage.setTitle("Let's play! (press ALT to go back)");
+        stage.setTitle("Let's play!");
 
+    }
+
+    public void setPlayerService(PlayerService ps) {
+        this.ps = ps;
+    }
+
+    public PlayerService ps(){
+        return this.ps;
     }
 }

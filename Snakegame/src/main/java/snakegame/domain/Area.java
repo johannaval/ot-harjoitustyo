@@ -31,10 +31,10 @@ public class Area {
         this.points = 0;
         addFood();
         pane.setMinSize(width, length);
-        pane.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
-        pane.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+        pane.setBorder(new Border(new BorderStroke(Color.DARKGREY, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
+        pane.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
         firstEaten = false;
-        gameOver=false;
+        gameOver = false;
     }
 
     public int getAreaWidth() {
@@ -60,7 +60,7 @@ public class Area {
 
         pane.getChildren().add(sp);
         parts.add(sp);
-        if(parts.size()>53){
+        if (parts.size() > 53) {
             sp.setStroke(food.color);
         }
     }
@@ -76,7 +76,7 @@ public class Area {
         }
         if (firstEaten) {
             if (hitWall() || hitItself()) {
-                gameOver=true;
+                gameOver = true;
                 return;
             }
         }
@@ -108,19 +108,21 @@ public class Area {
 
     public boolean hitWall() {
 
-        if ((head.head.getXposition() >= this.width-15  || head.head.getXposition() <=15 || head.head.getYposition()<=15 || head.head.getYposition()>=this.length-15)) {
+        if ((head.head.getXposition() >= this.width - 15 || head.head.getXposition() <= 15 || head.head.getYposition() <= 15 || head.head.getYposition() >= this.length - 15)) {
             return true;
         }
 
         return false;
     }
-    public boolean hitItself(){
 
-       for(SnakePart part: parts){
-           if(head.head.newX==part.getXposition() && head.head.newY==part.getYposition()){
-               return true;
-           }
-       } return false;
+    public boolean hitItself() {
+
+        for (SnakePart part : parts) {
+            if (head.head.newX == part.getXposition() && head.head.newY == part.getYposition()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean ateFood(Food food) {
@@ -133,7 +135,6 @@ public class Area {
                 (food.getYposition() == head.head.getYposition() || food.getYposition() == head.head.getYposition() + 1 || food.getYposition() == head.head.getYposition() - 1 || food.getYposition() == head.head.getYposition() - 2 || food.getYposition() == head.head.getYposition() + 2 || (food.getYposition() == head.head.getYposition() + 3 || food.getYposition() == head.head.getYposition() - 3)))) {
 
             firstEaten = true;
-            System.out.println("!nam");
             return true;
         }
         return false;
@@ -142,7 +143,8 @@ public class Area {
     public int getPoints() {
         return this.points;
     }
-    public boolean gameOver(){
+
+    public boolean gameOver() {
 
         return gameOver;
     }

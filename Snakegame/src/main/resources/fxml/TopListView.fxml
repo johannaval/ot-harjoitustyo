@@ -10,10 +10,10 @@
     <Label layoutX="259.0" layoutY="55.0" prefHeight="26.0" prefWidth="94.0" text="TOP 10: " />
     <Button layoutX="483.0" layoutY="55.0" mnemonicParsing="false" onAction="#handleBackToGame" text="New game" />
     <Button layoutX="504.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleExit" text="Log out" />
-    <TableView fx:id="TopList" layoutX="97.0" layoutY="104.0" prefHeight="274.0" prefWidth="383.0" tableMenuButtonVisible="false" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="104.0">
+    <TableView fx:id="TopList" layoutX="79.0" layoutY="104.0" prefHeight="274.0" prefWidth="430.0" tableMenuButtonVisible="false" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="79.0" AnchorPane.rightAnchor="91.0" AnchorPane.topAnchor="104.0">
         <columns>
-            <TableColumn fx:id="username" maxWidth="5000.0" minWidth="10.0" prefWidth="193.0" text="Name:"/>
-            <TableColumn fx:id="highscore" maxWidth="5000.0" minWidth="10.0" prefWidth="189.0" text="Points:" />
+            <TableColumn fx:id="username" maxWidth="5000.0" minWidth="10.0" prefWidth="211.0" text="Name:" />
+            <TableColumn fx:id="highscore" maxWidth="5000.0" minWidth="10.0" prefWidth="196.0" text="Points:" />
         </columns>
     </TableView>
 </AnchorPane>

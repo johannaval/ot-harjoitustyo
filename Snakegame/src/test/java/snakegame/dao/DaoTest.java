@@ -15,9 +15,10 @@ public class DaoTest {
 
     public DaoTest() throws SQLException {
 
-       this.pd = new PlayerSQL("jdbc:sqlite:thisIsForUnittestss.db");
+        this.pd = new PlayerSQL("jdbc:sqlite:thisIsForUnittestss.db");
 
     }
+
     @BeforeAll
     public static void setUpClass() {
     }
@@ -39,7 +40,7 @@ public class DaoTest {
     @Test
     public void testParse() {
     }
-
+/*
     @Test
     public void creatingNewPersonWorks() throws SQLException {
 
@@ -102,4 +103,7 @@ public class DaoTest {
         assertNull(pd.isLogInOK("UserNotInTable","test"));
 
     }
+}
+/*
+ */
 }

@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import snakegame.ui.GameBoardViewController;
 
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -45,7 +47,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
         @Test
-        public void switchingHeadDirectionSwitchsAllPartsDirection() {
+        public void switchingHeadDirectionSwitchsAllPartsDirection() throws SQLException {
 
             AnchorPane pane = new AnchorPane();
             GameService gs = new GameService(pane, controller);
@@ -60,7 +62,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
             assertEquals(head.parts.get(1).getDirection(), "DOWN");
         }
         @Test
-        public void goingUpMakesYSmaller() {
+        public void goingUpMakesYSmaller() throws SQLException {
 
             AnchorPane pane = new AnchorPane();
             GameService gs = new GameService(pane, controller);
@@ -80,7 +82,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
         @Test
-        public void goingDownMakesYBigger() {
+        public void goingDownMakesYBigger() throws SQLException {
 
             AnchorPane pane = new AnchorPane();
             GameService gs = new GameService(pane, controller);
@@ -99,7 +101,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         }
 
         @Test
-        public void goingLeftMakesXSmaller() {
+        public void goingLeftMakesXSmaller() throws SQLException {
 
             AnchorPane pane = new AnchorPane();
             GameService gs = new GameService(pane, controller);
@@ -118,7 +120,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         }
 
         @Test
-        public void goingRightMakesXBigger() {
+        public void goingRightMakesXBigger() throws SQLException {
 
             AnchorPane pane = new AnchorPane();
             GameService gs = new GameService(pane, controller);
@@ -136,7 +138,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
             assertEquals(part.newX, 303);
         }
         @Test
-        public void hittingRightWallWithoutEatingFirstFoodPutsSnakeToLeftWall() {
+        public void hittingRightWallWithoutEatingFirstFoodPutsSnakeToLeftWall() throws SQLException {
 
             AnchorPane pane = new AnchorPane();
             GameService gs = new GameService(pane, controller);
@@ -155,7 +157,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         }
 
         @Test
-        public void hittingLeftWallWithoutEatingFirstFoodPutsSnakeToRightWall() {
+        public void hittingLeftWallWithoutEatingFirstFoodPutsSnakeToRightWall() throws SQLException {
 
             AnchorPane pane = new AnchorPane();
             GameService gs = new GameService(pane, controller);
@@ -173,7 +175,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
         }
         @Test
-        public void hittingUpWallWithoutEatingFirstFoodPutsSnakeToDownWall() {
+        public void hittingUpWallWithoutEatingFirstFoodPutsSnakeToDownWall() throws SQLException {
 
             AnchorPane pane = new AnchorPane();
             GameService gs = new GameService(pane, controller);
@@ -191,7 +193,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
         }
         @Test
-        public void hittingDownWallWithoutEatingFirstFoodPutsSnakeToUpWall() {
+        public void hittingDownWallWithoutEatingFirstFoodPutsSnakeToUpWall() throws SQLException {
 
             AnchorPane pane = new AnchorPane();
             GameService gs = new GameService(pane, controller);

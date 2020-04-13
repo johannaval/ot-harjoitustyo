@@ -2,24 +2,21 @@
 package snakegame.domain;
 
 import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import snakegame.ui.GameBoardViewController;
+import java.io.IOException;
+import java.sql.SQLException;
 
-
-import static javafx.scene.input.KeyEvent.*;
 
 public class GameService {
 
     @FXML
     public AnchorPane pane;
-
-
     private int boardLength;
     private int boardWidth;
     private long start = System.nanoTime();
@@ -27,6 +24,7 @@ public class GameService {
     public int snakeSize = 5;
     public Area area;
     public boolean gameOver;
+    public int points;
 
     public GameBoardViewController controller;
 
@@ -38,15 +36,14 @@ public class GameService {
         this.snakeSize = 5;
         gameOver = false;
         this.controller = controller;
-
     }
 
     public void startGame() {
 
-
         this.area = new Area(400, 600, pane);
         area.addNewSnake(new SnakeHead(50, area));
         Text text = new Text(500, 370, "Points: " + area.getPoints());
+        text.setStroke(Color.WHITE);
         pane.getChildren().add(text);
 
         AnimationTimer timer = new AnimationTimer() {
@@ -64,7 +61,11 @@ public class GameService {
                     }
                 } else {
                     stop();
-                    gameIsOver();
+                    try {
+                        gameIsOver();
+                    } catch (SQLException | IOException throwables) {
+                        throwables.printStackTrace();
+                    }
                 }
             }
         };
@@ -75,12 +76,13 @@ public class GameService {
 
     }
 
-    public void gameIsOver() {
-        System.out.println("peli loppui sait pisteitä " + area.getPoints());
+    public void gameIsOver() throws SQLException, IOException {
+
+        this.points=area.getPoints();
         gameOver = true;
         pane.getChildren().clear();
         startGame();
-        controller.handleTopList();
+        controller.handleTopList(points);
     }
 
     public void move() {
@@ -90,16 +92,16 @@ public class GameService {
 
                     String direction = area.head.direction;
 
-                    if (event.getCode().equals(KeyCode.DOWN) && direction!="UP") {
+                    if (event.getCode().equals(KeyCode.DOWN) && direction != "UP") {
                         goDown();
                     }
-                    if (event.getCode().equals(KeyCode.RIGHT) && direction!="LEFT") {
+                    if (event.getCode().equals(KeyCode.RIGHT) && direction != "LEFT") {
                         goRigh();
                     }
-                    if (event.getCode().equals(KeyCode.LEFT) && direction!="RIGHT") {
+                    if (event.getCode().equals(KeyCode.LEFT) && direction != "RIGHT") {
                         goLeft();
                     }
-                    if (event.getCode().equals(KeyCode.UP) && direction!="DOWN") {
+                    if (event.getCode().equals(KeyCode.UP) && direction != "DOWN") {
                         goUp();
                     }
                 });
@@ -128,4 +130,3 @@ public class GameService {
 
     }
 }
-

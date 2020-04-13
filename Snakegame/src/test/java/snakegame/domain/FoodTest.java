@@ -12,6 +12,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import snakegame.ui.GameBoardViewController;
 
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -47,7 +49,7 @@ public class FoodTest {
     }
 
     @Test
-    public void afterEatingFoodPointsIncrease() {
+    public void afterEatingFoodPointsIncrease() throws SQLException {
 
         AnchorPane pane = new AnchorPane();
         GameService gs = new GameService(pane, controller);
@@ -70,7 +72,7 @@ public class FoodTest {
     }
 
     @Test
-    public void returnTrueIfFoodWasEaten() {
+    public void returnTrueIfFoodWasEaten() throws SQLException {
 
         AnchorPane pane = new AnchorPane();
         GameService gs = new GameService(pane, controller);
@@ -91,7 +93,7 @@ public class FoodTest {
     }
 
     @Test
-    public void ateFoodReturnFalseIfThereIsNoFood() {
+    public void ateFoodReturnFalseIfThereIsNoFood() throws SQLException {
 
         AnchorPane pane = new AnchorPane();
         GameService gs = new GameService(pane, controller);
@@ -105,7 +107,7 @@ public class FoodTest {
     }
 
     @Test
-    public void beforeEatingPointsAreaZero() {
+    public void beforeEatingPointsAreaZero() throws SQLException {
 
         AnchorPane pane = new AnchorPane();
         GameService gs = new GameService(pane, controller);

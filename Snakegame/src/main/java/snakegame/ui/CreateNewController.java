@@ -3,19 +3,18 @@ package snakegame.ui;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import snakegame.dao.Player;
+import snakegame.domain.Player;
 import snakegame.dao.PlayerSQL;
+import snakegame.domain.PlayerService;
+
 
 public class CreateNewController implements Initializable {
-
-    private PlayerSQL dao;
-
-    private Player p;
 
     private GameUi application;
 
@@ -28,8 +27,11 @@ public class CreateNewController implements Initializable {
     @FXML
     private Label error;
 
-    @FXML
-    private Label usernameLabel;
+    private PlayerSQL playerSQL;
+    private Player loggedIn;
+    private LogInViewController livc;
+    private PlayerService service;
+
 
     public void setApplication(GameUi application) {
 
@@ -47,40 +49,41 @@ public class CreateNewController implements Initializable {
     @FXML
     private void handleCreate(ActionEvent event) throws SQLException {
 
-        PlayerSQL d = new PlayerSQL();
 
         String name = username.getText();
+        String passw = password.getText();
 
-        if(name.length()<3){
-           // usernameLabel.setText("Username: (must contain at least 3 letters) !!!!!!!!!!!!!");
-            error.setText("Practice your reading skills....");
+        if (name.length() < 3) {
+            error.setText("Too short password!");
             return;
         }
-
-        if (d.findUser(username.getText()) != null) {
+        if (service.isThereAccountWithThisName(name)) {
+            username.setText("");
+            password.setText("");
             error.setText("Oops! This username is already registered");
             return;
 
-        } else {
+        }
+        if (service.createUser(name, password.getText())) {
 
-            Player p = new Player(username.getText().toLowerCase(), password.getText().toLowerCase(), 0);
-
-            d.create(p);
             username.setText("");
             password.setText("");
-        //    usernameLabel.setText("Username: (must contain at least 3 letters)");
             error.setText("");
             application.setloginScene();
-
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        this.livc = new LogInViewController();
+        PlayerService pService = null;
+        try {
+            PlayerSQL playerSQL = new PlayerSQL();
+            pService = new PlayerService(playerSQL, livc);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        this.service = pService;
+        }
     }
-
-//    @FXML
-//    private void handleNewUser(ActionEvent event) {
-//    }
-}

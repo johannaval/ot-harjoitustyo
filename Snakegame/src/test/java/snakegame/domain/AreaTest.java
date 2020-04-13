@@ -9,6 +9,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import snakegame.ui.GameBoardViewController;
 
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AreaTest {
@@ -37,7 +39,7 @@ public class AreaTest {
     }
 
     @Test
-    public void areaGetRightNumberOfSnakeparts() {
+    public void areaGetRightNumberOfSnakeparts() throws SQLException {
 
         AnchorPane pane = new AnchorPane();
         GameService gs = new GameService(pane, controller);
@@ -50,7 +52,7 @@ public class AreaTest {
     }
 
     @Test
-    public void areaHaveRightLength() {
+    public void areaHaveRightLength() throws SQLException {
 
         AnchorPane pane = new AnchorPane();
         GameService gs = new GameService(pane, controller);
@@ -61,7 +63,7 @@ public class AreaTest {
     }
 
     @Test
-    public void areaHaveRightWidth() {
+    public void areaHaveRightWidth() throws SQLException {
 
         AnchorPane pane = new AnchorPane();
         GameService gs = new GameService(pane, controller);
@@ -71,7 +73,7 @@ public class AreaTest {
     }
 
     @Test
-    public void notHittingTheWallWillContinueTheGame() {
+    public void notHittingTheWallWillContinueTheGame() throws SQLException {
 
         AnchorPane pane = new AnchorPane();
         GameService gs = new GameService(pane, controller);
@@ -90,7 +92,7 @@ public class AreaTest {
     }
 
     @Test
-    public void hittingTheWallWillReturnTrue() {
+    public void hittingTheWallWillReturnTrue() throws SQLException {
 
         AnchorPane pane = new AnchorPane();
         GameService gs = new GameService(pane, controller);
@@ -133,7 +135,7 @@ public class AreaTest {
 
 
     @Test
-    public void hittingTheWallWithoutEatingAnythingWillNotEndTheGame() {
+    public void hittingTheWallWithoutEatingAnythingWillNotEndTheGame() throws SQLException {
 
         AnchorPane pane = new AnchorPane();
         GameService gs = new GameService(pane, controller);

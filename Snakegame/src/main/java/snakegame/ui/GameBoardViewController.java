@@ -1,16 +1,16 @@
 package snakegame.ui;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import snakegame.domain.GameService;
+import snakegame.domain.PlayerService;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class GameBoardViewController implements Initializable {
@@ -19,9 +19,7 @@ public class GameBoardViewController implements Initializable {
 
     private GameUi application;
 
-
-    @FXML
-    private Label highscore;
+    private PlayerService ps;
 
     @FXML
     public AnchorPane AP;
@@ -29,49 +27,35 @@ public class GameBoardViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-     //   AP.setFocusTraversable(true);
-        start();
+        AP.setFocusTraversable(true);
+            start();
     }
 
     public void setApplication(GameUi application) {
-
         this.application = application;
-    }
-
-    public void showHighscore(Integer hs) {
-
-        highscore.setText("Your highscore is: " + hs);
-    }
-
-    @FXML
-    public void handleExit(ActionEvent event) {
-        application.setloginScene();
-
-    }
-
-    @FXML
-    public void handleTopList(ActionEvent event) {
-        if (service.gameOver == true) {
-            application.setTopListScene();
-        }
     }
 
     @FXML
     public void start() {
 
         GameService gs = new GameService(AP, (this));
-            gs.startGame();
-            AP.requestFocus();
+        gs.startGame();
+        AP.requestFocus();
     }
+
     @FXML
-    public void handleKeyPressed(KeyEvent keyEvent) {
+    public void handleKeyPressed(KeyEvent keyEvent) throws IOException {
 
         if (keyEvent.getCode().equals(KeyCode.ALT)) {
             application.setGameScene();
         }
     }
 
-    public void handleTopList(){
+    public void handleTopList(int points) throws SQLException, IOException {
+
+        PlayerService ps = application.ps();
+        this.ps = application.ps();
+        ps.setHighscore(points);
 
         application.setTopListScene();
     }
