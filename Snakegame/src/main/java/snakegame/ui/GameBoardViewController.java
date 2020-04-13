@@ -32,6 +32,7 @@ public class GameBoardViewController implements Initializable {
     }
 
     public void setApplication(GameUi application) {
+
         this.application = application;
     }
 

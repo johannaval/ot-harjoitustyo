@@ -43,7 +43,7 @@ public class CreateNewController implements Initializable {
         username.setText("");
         password.setText("");
         error.setText("");
-        application.setloginScene();
+        application.setLogInScene();
     }
 
     @FXML
@@ -69,7 +69,7 @@ public class CreateNewController implements Initializable {
             username.setText("");
             password.setText("");
             error.setText("");
-            application.setloginScene();
+            application.setLogInScene();
         }
     }
 

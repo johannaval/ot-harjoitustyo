@@ -12,11 +12,11 @@ import snakegame.domain.PlayerService;
 public class GameUi extends Application {
 
     private Stage stage;
-    private Scene nakymaLogin;
-    private Scene nakymaCreateNew;
-    private Scene nakymaGame;
-    private Scene nakymatoplista;
-    private Scene nakymaGameBoard;
+    private Scene sceneLogin;
+    private Scene sceneCreateNew;
+    private Scene sceneGame;
+    private Scene sceneHighscore;
+    private Scene sceneGameBoard;
     private PlayerService ps;
 
 
@@ -26,7 +26,7 @@ public class GameUi extends Application {
         this.stage = stage;
 
         stage.setTitle("Snake game");
-        setloginScene();
+        setLogInScene();
         stage.show();
     }
 
@@ -47,31 +47,31 @@ public class GameUi extends Application {
         Parent loginPane = loginSceneLoader.load();
         LogInViewController loginSceneController = loginSceneLoader.getController();
         loginSceneController.setApplication(this);
-        nakymaLogin = new Scene(loginPane);
+        sceneLogin = new Scene(loginPane);
 
         FXMLLoader newUserSceneLoader = new FXMLLoader(getClass().getResource("/fxml/CreateNew.fxml"));
         Parent newUserPane = newUserSceneLoader.load();
         CreateNewController newUserSceneController = newUserSceneLoader.getController();
         newUserSceneController.setApplication(this);
-        nakymaCreateNew = new Scene(newUserPane);
+        sceneCreateNew = new Scene(newUserPane);
 
         FXMLLoader gameboardLoader = new FXMLLoader(getClass().getResource("/fxml/GameBoardView.fxml"));
         Parent gameboardPane = gameboardLoader.load();
         GameBoardViewController gameBoardSceneController = gameboardLoader.getController();
         gameBoardSceneController.setApplication(this);
-        nakymaGameBoard = new Scene(gameboardPane);
+        sceneGameBoard = new Scene(gameboardPane);
 
     }
 
-    public void setloginScene() {
+    public void setLogInScene() {
 
-        stage.setScene(nakymaLogin);
+        stage.setScene(sceneLogin);
         stage.setTitle("Log in");
     }
 
     public void setNewUserScene() {
 
-        stage.setScene(nakymaCreateNew);
+        stage.setScene(sceneCreateNew);
         stage.setTitle("Create new");
     }
 
@@ -81,9 +81,9 @@ public class GameUi extends Application {
         Parent gamePane = gameStartLoader.load();
         GameViewController gameSceneController = gameStartLoader.getController();
         gameSceneController.setApplication(this);
-        nakymaGame = new Scene(gamePane);
+        sceneGame = new Scene(gamePane);
 
-        stage.setScene(nakymaGame);
+        stage.setScene(sceneGame);
         stage.setTitle("Start!");
 
     }
@@ -94,15 +94,15 @@ public class GameUi extends Application {
         Parent listPane = toplistLoader.load();
         TopListViewController listSceneController = toplistLoader.getController();
         listSceneController.setApplication(this);
-        nakymatoplista = new Scene(listPane);
+        sceneHighscore = new Scene(listPane);
 
-        stage.setScene(nakymatoplista);
+        stage.setScene(sceneHighscore);
         stage.setTitle("Score board");
     }
 
     public void setGameBoardScene() {
 
-        stage.setScene(nakymaGameBoard);
+        stage.setScene(sceneGameBoard);
         stage.setResizable(false);
         stage.setTitle("Let's play!");
 

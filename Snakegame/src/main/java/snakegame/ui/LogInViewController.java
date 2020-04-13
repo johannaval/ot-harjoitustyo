@@ -54,7 +54,6 @@ public class LogInViewController implements Initializable {
         } else {
 
             application.setPlayerService(this.service);
-
             application.setGameScene();
             username.setText("");
             password.setText("");

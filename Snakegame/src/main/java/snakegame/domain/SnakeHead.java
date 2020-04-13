@@ -39,7 +39,6 @@ public class SnakeHead {
 
         for (int i = 1; i < size; i++) {
             SnakePart part = new SnakePart(this.x + 100, this.y, body, area);
-        //    part.setStroke(Color.AQUA);
             parts.add(part);
             body = part;
         }
@@ -49,8 +48,6 @@ public class SnakeHead {
 
         for (SnakePart part : parts) {
             part.setDirection(direction);
-            //     part.switchDirection();
-
         }
     }
 

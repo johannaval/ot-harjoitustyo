@@ -11,7 +11,7 @@
     <Label layoutX="176.0" layoutY="22.0" prefHeight="26.0" prefWidth="207.0" textFill="#4b8d48" />
     <Button layoutX="503.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleExit" text="Log out" />
     <Button layoutX="483.0" layoutY="55.0" mnemonicParsing="false" onAction="#handleTopList" text="Show top10" />
-    <Button layoutX="232.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleStartGame" text="Start game!" textFill="#132211" textOverrun="CLIP">
+    <Button fx:id="startGameButton" layoutX="232.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleStartGame" text="Start game!" textFill="#132211" textOverrun="CLIP">
          <effect>
             <Reflection />
          </effect></Button>

@@ -60,8 +60,9 @@ public class Area {
 
         pane.getChildren().add(sp);
         parts.add(sp);
-        if (parts.size() > 53) {
+        if (parts.size() > 51) {
             sp.setStroke(food.color);
+            pane.setBorder(new Border(new BorderStroke(food.color, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
         }
     }
 

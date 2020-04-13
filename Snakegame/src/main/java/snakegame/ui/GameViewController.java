@@ -48,7 +48,7 @@ public class GameViewController implements Initializable {
     private void handleExit(ActionEvent event) {
         PlayerService ps = application.ps();
         ps.logout();
-        application.setloginScene();
+        application.setLogInScene();
     }
 
     @FXML

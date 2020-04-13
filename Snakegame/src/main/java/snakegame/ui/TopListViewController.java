@@ -67,6 +67,7 @@ public class TopListViewController implements Initializable {
     }
 
     public void setApplication(GameUi application) {
+
         this.application = application;
     }
 
@@ -74,7 +75,7 @@ public class TopListViewController implements Initializable {
     private void handleExit(ActionEvent event) {
         PlayerService ps = application.ps();
         ps.logout();
-        application.setloginScene();
+        application.setLogInScene();
     }
 
     @FXML
