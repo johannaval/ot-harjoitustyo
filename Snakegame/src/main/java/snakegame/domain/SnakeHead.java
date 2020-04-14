@@ -22,15 +22,12 @@ public class SnakeHead {
         this.area = area;
         addHead();
         addBody();
-
-
     }
 
     public void addHead() {
 
         head = new SnakePart(x, y, null, area);
         head.setStroke(Color.AQUA);
-        head.setFill(Color.AQUA);
         parts.add(head);
 
         this.body = head;
@@ -40,12 +37,11 @@ public class SnakeHead {
 
         for (int i = 1; i < size; i++) {
             SnakePart part = new SnakePart(this.x + 100, this.y, body, area);
-            part.setStroke(Color.WHITE);
+            part.setStroke(Color.BLACK);
             parts.add(part);
             body = part;
         }
     }
-
 
     public void switchDirection(String direction) {
 

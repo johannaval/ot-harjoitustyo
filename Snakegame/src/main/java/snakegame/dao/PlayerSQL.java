@@ -19,6 +19,7 @@ public class PlayerSQL implements DaoPlayer {
         this.db = db;
         this.url = url;
         getConnection();
+        createTable();
     }
 
     public PlayerSQL(String url) throws SQLException {
@@ -35,8 +36,8 @@ public class PlayerSQL implements DaoPlayer {
 
     public void stopConnection() throws SQLException {
 
-        statement.close();
-        db.close();
+     //   statement.close();
+     //  db.close();
     }
 
     @Override
@@ -105,7 +106,12 @@ public class PlayerSQL implements DaoPlayer {
     @Override
     public Player isLogInOK(String username, String passw) throws SQLException {
 
+        System.out.println("7");
+
         ps = db.prepareStatement("SELECT * FROM Players WHERE username =? AND password =?");
+
+        System.out.println("12");
+
         ps.setString(1, username);
         ps.setString(2, passw);
         ResultSet rs = ps.executeQuery();
@@ -144,4 +150,5 @@ public class PlayerSQL implements DaoPlayer {
     public void clear() throws SQLException {
         statement.execute("DROP TABLE IF EXISTS PLAYERS");
     }
-}
+
+    }

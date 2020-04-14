@@ -43,6 +43,7 @@ public class Food extends Rectangle {
         ArrayList<Paint> colors = new ArrayList<>();
 
         colors.add(Color.PURPLE);
+        colors.add(Color.YELLOWGREEN);
         colors.add(Color.AQUAMARINE);
         colors.add(Color.DARKORANGE);
         colors.add(Color.HOTPINK);
@@ -53,7 +54,7 @@ public class Food extends Rectangle {
         colors.add(Color.MISTYROSE);
         colors.add(Color.SALMON);
         colors.add(Color.PEACHPUFF);
-        colors.add(Color.OLIVE);
+        colors.add(Color.DARKORANGE);
         colors.add(Color.HONEYDEW);
         colors.add(Color.AQUAMARINE);
         colors.add(Color.SPRINGGREEN);

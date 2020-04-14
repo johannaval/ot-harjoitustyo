@@ -47,7 +47,7 @@ public class TopListViewController implements Initializable {
 
         try {
             Connection db = DriverManager.getConnection(tableUrl);
-            ResultSet rs = db.createStatement().executeQuery("select * from Players");
+            ResultSet rs = db.createStatement().executeQuery("select * from Players order by highscore desc limit 10");
 
             while (rs.next()) {
 
@@ -72,7 +72,7 @@ public class TopListViewController implements Initializable {
     }
 
     @FXML
-    private void handleExit(ActionEvent event) {
+    private void handleExit(ActionEvent event) throws SQLException {
         PlayerService ps = application.ps();
         ps.logout();
         application.setLogInScene();

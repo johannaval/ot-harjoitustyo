@@ -75,6 +75,8 @@ public class CreateNewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        System.out.println("!2 ");
+
         this.livc = new LogInViewController();
         PlayerService pService = null;
         try {

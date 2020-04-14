@@ -2,6 +2,7 @@ package snakegame.ui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,7 +45,7 @@ public class GameViewController implements Initializable {
     }
 
     @FXML
-    private void handleExit(ActionEvent event) {
+    private void handleExit(ActionEvent event) throws SQLException {
         PlayerService ps = application.ps();
         ps.logout();
         application.setLogInScene();

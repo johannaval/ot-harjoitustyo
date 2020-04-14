@@ -3,8 +3,10 @@ package snakegame.domain;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.Pane;
+
 import java.util.ArrayList;
 import java.util.Random;
+
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderWidths;
 
@@ -133,14 +135,7 @@ public class Area {
         if (food == null) {
             return false;
         }
-        if (((food.getXposition() == head.head.getXposition() || food.getXposition() == head.head.getXposition() + 1 ||
-                food.getXposition() == head.head.getXposition() - 1 || food.getXposition() == head.head.getXposition() - 2 ||
-                food.getXposition() == head.head.getXposition() + 2 || food.getXposition() == head.head.getXposition() + 3 ||
-                food.getXposition() == head.head.getXposition() - 3) &&
-                (food.getYposition() == head.head.getYposition() || food.getYposition() == head.head.getYposition() + 1 ||
-                        food.getYposition() == head.head.getYposition() - 1 || food.getYposition() == head.head.getYposition() - 2 ||
-                        food.getYposition() == head.head.getYposition() + 2 || (food.getYposition() == head.head.getYposition() + 3 ||
-                        food.getYposition() == head.head.getYposition() - 3)))) {
+        if (Math.abs(food.getXposition() - head.head.getXposition()) < 7 && Math.abs(food.getYposition() - head.head.getYposition()) < 7) {
 
             firstEaten = true;
             return true;
@@ -149,6 +144,7 @@ public class Area {
     }
 
     public int getPoints() {
+
         return this.points;
     }
 

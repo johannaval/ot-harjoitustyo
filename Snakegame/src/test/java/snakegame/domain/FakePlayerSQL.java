@@ -72,5 +72,11 @@ public class FakePlayerSQL implements DaoPlayer {
     public void getConnection() throws SQLException {
 
     }
+
+    @Override
+    public void stopConnection() {
+
+
+    }
 }
 

@@ -21,7 +21,11 @@ public class PlayerService {
 
     public boolean login(String username, String password) throws SQLException {
 
+        System.out.println("9");
+
         if (dao.isLogInOK(username, password) == null) {
+
+            System.out.println("3");
 
             if (isThereAccountWithThisName(username)) {
                 controller.wrongPassword();
@@ -32,6 +36,7 @@ public class PlayerService {
 
             this.loggedIn = dao.isLogInOK(username, password);
             System.out.println(loggedIn.getHighscore());
+            System.out.println("4");
         }
         return true;
     }
@@ -57,7 +62,9 @@ public class PlayerService {
         return loggedIn;
     }
 
-    public void logout() {
+    public void logout() throws SQLException {
+
+      //  dao.stopConnection();
         loggedIn = null;
     }
 

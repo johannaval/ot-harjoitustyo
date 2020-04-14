@@ -76,12 +76,13 @@ public class LogInViewController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        System.out.println("!1 ");
         PlayerService pService = null;
         try {
             PlayerSQL playerSQL = new PlayerSQL();
             pService = new PlayerService(playerSQL, this);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
         }
         this.service = pService;
     }

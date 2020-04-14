@@ -21,6 +21,8 @@ public interface DaoPlayer {
      void createTable() throws SQLException;
 
     void getConnection() throws SQLException;
+
+     void stopConnection() throws SQLException;
 }
 
 
