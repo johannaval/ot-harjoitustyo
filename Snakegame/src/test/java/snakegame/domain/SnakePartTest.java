@@ -1,7 +1,9 @@
 package snakegame.domain;
 
 import org.junit.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import javafx.scene.layout.AnchorPane;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -11,203 +13,134 @@ import snakegame.ui.GameBoardViewController;
 
 import java.sql.SQLException;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+public class SnakePartTest {
 
-    public class SnakePartTest {
+    Area area;
+    GameService gs;
+    SnakePart part;
+    SnakeHead head;
+    AnchorPane pane;
+    GameBoardViewController controller;
 
-        Area area;
-        GameService gs;
-        SnakePart part;
-        SnakeHead head;
-        AnchorPane pane;
-        GameBoardViewController controller;
 
-        public SnakePartTest() {
+    @Before
+    public void setUp() {
 
-        }
+        pane = new AnchorPane();
+        gs = new GameService(pane, controller);
+        area = new Area(300, 600, pane);
+        head = new SnakeHead(20, area);
+        area.addNewSnake(head);
 
-        @BeforeAll
-        public static void setUpClass() {
-        }
+    }
 
-        @AfterAll
-        public static void tearDownClass() {
-        }
+    @Test
+    public void switchingHeadDirectionSwitchAlsoAllPartsDirection() throws SQLException {
 
-        @BeforeEach
-        public void setUp() {
+        head.switchDirection("UP");
+        assertEquals("UP", head.parts.get(1).getDirection());
 
+        head.switchDirection("DOWN");
+        assertEquals("DOWN", head.parts.get(1).getDirection());
 
-        }
+        head.switchDirection("RIGHT");
+        assertEquals("RIGHT", head.parts.get(1).getDirection());
 
-        @AfterEach
-        public void tearDown() {
-        }
+        head.switchDirection("LEFT");
+        assertEquals("LEFT", head.parts.get(1).getDirection());
+    }
 
+    @Test
+    public void goingUpMakesYSmaller() throws SQLException {
 
-        @Test
-        public void switchingHeadDirectionSwitchsAllPartsDirection() throws SQLException {
+        SnakePart part = head.parts.get(1);
 
-            AnchorPane pane = new AnchorPane();
-            GameService gs = new GameService(pane, controller);
-            Area area = new Area(300, 600, pane);
+        part.goUp();
+        part.goUp();
+        part.goUp();
 
-            SnakeHead head = new SnakeHead(20, area);
-            area.addNewSnake(head);
+        assertEquals(194, part.newY);
+    }
 
-            head.switchDirection("DOWN");
 
+    @Test
+    public void goingDownMakesYBigger() throws SQLException {
 
-            assertEquals(head.parts.get(1).getDirection(), "DOWN");
-        }
-        @Test
-        public void goingUpMakesYSmaller() throws SQLException {
+        SnakePart part = head.parts.get(1);
 
-            AnchorPane pane = new AnchorPane();
-            GameService gs = new GameService(pane, controller);
-            Area area = new Area(300, 600, pane);
+        part.goDown();
+        part.goDown();
+        part.goDown();
 
-            SnakeHead head = new SnakeHead(20, area);
-            area.addNewSnake(head);
+        assertEquals(206, part.newY);
+    }
 
-            SnakePart part = head.parts.get(1);
+    @Test
+    public void goingLeftMakesXSmaller() throws SQLException {
 
-            part.goUp();
-            part.goUp();
-            part.goUp();
+        SnakePart part = head.parts.get(1);
 
-            assertEquals(part.newY, 197);
-        }
+        part.goLeft();
+        part.goLeft();
+        part.goLeft();
 
+        assertEquals(294, part.newX);
+    }
 
-        @Test
-        public void goingDownMakesYBigger() throws SQLException {
+    @Test
+    public void goingRightMakesXBigger() throws SQLException {
 
-            AnchorPane pane = new AnchorPane();
-            GameService gs = new GameService(pane, controller);
-            Area area = new Area(300, 600, pane);
+        SnakePart part = head.parts.get(1);
 
-            SnakeHead head = new SnakeHead(20, area);
-            area.addNewSnake(head);
+        part.goRight();
+        part.goRight();
+        part.goRight();
 
-            SnakePart part = head.parts.get(1);
+        assertEquals(306, part.newX);
+    }
 
-            part.goDown();
-            part.goDown();
-            part.goDown();
+    @Test
+    public void hittingRightWallWithoutEatingFirstFoodPutsSnakeToLeftWall() throws SQLException {
 
-            assertEquals(part.newY, 203);
-        }
+        head.head.setNewYposition(200);
+        head.head.setNewXposition(area.getAreaWidth() - 15);
+        head.parts.get(0).goRight();
 
-        @Test
-        public void goingLeftMakesXSmaller() throws SQLException {
+        assertEquals(13, head.parts.get(0).newX);
+    }
 
-            AnchorPane pane = new AnchorPane();
-            GameService gs = new GameService(pane, controller);
-            Area area = new Area(300, 600, pane);
+    @Test
+    public void hittingLeftWallWithoutEatingFirstFoodPutsSnakeToRightWall() throws SQLException {
 
-            SnakeHead head = new SnakeHead(20, area);
-            area.addNewSnake(head);
+        head.head.setNewYposition(200);
+        head.head.setNewXposition(15);
+        head.parts.get(0).goLeft();
 
-            SnakePart part = head.parts.get(1);
+        assertEquals(area.getAreaWidth() - 28, head.parts.get(0).newX);
+    }
 
-            part.goLeft();
-            part.goLeft();
-            part.goLeft();
+    @Test
+    public void hittingUpWallWithoutEatingFirstFoodPutsSnakeToDownWall() throws SQLException {
 
-            assertEquals(part.newX, 297);
-        }
+        head.head.setNewYposition(15);
+        head.head.setNewXposition(200);
+        head.parts.get(0).goUp();
 
-        @Test
-        public void goingRightMakesXBigger() throws SQLException {
+        assertEquals(area.getAreaLength() - 20, head.parts.get(0).newY);
+    }
 
-            AnchorPane pane = new AnchorPane();
-            GameService gs = new GameService(pane, controller);
-            Area area = new Area(300, 600, pane);
+    @Test
+    public void hittingDownWallWithoutEatingFirstFoodPutsSnakeToUpWall() throws SQLException {
 
-            SnakeHead head = new SnakeHead(20, area);
-            area.addNewSnake(head);
+        head.head.setNewYposition(area.getAreaLength() - 30);
+        head.head.setNewXposition(200);
+        head.parts.get(0).goDown();
 
-            SnakePart part = head.parts.get(1);
-
-            part.goRight();
-            part.goRight();
-            part.goRight();
-
-            assertEquals(part.newX, 303);
-        }
-        @Test
-        public void hittingRightWallWithoutEatingFirstFoodPutsSnakeToLeftWall() throws SQLException {
-
-            AnchorPane pane = new AnchorPane();
-            GameService gs = new GameService(pane, controller);
-            Area area = new Area(300, 600, pane);
-
-            SnakeHead head = new SnakeHead(20, area);
-            area.addNewSnake(head);
-
-            head.head.setNewYposition(200);
-            head.head.setNewXposition(area.getAreaWidth()-15);
-
-            head.parts.get(0).goRight();
-
-            assertEquals(10, head.parts.get(0).newX);
-
-        }
-
-        @Test
-        public void hittingLeftWallWithoutEatingFirstFoodPutsSnakeToRightWall() throws SQLException {
-
-            AnchorPane pane = new AnchorPane();
-            GameService gs = new GameService(pane, controller);
-            Area area = new Area(300, 600, pane);
-
-            SnakeHead head = new SnakeHead(20, area);
-            area.addNewSnake(head);
-
-            head.head.setNewYposition(200);
-            head.head.setNewXposition(15);
-
-            head.parts.get(0).goLeft();
-
-            assertEquals(area.getAreaWidth()-20, head.parts.get(0).newX);
-
-        }
-        @Test
-        public void hittingUpWallWithoutEatingFirstFoodPutsSnakeToDownWall() throws SQLException {
-
-            AnchorPane pane = new AnchorPane();
-            GameService gs = new GameService(pane, controller);
-            Area area = new Area(300, 600, pane);
-
-            SnakeHead head = new SnakeHead(20, area);
-            area.addNewSnake(head);
-
-            head.head.setNewYposition(15);
-            head.head.setNewXposition(200);
-
-            head.parts.get(0).goUp();
-
-            assertEquals(area.getAreaLength()-20, head.parts.get(0).newY);
-
-        }
-        @Test
-        public void hittingDownWallWithoutEatingFirstFoodPutsSnakeToUpWall() throws SQLException {
-
-            AnchorPane pane = new AnchorPane();
-            GameService gs = new GameService(pane, controller);
-            Area area = new Area(300, 600, pane);
-
-            SnakeHead head = new SnakeHead(20, area);
-            area.addNewSnake(head);
-
-            head.head.setNewYposition(area.getAreaLength()-30);
-            head.head.setNewXposition(200);
-
-            head.parts.get(0).goDown();
-
-            assertEquals(10, head.parts.get(0).newY);
-
-        }
-        }
+        assertEquals(13, head.parts.get(0).newY);
+    }
+}

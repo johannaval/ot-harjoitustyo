@@ -28,13 +28,13 @@ public class TopListViewController implements Initializable {
     public AnchorPane AP;
 
     @FXML
-    public TableView<Player> TopList;
+    private TableView<Player> TopList;
 
     @FXML
-    public TableColumn<Player, String> username;
+    private TableColumn<Player, String> username;
 
     @FXML
-    public TableColumn<Player, Integer> highscore;
+    private TableColumn<Player, Integer> highscore;
 
     private String tableUrl = "jdbc:sqlite:testsql.db";
 

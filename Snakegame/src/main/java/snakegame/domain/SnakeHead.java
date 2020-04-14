@@ -1,7 +1,6 @@
 package snakegame.domain;
 
 import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 
 public class SnakeHead {
@@ -26,6 +25,7 @@ public class SnakeHead {
 
 
     }
+
     public void addHead() {
 
         head = new SnakePart(x, y, null, area);
@@ -35,14 +35,17 @@ public class SnakeHead {
 
         this.body = head;
     }
-    public void addBody(){
+
+    public void addBody() {
 
         for (int i = 1; i < size; i++) {
             SnakePart part = new SnakePart(this.x + 100, this.y, body, area);
+            part.setStroke(Color.WHITE);
             parts.add(part);
             body = part;
         }
     }
+
 
     public void switchDirection(String direction) {
 
@@ -54,5 +57,10 @@ public class SnakeHead {
     public void setDirection(String direction) {
 
         this.direction = direction;
+    }
+
+    public String getDirection() {
+
+        return this.direction;
     }
 }

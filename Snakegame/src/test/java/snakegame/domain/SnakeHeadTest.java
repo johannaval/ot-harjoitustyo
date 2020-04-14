@@ -1,8 +1,11 @@
 package snakegame.domain;
 
 
+import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import javafx.scene.layout.AnchorPane;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -15,61 +18,44 @@ import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-    public class SnakeHeadTest {
+public class SnakeHeadTest {
 
-        Area area;
-        GameService gs;
-        SnakePart part;
-        SnakeHead head;
-        AnchorPane pane;
-        GameBoardViewController controller;
+    Area area;
+    GameService gs;
+    SnakePart part;
+    SnakeHead head;
+    AnchorPane pane;
+    GameBoardViewController controller;
 
-        public SnakeHeadTest() {
-
-        }
-
-        @BeforeAll
-        public static void setUpClass() {
-        }
-
-        @AfterAll
-        public static void tearDownClass() {
-        }
-
-        @BeforeEach
-        public void setUp() {
-
-
-        }
-
-        @AfterEach
-        public void tearDown() {
-        }
-        @Test
-        public void snakeHeadGetRightNumberOfSnakeparts() throws SQLException {
-
-            AnchorPane pane = new AnchorPane();
-            GameService gs = new GameService(pane, controller);
-            Area area = new Area(300, 600, pane);
-
-            SnakeHead head = new SnakeHead(20, area);
-            area.addNewSnake(head);
-
-            assertEquals(head.parts.size(), 20);
-        }
-        @Test
-        public void settingHeadsDirectionSetRightDirection() throws SQLException {
-
-            AnchorPane pane = new AnchorPane();
-            GameService gs = new GameService(pane, controller);
-            Area area = new Area(300, 600, pane);
-
-            SnakeHead head = new SnakeHead(20, area);
-            area.addNewSnake(head);
-
-            head.setDirection("DOWN");
-
-            assertEquals(head.direction, "DOWN");
-        }
+    @Before
+    public void setUp() {
+        pane = new AnchorPane();
+        gs = new GameService(pane, controller);
+        area = new Area(300, 600, pane);
+        head = new SnakeHead(20, area);
+        area.addNewSnake(head);
 
     }
+
+    @Test
+    public void atTheBeginningSnakeHeadGetRightNumberOfSnakeparts() throws SQLException {
+
+        assertEquals(20, head.parts.size());
+    }
+
+    @Test
+    public void settingHeadsDirectionItGetsRightDirection() throws SQLException {
+
+        head.setDirection("UP");
+        assertEquals("UP", head.direction);
+
+        head.setDirection("LEFT");
+        assertEquals("LEFT", head.direction);
+
+        head.setDirection("RIGHT");
+        assertEquals("RIGHT", head.direction);
+
+        head.setDirection("DOWN");
+        assertEquals("DOWN", head.direction);
+    }
+}

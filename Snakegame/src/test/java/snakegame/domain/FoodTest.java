@@ -1,6 +1,7 @@
 
 package snakegame.domain;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,37 +27,20 @@ public class FoodTest {
     AnchorPane pane;
     GameBoardViewController controller;
 
-    public FoodTest() {
 
-    }
-
-    @BeforeAll
-    public static void setUpClass() {
-    }
-
-    @AfterAll
-    public static void tearDownClass() {
-    }
-
-    @BeforeEach
+    @Before
     public void setUp() {
+        pane = new AnchorPane();
+        gs = new GameService(pane, controller);
+        area = new Area(300, 600, pane);
+        head = new SnakeHead(20, area);
+        area.addNewSnake(head);
 
-
-    }
-
-    @AfterEach
-    public void tearDown() {
     }
 
     @Test
     public void afterEatingFoodPointsIncrease() throws SQLException {
 
-        AnchorPane pane = new AnchorPane();
-        GameService gs = new GameService(pane, controller);
-        Area area = new Area(300, 600, pane);
-
-        SnakeHead head = new SnakeHead(20, area);
-        area.addNewSnake(head);
 
         area.addFood();
 
@@ -74,13 +58,6 @@ public class FoodTest {
     @Test
     public void returnTrueIfFoodWasEaten() throws SQLException {
 
-        AnchorPane pane = new AnchorPane();
-        GameService gs = new GameService(pane, controller);
-        Area area = new Area(300, 600, pane);
-
-        SnakeHead head = new SnakeHead(20, area);
-        area.addNewSnake(head);
-
         area.addFood();
 
         int foodX = area.food.getXposition();
@@ -88,19 +65,37 @@ public class FoodTest {
 
         area.head.head.setXposition(foodX);
         area.head.head.setYposition(foodY);
-
         assertTrue(area.ateFood(area.food));
+
+        area.head.head.setXposition(foodX - 1);
+        area.head.head.setYposition(foodY - 1);
+        assertTrue(area.ateFood(area.food));
+
+        area.head.head.setXposition(foodX - 2);
+        area.head.head.setYposition(foodY - 2);
+        assertTrue(area.ateFood(area.food));
+
+        area.head.head.setXposition(foodX + 1);
+        area.head.head.setYposition(foodY + 1);
+        assertTrue(area.ateFood(area.food));
+
+        area.head.head.setXposition(foodX + 2);
+        area.head.head.setYposition(foodY + 2);
+        assertTrue(area.ateFood(area.food));
+
+        area.head.head.setXposition(foodX + 3);
+        area.head.head.setYposition(foodY + 3);
+        assertTrue(area.ateFood(area.food));
+
+        area.head.head.setXposition(foodX - 3);
+        area.head.head.setYposition(foodY - 3);
+        assertTrue(area.ateFood(area.food));
+
     }
 
     @Test
     public void ateFoodReturnFalseIfThereIsNoFood() throws SQLException {
 
-        AnchorPane pane = new AnchorPane();
-        GameService gs = new GameService(pane, controller);
-        Area area = new Area(300, 600, pane);
-
-        SnakeHead head = new SnakeHead(20, area);
-        area.addNewSnake(head);
         area.food = null;
 
         assertFalse(area.ateFood(area.food));
@@ -109,12 +104,6 @@ public class FoodTest {
     @Test
     public void beforeEatingPointsAreaZero() throws SQLException {
 
-        AnchorPane pane = new AnchorPane();
-        GameService gs = new GameService(pane, controller);
-        Area area = new Area(300, 600, pane);
-
-        SnakeHead head = new SnakeHead(20, area);
-        area.addNewSnake(head);
 
         assertEquals(0, area.getPoints());
 

@@ -55,7 +55,7 @@ public class GameService {
 
 
                 if (area.gameOver() == false) {
-                    if (now - start > 6000000) {
+                    if (now - start > 16000000) {
                         area.update();
                         start = now;
                     }

@@ -3,10 +3,8 @@ package snakegame.domain;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.Pane;
-
 import java.util.ArrayList;
 import java.util.Random;
-
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderWidths;
 
@@ -40,6 +38,10 @@ public class Area {
     public int getAreaWidth() {
         return this.width;
 
+    }
+
+    public int getSnakeSize() {
+        return parts.size();
     }
 
     public int getAreaLength() {
@@ -109,7 +111,7 @@ public class Area {
 
     public boolean hitWall() {
 
-        if ((head.head.getXposition() >= this.width - 15 || head.head.getXposition() <= 15 || head.head.getYposition() <= 15 || head.head.getYposition() >= this.length - 15)) {
+        if ((head.head.getXposition() >= this.width - 15 || head.head.getXposition() <= 15 || head.head.getYposition() <= 15 || head.head.getYposition() >= this.length - 30)) {
             return true;
         }
 
@@ -131,9 +133,14 @@ public class Area {
         if (food == null) {
             return false;
         }
-
-        if (((food.getXposition() == head.head.getXposition() || food.getXposition() == head.head.getXposition() + 1 || food.getXposition() == head.head.getXposition() - 1 || food.getXposition() == head.head.getXposition() - 2 || food.getXposition() == head.head.getXposition() + 2 || food.getXposition() == head.head.getXposition() + 3 || food.getXposition() == head.head.getXposition() - 3) &&
-                (food.getYposition() == head.head.getYposition() || food.getYposition() == head.head.getYposition() + 1 || food.getYposition() == head.head.getYposition() - 1 || food.getYposition() == head.head.getYposition() - 2 || food.getYposition() == head.head.getYposition() + 2 || (food.getYposition() == head.head.getYposition() + 3 || food.getYposition() == head.head.getYposition() - 3)))) {
+        if (((food.getXposition() == head.head.getXposition() || food.getXposition() == head.head.getXposition() + 1 ||
+                food.getXposition() == head.head.getXposition() - 1 || food.getXposition() == head.head.getXposition() - 2 ||
+                food.getXposition() == head.head.getXposition() + 2 || food.getXposition() == head.head.getXposition() + 3 ||
+                food.getXposition() == head.head.getXposition() - 3) &&
+                (food.getYposition() == head.head.getYposition() || food.getYposition() == head.head.getYposition() + 1 ||
+                        food.getYposition() == head.head.getYposition() - 1 || food.getYposition() == head.head.getYposition() - 2 ||
+                        food.getYposition() == head.head.getYposition() + 2 || (food.getYposition() == head.head.getYposition() + 3 ||
+                        food.getYposition() == head.head.getYposition() - 3)))) {
 
             firstEaten = true;
             return true;

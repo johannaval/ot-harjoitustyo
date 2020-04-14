@@ -17,6 +17,8 @@ public class SnakePart extends Rectangle {
     int maxSizeX;
     int maxSizeY;
     boolean fistEaten=false;
+    double speed;
+    private Area area;
 
 
     public SnakePart(int x, int y, SnakePart part, Area area) {
@@ -30,6 +32,7 @@ public class SnakePart extends Rectangle {
         maxSizeY = area.getAreaLength();
         setArcWidth(10);
         setArcHeight(10);
+        this.area=area;
 
     }
 
@@ -47,6 +50,8 @@ public class SnakePart extends Rectangle {
 
         this.x = newX;
         this.y = newY;
+
+        this.speed = area.getSnakeSize()/200;
 
         if (previous != null) {
 
@@ -78,31 +83,31 @@ public class SnakePart extends Rectangle {
 
     public void goUp() {
 
-        newY = newY - 1;
+        newY = (int) (newY - 2 - speed);
         if (newY <= 14 ) {
-            newY = maxSizeY - 30;
+            newY = maxSizeY - 20;
         }
     }
 
     public void goDown() {
 
-        newY = newY + 1;
+        newY = (int) (newY + 2 + speed);
         if (newY >= maxSizeY-30) {
-            newY = 15;
+            newY = 13;
         }
     }
 
     public void goLeft() {
-        newX = newX - 1;
+        newX = (int) (newX - 2 - speed);
         if (newX <= 14) {
-            newX = maxSizeX - 30;
+            newX = maxSizeX - 28;
         }
     }
 
     public void goRight() {
-        newX = newX + 1;
+        newX = (int) (newX + 2 + speed);
         if (newX >= maxSizeX - 30) {
-            newX = 15;
+            newX = 13;
         }
     }
 

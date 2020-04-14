@@ -1,21 +1,17 @@
 package snakegame.domain;
 
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.robot.Robot;
+import org.junit.Before;
 import org.junit.Test;
-
-import static java.lang.System.currentTimeMillis;
-import static javafx.scene.input.KeyCode.*;
 import static org.junit.jupiter.api.Assertions.*;
-
 import javafx.scene.layout.AnchorPane;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import snakegame.ui.GameBoardViewController;
-
+import java.io.IOException;
+import java.sql.SQLException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -28,24 +24,40 @@ public class GameServiceTest {
     AnchorPane pane;
     GameBoardViewController controller;
 
-    public GameServiceTest() {
-
-    }
-
-    @BeforeAll
-    public static void setUpClass() {
-    }
-
-    @AfterAll
-    public static void tearDownClass() {
-    }
-
-    @BeforeEach
+    @Before
     public void setUp() {
-
+        pane = new AnchorPane();
+        gs = new GameService(pane, controller);
+        area = new Area(300, 600, pane);
+        head = new SnakeHead(20, area);
+        area.addNewSnake(head);
     }
-    @AfterEach
-    public void tearDown() {
+
+    @Test
+    public void atTheBeginningDirectionIsRight() {
+
+        gs.startGame();
+
+        assertEquals("RIGHT", area.head.head.getDirection());
+    }
+
+    @Test
+    public void atTheBeginningPointsAreZero() {
+
+        gs.startGame();
+
+        assertEquals(0, area.getPoints());
+    }
+
+    @Test
+    public void atTheBeginningBooleanGameOverIsFalse() throws IOException, SQLException {
+
+        gs.startGame();
+
+        assertFalse(area.gameOver);
+    }
+
+
     }
 
    /* @Test
@@ -67,6 +79,4 @@ public class GameServiceTest {
 
 
         assertEquals(50, area.getPoints()); */
-
-    }
 

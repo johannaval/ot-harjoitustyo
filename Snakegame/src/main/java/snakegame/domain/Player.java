@@ -8,7 +8,7 @@ public class Player {
     public String password;
     int highscore;
 
-    public Player( String username, String password, int highscore) {
+    public Player(String username, String password, int highscore) {
         this.username = username;
         this.password = password;
         this.highscore = highscore;
@@ -33,18 +33,15 @@ public class Player {
     @Override
     public boolean equals(Object o) {
 
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
+        if (!(o instanceof Player)) {
             return false;
         }
-        snakegame.domain.Player player = (snakegame.domain.Player) o;
-        return username.equals(player.username) &&
-                password.equals(player.password);
+
+        Player other = (Player) o;
+        return username.equals(other.username);
     }
 
     public void putHighscore(int score) {
-        this.highscore=score;
+        this.highscore = score;
     }
 }

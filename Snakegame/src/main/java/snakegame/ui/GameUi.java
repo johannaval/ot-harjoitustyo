@@ -109,10 +109,12 @@ public class GameUi extends Application {
     }
 
     public void setPlayerService(PlayerService ps) {
+
         this.ps = ps;
     }
 
     public PlayerService ps(){
+
         return this.ps;
     }
 }

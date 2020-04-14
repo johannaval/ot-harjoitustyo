@@ -27,16 +27,13 @@ public class PlayerService {
                 controller.wrongPassword();
             }
             return false;
-        }
-        if (dao.isLogInOK(username, password) != null) {
+
+        } else {
 
             this.loggedIn = dao.isLogInOK(username, password);
             System.out.println(loggedIn.getHighscore());
-
-            return true;
-
         }
-        return false;
+        return true;
     }
 
     public boolean isThereAccountWithThisName(String username) throws SQLException {
@@ -70,14 +67,8 @@ public class PlayerService {
             return false;
 
         } else {
-
             Player p = new Player(username, password.toLowerCase(), 0);
-
-            try {
-                dao.create(p);
-            } catch (Exception e) {
-                return false;
-            }
+            dao.create(p);
             return true;
         }
     }
