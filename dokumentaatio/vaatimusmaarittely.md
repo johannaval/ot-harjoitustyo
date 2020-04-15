@@ -19,7 +19,7 @@ Kaikki käyttäjät yhdenlaisia käyttäjiä
 
 ## Käyttöliittymäluonnos:
 
- <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/IMG_0186.jpeg" width="400" height="500">
+ <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/IMG_0186.jpeg" width="600" height="500">
  
 Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjautumaan omalla käyttäjänimellä sekä salasanalla sisään mikäli käyttäjän on jo luonut. Jos käyttäjää ei ole vielä luotu, käyttäjä painaa kohdasta "Create new user", jolloin aukeaa uusi kuvake, jossa pyydetään syöttämään käyttäjänimi ja salasana. Tämän jälkeen painetaan Create user, josta palataan aikaisempaan tilaan, ja syötetään juuri luodut tunnukset sinne. Kun tämä onnistuu, eli tunnukset ovat kelvolliset, siirtyy ohjelma pelin valikkoon, jossa käyttäjä saa valita itselleen yhden teeman kolmesta, ja sen, haluaako pelata pelin reunoilla vai ilman reunoja. Painamalla Start game!, peli käynnistyy. Pelin päätyttyä siirrytään viimeiseen näkymään, jossa listataan parhaimmat tulokset. Tässä kohdassa on myös mahdollisuus kirjautua ulos tai aloittaa uusi peli.
 
