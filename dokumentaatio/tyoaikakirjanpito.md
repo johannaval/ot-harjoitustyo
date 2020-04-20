@@ -11,7 +11,7 @@
 | 10.3               |   4h          |  Näppäinten liikkeet toimimaan ja ruudulle "ruokia"              |
 | 12.3               |  5h           | Pelin päättyminen toimimaan              |
 | 14.3              |  3h           | Lisää testejä ja Dao rajapinnan hyödynnys               |
+| 20.3               |  4h           | Config propertieseihin tutustumista, UI:n ja logiikan päivittämistä               |
 |                |             |                |
-|                |             |                |
-| yht:               |  38h           |                |
+| yht:               |  48h           |                |
 
