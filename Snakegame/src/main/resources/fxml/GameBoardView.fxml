@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.TextField?>
 
 <?import javafx.scene.control.Label?>
-<AnchorPane fx:id="AP" prefHeight="400.0" prefWidth="600.0" onKeyPressed="#handleKeyPressed" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="snakegame.ui.GameBoardViewController">
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="AP" onKeyPressed="#handleKeyPressed" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="snakegame.ui.GameBoardViewController">
     <children>
         <TextField fx:id="" layoutX="600.0" layoutY="400.0" />
+        <Label fx:id="label" layoutX="147.0" layoutY="85.0" prefHeight="90.0" prefWidth="499.0" text="Press ENTER to start the game" textFill="#da3b85">
+         <font>
+            <Font name="FreeMono" size="20.0" />
+         </font></Label>
     </children>
 </AnchorPane>

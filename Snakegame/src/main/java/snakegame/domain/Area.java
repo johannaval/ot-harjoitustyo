@@ -20,7 +20,7 @@ public class Area {
     public Pane pane;
     public int points;
     public Food food;
-    public boolean firstEaten;
+    public boolean enterPressed;
     public boolean gameOver;
 
     public Area(Integer length, Integer width, Pane pane) {
@@ -29,11 +29,10 @@ public class Area {
         this.width = width;
         this.pane = pane;
         this.points = 0;
-        addFood();
         pane.setMinSize(width, length);
-        pane.setBorder(new Border(new BorderStroke(Color.DARKGREY, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
+        pane.setBorder(new Border(new BorderStroke(Color.HOTPINK, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
         pane.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
-        firstEaten = false;
+        enterPressed = false;
         gameOver = false;
     }
 
@@ -64,7 +63,7 @@ public class Area {
 
         pane.getChildren().add(sp);
         parts.add(sp);
-        if (parts.size() > 51) {
+        if (parts.size() > 10) {
             sp.setStroke(food.color);
             pane.setBorder(new Border(new BorderStroke(food.color, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
         }
@@ -79,7 +78,7 @@ public class Area {
             addFood();
             addNewPart();
         }
-        if (firstEaten) {
+        if (enterPressed) {
             if (hitWall() || hitItself()) {
                 gameOver = true;
                 return;
@@ -116,7 +115,6 @@ public class Area {
         if ((head.head.getXposition() >= this.width - 15 || head.head.getXposition() <= 15 || head.head.getYposition() <= 15 || head.head.getYposition() >= this.length - 30)) {
             return true;
         }
-
         return false;
     }
 
@@ -135,9 +133,8 @@ public class Area {
         if (food == null) {
             return false;
         }
-        if (Math.abs(food.getXposition() - head.head.getXposition()) < 7 && Math.abs(food.getYposition() - head.head.getYposition()) < 7) {
+        if (Math.abs(food.getXposition() - head.head.getXposition()) < 10 && Math.abs(food.getYposition() - head.head.getYposition()) < 10) {
 
-            firstEaten = true;
             return true;
         }
         return false;

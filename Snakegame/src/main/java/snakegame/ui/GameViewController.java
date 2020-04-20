@@ -51,13 +51,9 @@ public class GameViewController implements Initializable {
         application.setLogInScene();
     }
 
-    @FXML
-    private void handleTopList(ActionEvent event) throws IOException {
-        application.setTopListScene();
-    }
 
     @FXML
-    private void handleStartGame(ActionEvent event) {
+    private void handleStartGame(ActionEvent event) throws IOException {
         application.setGameBoardScene();
 
     }

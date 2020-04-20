@@ -22,8 +22,6 @@ public class SnakeHeadTest {
 
     Area area;
     GameService gs;
-    SnakePart part;
-    SnakeHead head;
     AnchorPane pane;
     GameBoardViewController controller;
 
@@ -31,31 +29,35 @@ public class SnakeHeadTest {
     public void setUp() {
         pane = new AnchorPane();
         gs = new GameService(pane, controller);
-        area = new Area(300, 600, pane);
-        head = new SnakeHead(20, area);
-        area.addNewSnake(head);
-
     }
 
     @Test
     public void atTheBeginningSnakeHeadGetRightNumberOfSnakeparts() throws SQLException {
 
-        assertEquals(20, head.parts.size());
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        assertEquals(50, gs.area.head.parts.size());
     }
 
     @Test
     public void settingHeadsDirectionItGetsRightDirection() throws SQLException {
 
-        head.setDirection("UP");
-        assertEquals("UP", head.direction);
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
 
-        head.setDirection("LEFT");
-        assertEquals("LEFT", head.direction);
+        gs.area.head.setDirection("UP");
+        assertEquals("UP", gs.area.head.direction);
 
-        head.setDirection("RIGHT");
-        assertEquals("RIGHT", head.direction);
+        gs.area.head.setDirection("LEFT");
+        assertEquals("LEFT", gs.area.head.direction);
 
-        head.setDirection("DOWN");
-        assertEquals("DOWN", head.direction);
+        gs.area.head.setDirection("RIGHT");
+        assertEquals("RIGHT", gs.area.head.direction);
+
+        gs.area.head.setDirection("DOWN");
+        assertEquals("DOWN", gs.area.head.direction);
     }
 }

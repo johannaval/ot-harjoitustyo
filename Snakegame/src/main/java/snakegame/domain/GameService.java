@@ -9,6 +9,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import snakegame.ui.GameBoardViewController;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -25,8 +26,8 @@ public class GameService {
     public Area area;
     public boolean gameOver;
     public int points;
-
     public GameBoardViewController controller;
+    public Text text;
 
     public GameService(AnchorPane pane, GameBoardViewController controller) {
         this.pane = pane;
@@ -41,18 +42,23 @@ public class GameService {
     public void startGame() {
 
         this.area = new Area(400, 600, pane);
-        area.addNewSnake(new SnakeHead(50, area));
-        Text text = new Text(500, 370, "Points: " + area.getPoints());
+
+    }
+
+    public void move() {
+
+        area.addFood();
+        this.text = new Text(500, 370, "Points: " + area.getPoints());
         text.setStroke(Color.WHITE);
         pane.getChildren().add(text);
 
-        AnimationTimer timer = new AnimationTimer() {
+        area.addNewSnake(new SnakeHead(50, area));
 
+        AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 int points = area.getPoints();
-                text.setText("Points: " + points);
-
+                  text.setText("Points: " + points);
 
                 if (area.gameOver() == false) {
                     if (now - start > 16000000) {
@@ -70,42 +76,17 @@ public class GameService {
             }
         };
         timer.start();
-
         area.head.setDirection("RIGHT");
-        move();
-
     }
 
     public void gameIsOver() throws SQLException, IOException {
 
-        this.points=area.getPoints();
+        this.points = area.getPoints();
         gameOver = true;
-        pane.getChildren().clear();
-        startGame();
+        area.enterPressed = false;
+        pane.getChildren().removeAll();
+        // startGame();
         controller.handleTopList(points);
-    }
-
-    public void move() {
-
-        pane.addEventFilter(KeyEvent.KEY_PRESSED,
-                event -> {
-
-                    String direction = area.head.direction;
-
-                    if (event.getCode().equals(KeyCode.DOWN) && direction != "UP") {
-                        goDown();
-                    }
-                    if (event.getCode().equals(KeyCode.RIGHT) && direction != "LEFT") {
-                        goRigh();
-                    }
-                    if (event.getCode().equals(KeyCode.LEFT) && direction != "RIGHT") {
-                        goLeft();
-                    }
-                    if (event.getCode().equals(KeyCode.UP) && direction != "DOWN") {
-                        goUp();
-                    }
-                });
-        pane.requestFocus();
     }
 
     public void goDown() {
@@ -128,5 +109,10 @@ public class GameService {
         area.head.setDirection("UP");
         area.head.switchDirection("UP");
 
+    }
+
+    public void enterPressed() {
+
+        area.enterPressed = true;
     }
 }

@@ -1,12 +1,16 @@
 package snakegame.ui;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import snakegame.domain.Player;
 import snakegame.dao.PlayerSQL;
@@ -21,7 +25,7 @@ public class CreateNewController implements Initializable {
     private TextField username;
 
     @FXML
-    private TextField password;
+    private PasswordField password;
 
     @FXML
     private Label error;
@@ -49,11 +53,11 @@ public class CreateNewController implements Initializable {
     private void handleCreate(ActionEvent event) throws SQLException {
 
 
-        String name = username.getText();
-        String passw = password.getText();
+        String name = username.getText().toLowerCase();
+        String passw = password.getText().toLowerCase();
 
         if (name.length() < 3) {
-            error.setText("Too short password!");
+            error.setText("Too short username!");
             return;
         }
         if (service.isThereAccountWithThisName(name)) {
@@ -75,7 +79,16 @@ public class CreateNewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        System.out.println("!2 ");
+        /*Properties properties = new Properties();
+
+        try {
+            properties.load(new FileInputStream("config.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String urlForSQL = properties.getProperty("urlForDao");
+*/
 
         this.livc = new LogInViewController();
         PlayerService pService = null;
@@ -83,7 +96,7 @@ public class CreateNewController implements Initializable {
             PlayerSQL playerSQL = new PlayerSQL();
             pService = new PlayerService(playerSQL, livc);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+      //      throwables.printStackTrace();
         }
         this.service = pService;
         }

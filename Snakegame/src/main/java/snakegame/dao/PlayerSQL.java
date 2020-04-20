@@ -9,7 +9,7 @@ import snakegame.domain.Player;
 
 public class PlayerSQL implements DaoPlayer {
 
-    private String url = "jdbc:sqlite:testsql.db";
+    private String url;
     private Connection db;
     private PreparedStatement ps;
     private Statement statement;
@@ -17,15 +17,16 @@ public class PlayerSQL implements DaoPlayer {
 
     public PlayerSQL() throws SQLException {
         this.db = db;
-        this.url = url;
+        this.url = "jdbc:sqlite:testsql.db";
         getConnection();
         createTable();
     }
 
     public PlayerSQL(String url) throws SQLException {
-        this.url = url; //TESTEJÄ VARTEN, ETTEI OIKEA TIETOKANTA SEKOTU
+        this.url = url;
         this.db = db;
         getConnection();
+        createTable();
     }
 
     public void getConnection() throws SQLException {
@@ -36,8 +37,8 @@ public class PlayerSQL implements DaoPlayer {
 
     public void stopConnection() throws SQLException {
 
-     //   statement.close();
-     //  db.close();
+        //   statement.close();
+        //  db.close();
     }
 
     @Override
@@ -61,7 +62,6 @@ public class PlayerSQL implements DaoPlayer {
 
         ps.executeUpdate();
         ps.close();
-
     }
 
     @Override
@@ -103,14 +103,11 @@ public class PlayerSQL implements DaoPlayer {
         return player;
 
     }
+
     @Override
     public Player isLogInOK(String username, String passw) throws SQLException {
 
-        System.out.println("7");
-
         ps = db.prepareStatement("SELECT * FROM Players WHERE username =? AND password =?");
-
-        System.out.println("12");
 
         ps.setString(1, username);
         ps.setString(2, passw);
@@ -129,6 +126,7 @@ public class PlayerSQL implements DaoPlayer {
             return okay;
         }
     }
+
     @Override
     public boolean isThereAccountWithThisName(String username) throws SQLException {
         ps = db.prepareStatement("SELECT * FROM Players WHERE username =?");
@@ -150,5 +148,4 @@ public class PlayerSQL implements DaoPlayer {
     public void clear() throws SQLException {
         statement.execute("DROP TABLE IF EXISTS PLAYERS");
     }
-
-    }
+}

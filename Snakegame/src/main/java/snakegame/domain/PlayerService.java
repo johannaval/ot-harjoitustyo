@@ -2,6 +2,7 @@ package snakegame.domain;
 
 import snakegame.dao.DaoPlayer;
 import snakegame.ui.LogInViewController;
+
 import java.sql.SQLException;
 
 
@@ -21,11 +22,7 @@ public class PlayerService {
 
     public boolean login(String username, String password) throws SQLException {
 
-        System.out.println("9");
-
         if (dao.isLogInOK(username, password) == null) {
-
-            System.out.println("3");
 
             if (isThereAccountWithThisName(username)) {
                 controller.wrongPassword();
@@ -33,10 +30,7 @@ public class PlayerService {
             return false;
 
         } else {
-
             this.loggedIn = dao.isLogInOK(username, password);
-            System.out.println(loggedIn.getHighscore());
-            System.out.println("4");
         }
         return true;
     }
@@ -64,7 +58,7 @@ public class PlayerService {
 
     public void logout() throws SQLException {
 
-      //  dao.stopConnection();
+        //  dao.stopConnection();
         loggedIn = null;
     }
 
@@ -74,7 +68,7 @@ public class PlayerService {
             return false;
 
         } else {
-            Player p = new Player(username, password.toLowerCase(), 0);
+            Player p = new Player(username.toLowerCase(), password.toLowerCase(), 0);
             dao.create(p);
             return true;
         }

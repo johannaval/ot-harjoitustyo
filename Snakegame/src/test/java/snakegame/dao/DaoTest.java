@@ -24,54 +24,23 @@ public class DaoTest {
         this.pd = new PlayerSQL("jdbc:sqlite:thisIsForUnittestss.db");
     }
 
-    @BeforeAll
-    public static void setUpClass() {
-    }
-
-    @AfterAll
-    public static void tearDownClass() {
-    }
-
-    @BeforeEach
-    public void setUp() {
-
-    }
-
     @AfterEach
     public void tearDown() throws SQLException {
         pd.clear();
     }
 
-    @Test
-    public void testParse() {
-    }
 
     @Test
     public void creatingNewPersonWorks() throws SQLException {
 
         tearDown();
 
-        Player player = new Player("TestName3", "test", 0);
+        Player player = new Player("testName3", "test", 0);
 
         pd.createTable();
         pd.create(player);
 
-        assertEquals(pd.findUser("TestName3").getUsername(), "TestName3");
-    }
-
-    @Test
-    public void updatingHighscoreWorks() throws SQLException {
-
-        tearDown();
-
-        Player player = new Player("Testaaja", "test", 0);
-        pd.createTable();
-        pd.create(player);
-        player.putHighscore(100);
-
-        pd.update(player);
-
-        assertEquals(100, pd.findUser("Testaaja").getHighscore());
+        assertEquals(pd.findUser("testName3").getUsername(), "testName3");
     }
 
     @Test
@@ -79,12 +48,12 @@ public class DaoTest {
 
         tearDown();
 
-        Player player = new Player("TestName2", "test", 0);
+        Player player = new Player("testName2", "test", 0);
 
         pd.createTable();
         pd.create(player);
 
-        assertEquals(pd.findUser("TestName2"), player);
+        assertEquals(pd.findUser("testName2"), player);
 
     }
 
@@ -95,7 +64,7 @@ public class DaoTest {
 
         pd.createTable();
 
-        assertEquals(null, pd.findUser("Mikko"));
+        assertEquals(null, pd.findUser("mikko"));
 
     }
 
@@ -123,12 +92,12 @@ public class DaoTest {
 
         tearDown();
 
-        Player player = new Player("TestName5", "test", 0);
+        Player player = new Player("testName5", "test", 0);
 
         pd.createTable();
         pd.create(player);
 
-        assertEquals(pd.findUser("TestName5").password, "test");
+        assertEquals(pd.findUser("testName5").password, "test");
 
     }
 
@@ -138,24 +107,14 @@ public class DaoTest {
         tearDown();
 
 
-        Player playerNew = new Player("TestName1", "test", 0);
+        Player playerNew = new Player("testName1", "test", 0);
 
         pd.createTable();
         pd.create(playerNew);
 
-        Player testPerson = pd.isLogInOK("TestName1", "test");
+        Player testPerson = pd.isLogInOK("testName1", "test");
 
         assertTrue(testPerson.equals(playerNew));
-
-    }
-
-    @Test
-    public void logInreturnNullIfPlayerIsNotInTable() throws SQLException {
-
-        tearDown();
-
-        pd.createTable();
-        assertNull(pd.isLogInOK("UserNotInTable", "test"));
 
     }
 }

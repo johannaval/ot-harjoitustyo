@@ -1,15 +1,20 @@
 package snakegame.ui;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.w3c.dom.ls.LSOutput;
 import snakegame.dao.PlayerSQL;
 import snakegame.domain.Player;
 import snakegame.domain.PlayerService;
@@ -24,7 +29,7 @@ public class LogInViewController implements Initializable {
     private TextField username;
 
     @FXML
-    private TextField password;
+    private PasswordField password;
 
     @FXML
     private Label error;
@@ -35,6 +40,7 @@ public class LogInViewController implements Initializable {
 
 
     public void setApplication(GameUi application) {
+
         this.application = application;
     }
 
@@ -74,12 +80,25 @@ public class LogInViewController implements Initializable {
         error.setText("Wrong password!");
 
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        System.out.println("!1 ");
+        /*
+        Properties properties = new Properties();
+
+        try {
+            properties.load(new FileInputStream("config.properties"));
+        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
+        }
+
+        String urlForDao = properties.getProperty("urlForDao");
+         */
+
         PlayerService pService = null;
         try {
+            //   PlayerSQL playerSQL = new PlayerSQL(urlForDao);
             PlayerSQL playerSQL = new PlayerSQL();
             pService = new PlayerService(playerSQL, this);
         } catch (SQLException throwables) {

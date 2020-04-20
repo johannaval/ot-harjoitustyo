@@ -27,58 +27,75 @@ public class AreaTest {
     public void setUp() {
         pane = new AnchorPane();
         gs = new GameService(pane, controller);
-        area = new Area(300, 600, pane);
-        head = new SnakeHead(20, area);
-        area.addNewSnake(head);
 
     }
 
     @Test
     public void areaGetRightNumberOfSnakeparts() throws SQLException {
 
-        assertEquals(area.parts.size(), 20);
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        assertEquals(50, gs.area.parts.size());
     }
 
     @Test
     public void areaHaveRightLength() throws SQLException {
 
-        assertEquals(area.getAreaLength(), 300);
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        assertEquals(gs.area.getAreaLength(), 400);
 
     }
 
     @Test
     public void areaHaveRightWidth() throws SQLException {
 
-        assertEquals(area.getAreaWidth(), 600);
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        assertEquals(gs.area.getAreaWidth(), 600);
     }
 
     @Test
     public void notHittingTheWallWillContinueTheGame() throws SQLException {
 
-        area.head.head.setXposition(150);
-        area.head.head.setYposition(200);
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
 
-        assertFalse(area.hitWall());
+        gs.area.head.head.setXposition(150);
+        gs.area.head.head.setYposition(200);
+
+        assertFalse(gs.area.hitWall());
     }
 
     @Test
     public void hittingTheWallWillReturnTrue() throws SQLException {
 
-        area.head.head.setXposition(area.getAreaWidth()-15);
-        area.head.head.setYposition(100);
-        assertTrue(area.hitWall());
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
 
-        area.head.head.setXposition(15);
-        area.head.head.setYposition(100);
-        assertTrue(area.hitWall());
+        gs.area.head.head.setXposition(gs.area.getAreaWidth()-15);
+        gs.area.head.head.setYposition(100);
+        assertTrue(gs.area.hitWall());
 
-        area.head.head.setXposition(100);
-        area.head.head.setYposition(area.getAreaWidth()-15);
-        assertTrue(area.hitWall());
+        gs.area.head.head.setXposition(15);
+        gs.area.head.head.setYposition(100);
+        assertTrue(gs.area.hitWall());
 
-        area.head.head.setXposition(100);
-        area.head.head.setYposition(15);
-        assertTrue(area.hitWall());
+        gs.area.head.head.setXposition(100);
+        gs.area.head.head.setYposition(gs.area.getAreaWidth()-15);
+        assertTrue(gs.area.hitWall());
+
+        gs.area.head.head.setXposition(100);
+        gs.area.head.head.setYposition(15);
+        assertTrue(gs.area.hitWall());
     }
 
     /* @Test
@@ -110,22 +127,30 @@ public class AreaTest {
     @Test
     public void hittingTheWallWithoutEatingAnythingWillNotEndTheGame() throws SQLException {
 
-        area.update();
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
 
-        area.head.head.setXposition(area.getAreaWidth());
-        area.head.head.setYposition(0);
+        gs.area.update();
 
-        assertFalse(area.gameOver);
+        gs.area.head.head.setXposition(gs.area.getAreaWidth());
+        gs.area.head.head.setYposition(0);
+
+        assertFalse(gs.area.gameOver);
     }
     @Test
     public void hittingItselfWillReturnTrue() throws SQLException {
 
-        area.head.head.setXposition(200);
-        area.head.head.setYposition(200);
-        area.head.parts.get(5).setXposition(200);
-        area.head.parts.get(5).setYposition(200);
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
 
-        boolean t = area.hitItself();
+        gs.area.head.head.setXposition(200);
+        gs.area.head.head.setYposition(200);
+        gs.area.head.parts.get(5).setXposition(200);
+        gs.area.head.parts.get(5).setYposition(200);
+
+        boolean t = gs.area.hitItself();
         assertTrue(t);
     }
     /*
@@ -155,8 +180,12 @@ public class AreaTest {
     @Test
     public void gameOverReturnTrueWhenOver(){
 
-        area.gameOver=true;
-        assertTrue(area.gameOver());
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        gs.area.gameOver=true;
+        assertTrue(gs.area.gameOver());
     }
 
 }

@@ -1,6 +1,7 @@
 package snakegame.dao;
 
 import java.sql.*;
+
 import snakegame.domain.Player;
 
 
@@ -18,11 +19,11 @@ public interface DaoPlayer {
 
     Player findUser(String username) throws SQLException;
 
-     void createTable() throws SQLException;
+    void createTable() throws SQLException;
 
     void getConnection() throws SQLException;
 
-     void stopConnection() throws SQLException;
+    void stopConnection() throws SQLException;
 }
 
 

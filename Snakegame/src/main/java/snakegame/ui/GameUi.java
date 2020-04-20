@@ -1,11 +1,16 @@
 package snakegame.ui;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Properties;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
+import snakegame.dao.PlayerSQL;
+import snakegame.domain.Player;
 import snakegame.domain.PlayerService;
 
 
@@ -18,6 +23,9 @@ public class GameUi extends Application {
     private Scene sceneHighscore;
     private Scene sceneGameBoard;
     private PlayerService ps;
+    private int lastPoints = 0;
+    private String url;
+    public PlayerSQL playerSQL;
 
 
     @Override
@@ -54,12 +62,6 @@ public class GameUi extends Application {
         CreateNewController newUserSceneController = newUserSceneLoader.getController();
         newUserSceneController.setApplication(this);
         sceneCreateNew = new Scene(newUserPane);
-
-        FXMLLoader gameboardLoader = new FXMLLoader(getClass().getResource("/fxml/GameBoardView.fxml"));
-        Parent gameboardPane = gameboardLoader.load();
-        GameBoardViewController gameBoardSceneController = gameboardLoader.getController();
-        gameBoardSceneController.setApplication(this);
-        sceneGameBoard = new Scene(gameboardPane);
 
     }
 
@@ -100,7 +102,13 @@ public class GameUi extends Application {
         stage.setTitle("Score board");
     }
 
-    public void setGameBoardScene() {
+    public void setGameBoardScene() throws IOException {
+
+        FXMLLoader gameboardLoader = new FXMLLoader(getClass().getResource("/fxml/GameBoardView.fxml"));
+        Parent gameboardPane = gameboardLoader.load();
+        GameBoardViewController gameBoardSceneController = gameboardLoader.getController();
+        gameBoardSceneController.setApplication(this);
+        sceneGameBoard = new Scene(gameboardPane);
 
         stage.setScene(sceneGameBoard);
         stage.setResizable(false);
@@ -113,8 +121,18 @@ public class GameUi extends Application {
         this.ps = ps;
     }
 
-    public PlayerService ps(){
+    public PlayerService ps() {
 
         return this.ps;
+    }
+
+    public void setLastScore(int points) {
+
+        this.lastPoints = points;
+    }
+
+    public int getLastPoints() {
+
+        return this.lastPoints;
     }
 }

@@ -20,10 +20,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SnakePartTest {
 
-    Area area;
+
     GameService gs;
-    SnakePart part;
-    SnakeHead head;
     AnchorPane pane;
     GameBoardViewController controller;
 
@@ -33,32 +31,36 @@ public class SnakePartTest {
 
         pane = new AnchorPane();
         gs = new GameService(pane, controller);
-        area = new Area(300, 600, pane);
-        head = new SnakeHead(20, area);
-        area.addNewSnake(head);
-
     }
 
     @Test
     public void switchingHeadDirectionSwitchAlsoAllPartsDirection() throws SQLException {
 
-        head.switchDirection("UP");
-        assertEquals("UP", head.parts.get(1).getDirection());
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
 
-        head.switchDirection("DOWN");
-        assertEquals("DOWN", head.parts.get(1).getDirection());
+        gs.area.head.switchDirection("UP");
+        assertEquals("UP", gs.area.head.parts.get(1).getDirection());
 
-        head.switchDirection("RIGHT");
-        assertEquals("RIGHT", head.parts.get(1).getDirection());
+        gs.area.head.switchDirection("DOWN");
+        assertEquals("DOWN", gs.area.head.parts.get(1).getDirection());
 
-        head.switchDirection("LEFT");
-        assertEquals("LEFT", head.parts.get(1).getDirection());
+        gs.area.head.switchDirection("RIGHT");
+        assertEquals("RIGHT", gs.area.head.parts.get(1).getDirection());
+
+        gs.area.head.switchDirection("LEFT");
+        assertEquals("LEFT", gs.area.head.parts.get(1).getDirection());
     }
 
     @Test
     public void goingUpMakesYSmaller() throws SQLException {
 
-        SnakePart part = head.parts.get(1);
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        SnakePart part = gs.area.head.parts.get(1);
 
         part.goUp();
         part.goUp();
@@ -71,7 +73,11 @@ public class SnakePartTest {
     @Test
     public void goingDownMakesYBigger() throws SQLException {
 
-        SnakePart part = head.parts.get(1);
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        SnakePart part = gs.area.head.parts.get(1);
 
         part.goDown();
         part.goDown();
@@ -83,64 +89,88 @@ public class SnakePartTest {
     @Test
     public void goingLeftMakesXSmaller() throws SQLException {
 
-        SnakePart part = head.parts.get(1);
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        SnakePart part = gs.area.head.parts.get(1);
 
         part.goLeft();
         part.goLeft();
         part.goLeft();
 
-        assertEquals(294, part.newX);
+        assertEquals(194, part.newX);
     }
 
     @Test
     public void goingRightMakesXBigger() throws SQLException {
 
-        SnakePart part = head.parts.get(1);
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        SnakePart part = gs.area.head.parts.get(1);
 
         part.goRight();
         part.goRight();
         part.goRight();
 
-        assertEquals(306, part.newX);
+        assertEquals(206, part.newX);
     }
 
     @Test
     public void hittingRightWallWithoutEatingFirstFoodPutsSnakeToLeftWall() throws SQLException {
 
-        head.head.setNewYposition(200);
-        head.head.setNewXposition(area.getAreaWidth() - 15);
-        head.parts.get(0).goRight();
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
 
-        assertEquals(13, head.parts.get(0).newX);
+        gs.area.head.head.setNewYposition(200);
+        gs.area.head.head.setNewXposition(gs.area.getAreaWidth() - 15);
+        gs.area.head.parts.get(0).goRight();
+
+        assertEquals(13, gs.area.head.parts.get(0).newX);
     }
 
     @Test
     public void hittingLeftWallWithoutEatingFirstFoodPutsSnakeToRightWall() throws SQLException {
 
-        head.head.setNewYposition(200);
-        head.head.setNewXposition(15);
-        head.parts.get(0).goLeft();
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
 
-        assertEquals(area.getAreaWidth() - 28, head.parts.get(0).newX);
+        gs.area.head.head.setNewYposition(200);
+        gs.area.head.head.setNewXposition(15);
+        gs.area.head.parts.get(0).goLeft();
+
+        assertEquals(gs.area.getAreaWidth() - 10, gs.area.head.parts.get(0).newX);
     }
 
     @Test
     public void hittingUpWallWithoutEatingFirstFoodPutsSnakeToDownWall() throws SQLException {
 
-        head.head.setNewYposition(15);
-        head.head.setNewXposition(200);
-        head.parts.get(0).goUp();
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
 
-        assertEquals(area.getAreaLength() - 20, head.parts.get(0).newY);
+        gs.area.head.head.setNewYposition(15);
+        gs.area.head.head.setNewXposition(200);
+        gs.area.head.parts.get(0).goUp();
+
+        assertEquals(gs.area.getAreaLength() - 20, gs.area.head.parts.get(0).newY);
     }
 
     @Test
     public void hittingDownWallWithoutEatingFirstFoodPutsSnakeToUpWall() throws SQLException {
 
-        head.head.setNewYposition(area.getAreaLength() - 30);
-        head.head.setNewXposition(200);
-        head.parts.get(0).goDown();
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
 
-        assertEquals(13, head.parts.get(0).newY);
+        gs.area.head.head.setNewYposition(gs.area.getAreaLength() - 30);
+        gs.area.head.head.setNewXposition(200);
+        gs.area.head.parts.get(0).goDown();
+
+        assertEquals(13, gs.area.head.parts.get(0).newY);
     }
 }
