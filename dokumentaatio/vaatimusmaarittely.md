@@ -39,9 +39,9 @@ Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjau
 * Pelaaja voi aloittaa pelin painamalla "Start game!", tai kirjautua ulos napilla "log out".
 
 
-### Pelin aloitettua: (perusominausuudet :white_check_mark:, vielä puuttuu teemat ja ilman reunoja oleva alue)
-* peli toimii matopelin idealla, mato kerää satunnaisesti tulevia “palloja”, joista se saa pisteitä. Samalla mato kasvaa pituutta, ja sen liikenopeus kasvaa. 
-* Peli päättyy, kun mato kuolee. Riippuen onko pelaaja halunnut pelata reunojen kanssa, mato kuolee osuessaan itseensä tai osuessaan reunaan. Kuitenkin, jos pelaajan pisteet ovat nollassa, hän ei voi kuolla.
+#### Pelin aloitettua: (perusominausuudet :white_check_mark:, vielä puuttuu teemat ja ilman reunoja oleva alue)
+* peli toimii matopelin idealla, mato kerää satunnaisesti tulevia “ruokia”, joista se saa pisteitä. Samalla mato kasvaa pituutta, ja sen liikenopeus kasvaa. 
+* Peli päättyy, kun mato kuolee. Riippuen onko pelaaja halunnut pelata reunojen kanssa, mato kuolee osuessaan itseensä tai osuessaan reunaan.
 
 
 
