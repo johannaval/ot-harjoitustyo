@@ -1,13 +1,12 @@
 package snakegame.domain;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import snakegame.dao.DaoPlayer;
 
 
 public class FakePlayerSQL implements DaoPlayer {
+
     List<Player> players = new ArrayList<>();
 
     public FakePlayerSQL() {
@@ -15,26 +14,26 @@ public class FakePlayerSQL implements DaoPlayer {
     }
 
     @Override
-    public void create(Player player) throws SQLException {
+    public void create(Player player) {
         players.add(player);
 
     }
 
     @Override
-    public Player update(Player player) throws SQLException {
+    public Player update(Player player) {
 
         player.putHighscore(player.highscore);
         return player;
     }
 
     @Override
-    public void clear() throws SQLException {
+    public void clear() {
         players.clear();
 
     }
 
     @Override
-    public boolean isThereAccountWithThisName(String username) throws SQLException {
+    public boolean isThereAccountWithThisName(String username) {
         for (Player player : players) {
             if (player.getUsername().equals(username)) {
                 return true;
@@ -44,7 +43,7 @@ public class FakePlayerSQL implements DaoPlayer {
     }
 
     @Override
-    public Player isLogInOK(String username, String passw) throws SQLException {
+    public Player isLogInOK(String username, String passw)  {
         for (Player player : players) {
             if (player.getUsername().equals(username) && player.getPassword().equals(passw)) {
                 return player;
@@ -54,7 +53,7 @@ public class FakePlayerSQL implements DaoPlayer {
     }
 
     @Override
-    public Player findUser(String username) throws SQLException {
+    public Player findUser(String username)  {
         for (Player player : players) {
             if (player.getUsername().equals(username)) {
                 return player;
@@ -64,12 +63,12 @@ public class FakePlayerSQL implements DaoPlayer {
     }
 
     @Override
-    public void createTable() throws SQLException {
+    public void createTable() {
 
     }
 
     @Override
-    public void getConnection() throws SQLException {
+    public void getConnection()  {
 
     }
 

@@ -36,6 +36,7 @@ public class SnakePart extends Rectangle {
     }
 
     public void setDirection(String direction) {
+
         this.direction = direction;
         switchDirection();
     }
@@ -74,6 +75,7 @@ public class SnakePart extends Rectangle {
     }
 
     public void newPosition() {
+
         setTranslateX(newX);
         setTranslateY(newY);
     }

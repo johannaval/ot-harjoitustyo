@@ -22,18 +22,13 @@ import snakegame.domain.PlayerService;
 public class LogInViewController implements Initializable {
 
     private GameUi application;
-
     private PlayerService service;
-
     @FXML
     private TextField username;
-
     @FXML
     private PasswordField password;
-
     @FXML
     private Label error;
-
     private PlayerSQL playerSQL;
     private Player loggedIn;
     private PlayerService servise;
@@ -83,6 +78,7 @@ public class LogInViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
 
         /*
         Properties properties = new Properties();

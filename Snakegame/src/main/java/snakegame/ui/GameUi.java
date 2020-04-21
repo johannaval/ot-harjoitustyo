@@ -3,7 +3,6 @@ package snakegame.ui;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;

@@ -36,6 +36,7 @@ public class PlayerService {
     }
 
     public boolean isThereAccountWithThisName(String username) throws SQLException {
+
         if (dao.isThereAccountWithThisName(username)) {
             return true;
         } else {
@@ -45,6 +46,7 @@ public class PlayerService {
     }
 
     public void setHighscore(int score) throws SQLException {
+
         if (loggedIn.getHighscore() < score) {
             loggedIn.putHighscore(score);
             dao.update(loggedIn);
@@ -53,6 +55,7 @@ public class PlayerService {
 
 
     public Player getLoggedUser() {
+
         return loggedIn;
     }
 

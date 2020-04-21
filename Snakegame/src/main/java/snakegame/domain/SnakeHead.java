@@ -1,7 +1,6 @@
 package snakegame.domain;
 
 import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 
 public class SnakeHead {
@@ -31,7 +30,6 @@ public class SnakeHead {
         head.setStroke(Color.AQUA);
         head.setFill(Color.BLACK);
         parts.add(head);
-
         this.body = head;
     }
 

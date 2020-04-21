@@ -3,24 +3,13 @@ package snakegame.domain;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import javafx.scene.layout.AnchorPane;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import snakegame.ui.GameBoardViewController;
-
-import java.sql.SQLException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class SnakeHeadTest {
 
-    Area area;
     GameService gs;
     AnchorPane pane;
     GameBoardViewController controller;
@@ -32,7 +21,7 @@ public class SnakeHeadTest {
     }
 
     @Test
-    public void atTheBeginningSnakeHeadGetRightNumberOfSnakeparts() throws SQLException {
+    public void atTheBeginningSnakeHeadGetRightNumberOfSnakeparts()  {
 
         gs.startGame();
         gs.move();
@@ -42,7 +31,7 @@ public class SnakeHeadTest {
     }
 
     @Test
-    public void settingHeadsDirectionItGetsRightDirection() throws SQLException {
+    public void settingHeadsDirectionItGetsRightDirection()  {
 
         gs.startGame();
         gs.move();

@@ -3,12 +3,13 @@ package snakegame.domain;
 
 
 public class Player {
-    int id;
+
     public String username;
     public String password;
     int highscore;
 
     public Player(String username, String password, int highscore) {
+
         this.username = username;
         this.password = password;
         this.highscore = highscore;

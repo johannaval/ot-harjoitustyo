@@ -1,24 +1,15 @@
 package snakegame.domain;
 
-import javafx.scene.paint.Paint;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import javafx.scene.layout.AnchorPane;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import snakegame.ui.GameBoardViewController;
-import java.sql.SQLException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class AreaTest {
-    Area area;
     GameService gs;
-    SnakePart part;
-    SnakeHead head;
     AnchorPane pane;
     GameBoardViewController controller;
 
@@ -31,7 +22,7 @@ public class AreaTest {
     }
 
     @Test
-    public void areaGetRightNumberOfSnakeparts() throws SQLException {
+    public void areaGetRightNumberOfSnakeparts() {
 
         gs.startGame();
         gs.move();
@@ -41,7 +32,7 @@ public class AreaTest {
     }
 
     @Test
-    public void areaHaveRightLength() throws SQLException {
+    public void areaHaveRightLength() {
 
         gs.startGame();
         gs.move();
@@ -52,7 +43,7 @@ public class AreaTest {
     }
 
     @Test
-    public void areaHaveRightWidth() throws SQLException {
+    public void areaHaveRightWidth() {
 
         gs.startGame();
         gs.move();
@@ -62,7 +53,7 @@ public class AreaTest {
     }
 
     @Test
-    public void notHittingTheWallWillContinueTheGame() throws SQLException {
+    public void notHittingTheWallWillContinueTheGame() {
 
         gs.startGame();
         gs.move();
@@ -75,13 +66,13 @@ public class AreaTest {
     }
 
     @Test
-    public void hittingTheWallWillReturnTrue() throws SQLException {
+    public void hittingTheWallWillReturnTrue() {
 
         gs.startGame();
         gs.move();
         gs.enterPressed();
 
-        gs.area.head.head.setXposition(gs.area.getAreaWidth()-15);
+        gs.area.head.head.setXposition(gs.area.getAreaWidth() - 15);
         gs.area.head.head.setYposition(100);
         assertTrue(gs.area.hitWall());
 
@@ -90,7 +81,7 @@ public class AreaTest {
         assertTrue(gs.area.hitWall());
 
         gs.area.head.head.setXposition(100);
-        gs.area.head.head.setYposition(gs.area.getAreaWidth()-15);
+        gs.area.head.head.setYposition(gs.area.getAreaWidth() - 15);
         assertTrue(gs.area.hitWall());
 
         gs.area.head.head.setXposition(100);
@@ -125,7 +116,7 @@ public class AreaTest {
 
 
     @Test
-    public void hittingTheWallWithoutEatingAnythingWillNotEndTheGame() throws SQLException {
+    public void hittingTheWallWithoutEatingAnythingWillNotEndTheGame() {
 
         gs.startGame();
         gs.move();
@@ -138,8 +129,9 @@ public class AreaTest {
 
         assertFalse(gs.area.gameOver);
     }
+
     @Test
-    public void hittingItselfWillReturnTrue() throws SQLException {
+    public void hittingItselfWillReturnTrue() {
 
         gs.startGame();
         gs.move();
@@ -153,6 +145,7 @@ public class AreaTest {
         boolean t = gs.area.hitItself();
         assertTrue(t);
     }
+
     /*
     @Test
     public void hittingItselfWillEndTheGame() throws SQLException {
@@ -178,13 +171,13 @@ public class AreaTest {
         assertTrue(area.gameOver());
     } */
     @Test
-    public void gameOverReturnTrueWhenOver(){
+    public void gameOverReturnTrueWhenOver() {
 
         gs.startGame();
         gs.move();
         gs.enterPressed();
 
-        gs.area.gameOver=true;
+        gs.area.gameOver = true;
         assertTrue(gs.area.gameOver());
     }
 

@@ -3,8 +3,6 @@ package snakegame.domain;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -58,7 +56,7 @@ public class GameService {
             @Override
             public void handle(long now) {
                 int points = area.getPoints();
-                  text.setText("Points: " + points);
+                text.setText("Points: " + points);
 
                 if (area.gameOver() == false) {
                     if (now - start > 16000000) {
@@ -85,27 +83,30 @@ public class GameService {
         gameOver = true;
         area.enterPressed = false;
         pane.getChildren().removeAll();
-        // startGame();
         controller.handleTopList(points);
     }
 
     public void goDown() {
+
         area.head.setDirection("DOWN");
         area.head.switchDirection("DOWN");
     }
 
     public void goRigh() {
+
         area.head.setDirection("RIGHT");
         area.head.switchDirection("RIGHT");
     }
 
     public void goLeft() {
+
         area.head.setDirection("LEFT");
         area.head.switchDirection("LEFT");
 
     }
 
     public void goUp() {
+
         area.head.setDirection("UP");
         area.head.switchDirection("UP");
 

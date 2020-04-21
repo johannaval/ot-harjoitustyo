@@ -3,27 +3,15 @@ package snakegame.domain;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 import javafx.scene.layout.AnchorPane;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import snakegame.ui.GameBoardViewController;
-
-import java.sql.SQLException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class FoodTest {
 
-    Area area;
     GameService gs;
-    SnakePart part;
-    SnakeHead head;
     AnchorPane pane;
     GameBoardViewController controller;
 
@@ -36,7 +24,7 @@ public class FoodTest {
     }
 
     @Test
-    public void afterEatingFoodPointsIncrease() throws SQLException {
+    public void afterEatingFoodPointsIncrease(){
 
         gs.startGame();
         gs.move();
@@ -56,7 +44,7 @@ public class FoodTest {
     }
 
     @Test
-    public void returnTrueIfFoodWasEaten() throws SQLException {
+    public void returnTrueIfFoodWasEaten() {
 
         gs.startGame();
         gs.move();
@@ -98,7 +86,7 @@ public class FoodTest {
     }
 
     @Test
-    public void ateFoodReturnFalseIfThereIsNoFood() throws SQLException {
+    public void ateFoodReturnFalseIfThereIsNoFood()  {
 
         gs.startGame();
         gs.move();
@@ -110,7 +98,7 @@ public class FoodTest {
     }
 
     @Test
-    public void beforeEatingPointsAreaZero() throws SQLException {
+    public void beforeEatingPointsAreaZero() {
 
         gs.startGame();
         gs.move();

@@ -3,9 +3,7 @@ package snakegame.domain;
 import org.junit.Before;
 import org.junit.Test;
 import snakegame.ui.LogInViewController;
-
 import static org.junit.Assert.*;
-
 import java.sql.SQLException;
 
 

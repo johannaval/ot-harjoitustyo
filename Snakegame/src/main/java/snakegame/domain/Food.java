@@ -35,6 +35,7 @@ public class Food extends Rectangle {
     }
 
     public Paint getColour() {
+
         return this.color;
 
     }

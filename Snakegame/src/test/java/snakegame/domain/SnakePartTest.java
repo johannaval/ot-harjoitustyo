@@ -1,22 +1,11 @@
 package snakegame.domain;
 
 import org.junit.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import javafx.scene.layout.AnchorPane;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import snakegame.ui.GameBoardViewController;
-
-import java.sql.SQLException;
-
 import org.junit.Before;
-import org.junit.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class SnakePartTest {
 
@@ -34,7 +23,7 @@ public class SnakePartTest {
     }
 
     @Test
-    public void switchingHeadDirectionSwitchAlsoAllPartsDirection() throws SQLException {
+    public void switchingHeadDirectionSwitchAlsoAllPartsDirection() {
 
         gs.startGame();
         gs.move();
@@ -54,7 +43,7 @@ public class SnakePartTest {
     }
 
     @Test
-    public void goingUpMakesYSmaller() throws SQLException {
+    public void goingUpMakesYSmaller() {
 
         gs.startGame();
         gs.move();
@@ -71,7 +60,7 @@ public class SnakePartTest {
 
 
     @Test
-    public void goingDownMakesYBigger() throws SQLException {
+    public void goingDownMakesYBigger() {
 
         gs.startGame();
         gs.move();
@@ -87,7 +76,7 @@ public class SnakePartTest {
     }
 
     @Test
-    public void goingLeftMakesXSmaller() throws SQLException {
+    public void goingLeftMakesXSmaller() {
 
         gs.startGame();
         gs.move();
@@ -103,7 +92,7 @@ public class SnakePartTest {
     }
 
     @Test
-    public void goingRightMakesXBigger() throws SQLException {
+    public void goingRightMakesXBigger() {
 
         gs.startGame();
         gs.move();
@@ -119,7 +108,7 @@ public class SnakePartTest {
     }
 
     @Test
-    public void hittingRightWallWithoutEatingFirstFoodPutsSnakeToLeftWall() throws SQLException {
+    public void hittingRightWallWithoutEatingFirstFoodPutsSnakeToLeftWall() {
 
         gs.startGame();
         gs.move();
@@ -133,7 +122,7 @@ public class SnakePartTest {
     }
 
     @Test
-    public void hittingLeftWallWithoutEatingFirstFoodPutsSnakeToRightWall() throws SQLException {
+    public void hittingLeftWallWithoutEatingFirstFoodPutsSnakeToRightWall() {
 
         gs.startGame();
         gs.move();
@@ -147,7 +136,7 @@ public class SnakePartTest {
     }
 
     @Test
-    public void hittingUpWallWithoutEatingFirstFoodPutsSnakeToDownWall() throws SQLException {
+    public void hittingUpWallWithoutEatingFirstFoodPutsSnakeToDownWall() {
 
         gs.startGame();
         gs.move();
@@ -161,7 +150,7 @@ public class SnakePartTest {
     }
 
     @Test
-    public void hittingDownWallWithoutEatingFirstFoodPutsSnakeToUpWall() throws SQLException {
+    public void hittingDownWallWithoutEatingFirstFoodPutsSnakeToUpWall() {
 
         gs.startGame();
         gs.move();

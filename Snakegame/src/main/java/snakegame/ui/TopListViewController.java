@@ -24,23 +24,18 @@ import snakegame.domain.PlayerService;
 public class TopListViewController implements Initializable {
 
     private GameUi application;
-
     @FXML
     public AnchorPane AP;
-
     @FXML
     private TableView<Player> TopList;
-
     @FXML
     private Label lastScore;
-
     @FXML
     private TableColumn<Player, String> username;
-
     @FXML
     private TableColumn<Player, Integer> highscore;
-
     private String tableUrl = "jdbc:sqlite:testsql.db";
+
 
     ObservableList<Player> topList = FXCollections.observableArrayList();
 

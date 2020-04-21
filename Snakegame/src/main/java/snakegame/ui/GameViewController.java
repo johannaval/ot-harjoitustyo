@@ -24,6 +24,7 @@ public class GameViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
         AP.setFocusTraversable(true);
     }
 
@@ -46,6 +47,7 @@ public class GameViewController implements Initializable {
 
     @FXML
     private void handleExit(ActionEvent event) throws SQLException {
+
         PlayerService ps = application.ps();
         ps.logout();
         application.setLogInScene();
@@ -54,6 +56,7 @@ public class GameViewController implements Initializable {
 
     @FXML
     private void handleStartGame(ActionEvent event) throws IOException {
+
         application.setGameBoardScene();
 
     }

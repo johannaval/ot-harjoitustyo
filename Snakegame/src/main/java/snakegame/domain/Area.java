@@ -30,18 +30,20 @@ public class Area {
         this.pane = pane;
         this.points = 0;
         pane.setMinSize(width, length);
-        pane.setBorder(new Border(new BorderStroke(Color.HOTPINK, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
+        pane.setBorder(new Border(new BorderStroke(Color.GREENYELLOW, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
         pane.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
         enterPressed = false;
         gameOver = false;
     }
 
     public int getAreaWidth() {
+
         return this.width;
 
     }
 
     public int getSnakeSize() {
+
         return parts.size();
     }
 
@@ -63,6 +65,7 @@ public class Area {
 
         pane.getChildren().add(sp);
         parts.add(sp);
+
         if (parts.size() > 10) {
             sp.setStroke(food.color);
             pane.setBorder(new Border(new BorderStroke(food.color, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
@@ -70,6 +73,7 @@ public class Area {
     }
 
     public void update() {
+
         for (SnakePart part : parts) {
             part.switchDirection();
         }
@@ -134,7 +138,6 @@ public class Area {
             return false;
         }
         if (Math.abs(food.getXposition() - head.head.getXposition()) < 10 && Math.abs(food.getYposition() - head.head.getYposition()) < 10) {
-
             return true;
         }
         return false;

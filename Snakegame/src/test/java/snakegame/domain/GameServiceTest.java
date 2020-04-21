@@ -2,29 +2,15 @@ package snakegame.domain;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 import javafx.scene.layout.AnchorPane;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import snakegame.ui.GameBoardViewController;
-
-import java.io.IOException;
-import java.sql.SQLException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class GameServiceTest {
 
-    Area area;
     GameService gs;
-    SnakePart part;
-    SnakeHead head;
     AnchorPane pane;
     GameBoardViewController controller;
 
@@ -55,7 +41,7 @@ public class GameServiceTest {
     }
 
     @Test
-    public void atTheBeginningBooleanGameOverIsFalse() throws IOException, SQLException {
+    public void atTheBeginningBooleanGameOverIsFalse()  {
 
         gs.startGame();
         gs.move();

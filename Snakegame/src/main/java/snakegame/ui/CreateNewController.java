@@ -6,6 +6,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Properties;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,16 +21,12 @@ import snakegame.domain.PlayerService;
 public class CreateNewController implements Initializable {
 
     private GameUi application;
-
     @FXML
     private TextField username;
-
     @FXML
     private PasswordField password;
-
     @FXML
     private Label error;
-
     private PlayerSQL playerSQL;
     private Player loggedIn;
     private LogInViewController livc;
@@ -96,8 +93,8 @@ public class CreateNewController implements Initializable {
             PlayerSQL playerSQL = new PlayerSQL();
             pService = new PlayerService(playerSQL, livc);
         } catch (SQLException throwables) {
-      //      throwables.printStackTrace();
+            //      throwables.printStackTrace();
         }
         this.service = pService;
-        }
     }
+}

@@ -18,18 +18,14 @@ import java.util.ResourceBundle;
 public class GameBoardViewController implements Initializable {
 
     private GameService service;
-
     private GameUi application;
-
     private PlayerService ps;
-
     @FXML
     public AnchorPane AP;
-
     @FXML
     private Label label;
-
     boolean enterPressed;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -88,7 +84,7 @@ public class GameBoardViewController implements Initializable {
 
         PlayerService ps = application.ps();
         this.ps = application.ps();
-        this.enterPressed=false;
+        this.enterPressed = false;
         ps.setHighscore(points);
         application.setLastScore(points);
         application.setTopListScene();
