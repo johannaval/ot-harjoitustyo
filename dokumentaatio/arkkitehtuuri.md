@@ -1,6 +1,52 @@
-## Harjoitustyön alustava rakenne luokka/pakkauskaaviona
+### Arkkitehtuurikuvaus
+
+
+## Rakenne
+
+Ohjelman pakkausrakenteeseen kuuluu ui, domain ja dao-pakkaukset. Snakegame.ui huolehtii ohjelman käyttöliittymästä, joka on toteutettu Java FXML:n tarjoamien controllereiden avulla. Snakegame.domain huolehtii sovelluslogiikasta, niin käyttäjästä kuin pelilogiikastakin. Snakegame.dao huolehtii käyttäjän tietojen pysyväistallennuksesta tietokannan avulla.
+
+<img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/IMG_0507.jpeg" width="200" height="350">
+
+
+## Käyttöliittymä
+
+Käyttöliittymä sisältää viisi eri näkymää
+
+* kirjautumisnäkymän
+* uuden käyttäjän luomisnäkymän
+* pelivalikon
+* pelin
+* top-listan
+
+Käyttöliittymästä ja näkymistä pitää huolta GameUi luokka, mutta itse näkymien toiminnoista vastaa kyseisen näkymän controller, joka huolehtii esim. napin painalluksista, käyttäjän syöttämistä teksteistä tai painetuista näppäimistä. Näkymät on toteutettu Scene-olioina, jotka sijoitetaan GameUi:ssa olevaan stageen aina kerrallaan.
+
+
+
+## Sovelluslogiikka
+
+Pelin toiminnallisuuksista vastaa domainin luokka GameService, ja käyttäjän toiminnallisuuksista vastaa saman pakkauksen luokka PlayerService. 
+
+Pelilogiikkaan kuuluvat luokat Area, Food, SnakeHead ja SnakePart. 
+Area on tärkeä luokka pelin etenemisen kannalta, sillä se huolehtii pelialueen toiminnasta esimerkiksi lisäämällä tai poistamalla ruokia sekä lisäämällä madon ja sille paloja. Area huolehtii myös pelaajan valitsemasta teemasta, jolloin asettaa oikean taustan sekä pelialueelle reunat, mikäli pelaaja haluaa niillä pelata. Area huolehtii myös pisteiden saannista, madon liikkumisesta ja tarkistaa, onko mato osunut itseensä tai reunaan.  Food luokka kuvaa pelialueen ruokia, SnakeHead madon päätä ja määrittää myös madon suunnan, jota SnakePart luokan palat noudattavat.
+
+Pelaajan tiedoista huolehtii luokka PlayerService, johon liittyy kirjautunut käyttäjä (Player-luokka). PlayerService hyödyntää dao-pakkauksen rajapintaa DaoPlayer, joka taas kutsuu PlayerSQL:n metodeja esim tarkistamaan, löytyykö kyseisellä nimellä jo käyttäjää tai onnistuiko käyttäjän luominen ja sisäänkirjautuminen. PlayerSQL myös luo tietokantataulun, avaa tietokannan yhteyden,ja päivittää käyttäjän ennätyksiä.
+
+Sovelluksen rakenne luokka/pakkauskaaviona:
 
  <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/IMG_0149.jpeg" width="400" height="550">
+ 
+ 
+ ## Tietojen pysyväistallennus
+ 
+ Tietojen tallentamisesta vastaa snakegame.daon luokka PlayerSQL, joka tallentaa tiedot tietokantaan. Luokka toteuttaa rajapinnan DaoPlayer, jolloin domain käyttää PlayerSQL:lää vain rajapinnan avulla. PlayerSQL-luokka hyödyntää siis Data Access Object -suunnittelumallia (eli DAO:ta).
+ 
+ 
+## Tietokanta
+
+Ohjelma tallentaa käyttäjät tietokantatauluun Players, johon kirjataan pelaajan id, käyttäjänimi, salasana ja ennätys. Id ja käyttäjänimi ovat uniikkeja, joten kellään toisella pelaajalla ei voi olla samaa tunnusta. Ennätys on käyttäjän luomisen jälkeen 0, mutta kasvaa heti, kun pelaaja pelaa peliä ja saa pisteitä.
+(tulossa kun saan toimimaan.. Tietokannan yhteys niin ohjelmaa, kuin testejä varten tallennetaan ohjelman juuressa sijaitsevaan "config.properties" konfiguraatiotiedostoon.)
+ 
+ 
 
 ## Päätoiminnallisuudet sekvenssikaavioina 
 
