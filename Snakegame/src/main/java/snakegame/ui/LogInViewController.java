@@ -45,23 +45,6 @@ public class LogInViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-     /*   String urlForDao = "";
-
-        try (InputStream input = new FileInputStream("config.properties")) {
-
-            Properties prop = new Properties();
-            prop.load(input);
-
-            System.out.println(prop.getProperty("urlForDao") + "!!");
-            urlForDao = prop.getProperty("urlForDao");
-
-        } catch (IOException ex) {
-            System.out.println("ei onnistunut");
-        }
-
-
-
-        System.out.println(getConfigProperties());
 
         Properties properties = new Properties();
 
@@ -73,15 +56,10 @@ public class LogInViewController implements Initializable {
 
         String urlForDao = properties.getProperty("urlForDao");
 
-        System.out.println(urlForDao);
-
-        System.out.printf(properties.getProperty("testi1"));
-
-*/
         PlayerService pService = null;
 
-     //   PlayerSQL playerSQL = new PlayerSQL(urlForDao);
-        PlayerSQL playerSQL = new PlayerSQL();
+        PlayerSQL playerSQL = new PlayerSQL(urlForDao);
+     //   PlayerSQL playerSQL = new PlayerSQL();
         pService = new PlayerService(playerSQL, this);
 
         this.service = pService;

@@ -8,9 +8,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import snakegame.ui.GameBoardViewController;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 /**
  * Pitää huolta peli/sovelluslogiikasta
  */
@@ -68,7 +65,6 @@ public class GameService {
         this.area = new Area(400, 600, pane);
 
     }
-
 
     /**
      * Kutsuu metodia withBorders() asettamaan reunat mikäli pelaaja halusi, kutsuu theme() metodia asettamaan teman, lisää

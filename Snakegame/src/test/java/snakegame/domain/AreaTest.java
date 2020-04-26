@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class AreaTest {
+
     GameService gs;
     AnchorPane pane;
     GameBoardViewController controller;
@@ -19,28 +20,23 @@ public class AreaTest {
     public void setUp() {
         pane = new AnchorPane();
         controller = new GameBoardViewController();
-        controller.borders=true;
-        controller.theme="1";
+        controller.borders = true;
+        controller.theme = "1";
         gs = new GameService(pane, controller);
+        gs.addGameArea();
+        gs.move();
+        gs.enterPressed();
 
     }
 
     @Test
     public void areaGetRightNumberOfSnakeparts() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
-
         assertEquals(50, gs.area.parts.size());
     }
 
     @Test
     public void areaHaveRightLength() {
-
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
 
         assertEquals(gs.area.getAreaLength(), 400);
 
@@ -49,36 +45,24 @@ public class AreaTest {
     @Test
     public void areaHaveRightWidth() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
-
         assertEquals(gs.area.getAreaWidth(), 600);
     }
 
     @Test
-    public void pointsTextGetRightColorByTheme(){
+    public void pointsTextGetRightColorByTheme() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
-
-        gs.theme="1";
+        gs.theme = "1";
         assertEquals(gs.text.getStroke(), Color.WHITE);
 
-        gs.theme="2";
+        gs.theme = "2";
         assertEquals(gs.text.getStroke(), Color.WHITE);
 
-        gs.theme="1";
+        gs.theme = "1";
         assertEquals(gs.text.getStroke(), Color.WHITE);
     }
 
     @Test
     public void notHittingTheWallWillContinueTheGame() {
-
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
 
         gs.area.head.head.setXposition(150);
         gs.area.head.head.setYposition(200);
@@ -89,10 +73,7 @@ public class AreaTest {
     @Test
     public void hittingTheWallWillReturnTrue() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
-        gs.withBorders=true;
+        gs.withBorders = true;
 
         gs.area.head.head.setXposition(gs.area.getAreaWidth() - 15);
         gs.area.head.head.setYposition(100);
@@ -140,10 +121,7 @@ public class AreaTest {
     @Test
     public void hittingEdgeWithoutBoardersWillNotEndTheGame() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
-        gs.withBorders=false;
+        gs.withBorders = false;
 
         gs.area.update();
 
@@ -156,10 +134,6 @@ public class AreaTest {
     @Test
     public void hittingItselfWillReturnTrue() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
-
         gs.area.head.head.setXposition(200);
         gs.area.head.head.setYposition(200);
         gs.area.head.parts.get(5).setXposition(200);
@@ -169,88 +143,70 @@ public class AreaTest {
         assertTrue(t);
     }
 
-    /*
+/*
     @Test
-    public void hittingItselfWillEndTheGame() throws SQLException {
+    public void hittingItselfWillEndTheGame() {
 
-        AnchorPane pane = new AnchorPane();
-        GameService gs = new GameService(pane, controller);
-        Area area = new Area(300, 600, pane);
+        SnakeHead head = new SnakeHead(20, gs.area);
 
-        SnakeHead head = new SnakeHead(20, area);
+        gs.area.addNewSnake(head);
+        gs.area.enterPressed=true;
+        //  gs.area.update();
 
-        area.addNewSnake(head);
-        area.firstEaten=true;
-          area.update();
+        gs.area.head.head.setXposition(200);
+        gs.area.head.head.setYposition(200);
+        gs.area.head.parts.get(5).setXposition(200);
+        gs.area.head.parts.get(5).setYposition(200);
 
-        area.head.head.setXposition(200);
-        area.head.head.setYposition(200);
-        area.head.parts.get(5).setXposition(200);
-        area.head.parts.get(5).setYposition(200);
+        System.out.println(gs.area.head.head.getXposition());
+        gs.area.head.parts.get(5).getXposition();
 
-        area.update();
-        System.out.println(area.hitItself());
+       // gs.area.update();
+        System.out.println(gs.area.hitItself());
 
-        assertTrue(area.gameOver());
+        assertTrue(gs.area.gameOver());
     } */
     @Test
     public void gameOverReturnTrueWhenOver() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
-
         gs.area.gameOver = true;
         assertTrue(gs.area.gameOver());
     }
-    @Test
-    public void goUpPutSnakeGoUp(){
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
+    @Test
+    public void goUpPutSnakeGoUp() {
 
         gs.goUp();
 
         assertEquals(gs.area.head.direction, "UP");
 
     }
-    @Test
-    public void goDownPutSnakeGoDown(){
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
+    @Test
+    public void goDownPutSnakeGoDown() {
 
         gs.goDown();
 
         assertEquals(gs.area.head.direction, "DOWN");
 
     }
-    @Test
-    public void goRightPutSnakeGoRight(){
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
+    @Test
+    public void goRightPutSnakeGoRight() {
 
         gs.goRigh();
 
         assertEquals(gs.area.head.direction, "RIGHT");
 
     }
-    @Test
-    public void goLeftPutSnakeGoLeft(){
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
+    @Test
+    public void goLeftPutSnakeGoLeft() {
 
         gs.goLeft();
 
         assertEquals(gs.area.head.direction, "LEFT");
 
     }
-
 }
 

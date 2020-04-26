@@ -2,14 +2,14 @@
 package snakegame.domain;
 
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 import javafx.scene.layout.AnchorPane;
 import snakegame.ui.GameBoardViewController;
 
-import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -25,18 +25,17 @@ public class FoodTest {
     public void setUp() {
         pane = new AnchorPane();
         controller = new GameBoardViewController();
-        controller.borders=true;
-        controller.theme="1";
+        controller.borders = true;
+        controller.theme = "1";
         gs = new GameService(pane, controller);
+        gs.addGameArea();
+        gs.move();
+        gs.enterPressed();
 
     }
 
     @Test
-    public void afterEatingFoodPointsIncrease(){
-
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
+    public void afterEatingFoodPointsIncrease() {
 
         gs.area.addFood();
 
@@ -50,27 +49,20 @@ public class FoodTest {
 
         assertEquals(50, gs.area.getPoints());
     }
-    @Test
-    public void foodIsColorfullWithTheme1(){
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
+    @Test
+    public void foodIsColorfullWithTheme1() {
 
         gs.area.addFood();
         gs.area.food.setColor();
 
-        boolean result = gs.area.food.color!=Color.BLACK;
+        boolean result = gs.area.food.color != Color.BLACK;
 
         assertTrue(result);
     }
 
     @Test
     public void returnTrueIfFoodWasEaten() {
-
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
 
         gs.area.addFood();
 
@@ -108,11 +100,8 @@ public class FoodTest {
     }
 
     @Test
-    public void ateFoodReturnFalseIfThereIsNoFood()  {
+    public void ateFoodReturnFalseIfThereIsNoFood() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
 
         gs.area.food = null;
 
@@ -121,10 +110,6 @@ public class FoodTest {
 
     @Test
     public void beforeEatingPointsAreaZero() {
-
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
 
         assertEquals(0, gs.area.getPoints());
 

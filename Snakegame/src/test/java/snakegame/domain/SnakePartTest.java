@@ -23,14 +23,14 @@ public class SnakePartTest {
         controller.borders=true;
         controller.theme="1";
         gs = new GameService(pane, controller);
+        gs.addGameArea();
+        gs.move();
+        gs.enterPressed();
     }
 
     @Test
     public void switchingHeadDirectionSwitchAlsoAllPartsDirection() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
 
         gs.area.head.switchDirection("UP");
         assertEquals("UP", gs.area.head.parts.get(1).getDirection());
@@ -48,10 +48,6 @@ public class SnakePartTest {
     @Test
     public void goingUpMakesYSmaller() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
-
         SnakePart part = gs.area.head.parts.get(1);
 
         part.goUp();
@@ -65,9 +61,6 @@ public class SnakePartTest {
     @Test
     public void goingDownMakesYBigger() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
 
         SnakePart part = gs.area.head.parts.get(1);
 
@@ -81,9 +74,6 @@ public class SnakePartTest {
     @Test
     public void goingLeftMakesXSmaller() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
 
         SnakePart part = gs.area.head.parts.get(1);
 
@@ -97,9 +87,6 @@ public class SnakePartTest {
     @Test
     public void goingRightMakesXBigger() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
 
         SnakePart part = gs.area.head.parts.get(1);
 
@@ -113,9 +100,6 @@ public class SnakePartTest {
     @Test
     public void hittingRightWallWithoutBordersPutsSnakeToLeftWall() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
 
         gs.area.head.head.setNewYposition(200);
         gs.area.head.head.setNewXposition(gs.area.getAreaWidth());
@@ -127,9 +111,6 @@ public class SnakePartTest {
     @Test
     public void hittingLeftWallWithoutBordersPutsSnakeToRightWall() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
 
         gs.area.head.head.setNewYposition(200);
         gs.area.head.head.setNewXposition(0);
@@ -141,10 +122,6 @@ public class SnakePartTest {
     @Test
     public void hittingUpWallWithoutBordersPutsSnakeToDownWall() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
-
         gs.area.head.head.setNewYposition(0);
         gs.area.head.head.setNewXposition(200);
         gs.area.head.parts.get(0).goUp();
@@ -155,9 +132,6 @@ public class SnakePartTest {
     @Test
     public void hittingDownWallWithoutBordersPutsSnakeToUpWall() {
 
-        gs.addGameArea();
-        gs.move();
-        gs.enterPressed();
 
         gs.area.head.head.setNewYposition(gs.area.getAreaLength());
         gs.area.head.head.setNewXposition(200);

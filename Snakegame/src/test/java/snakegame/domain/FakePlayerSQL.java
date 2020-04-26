@@ -1,10 +1,8 @@
 package snakegame.domain;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
-
 import javafx.collections.ObservableList;
 import snakegame.dao.DaoPlayer;
 
@@ -14,6 +12,7 @@ public class FakePlayerSQL implements DaoPlayer {
     List<Player> players = new ArrayList<>();
 
     public FakePlayerSQL() {
+
         players.add(new Player("lento", "kone", 0));
     }
 
@@ -85,9 +84,7 @@ public class FakePlayerSQL implements DaoPlayer {
                 list.add(new Player(p.username, p.password, p.highscore));
             }
         }
-
         return list;
-
     }
 }
 

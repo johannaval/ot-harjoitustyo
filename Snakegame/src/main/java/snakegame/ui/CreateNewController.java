@@ -1,6 +1,9 @@
 package snakegame.ui;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URL;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,21 +42,6 @@ public class CreateNewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        /*
-        String urlForDao = "";
-
-        try (InputStream input = new FileInputStream("config.properties")) {
-
-            Properties prop = new Properties();
-            prop.load(input);
-
-            System.out.println(prop.getProperty("urlForDao") + "!!");
-            urlForDao = prop.getProperty("urlForDao");
-
-        } catch (IOException ex) {
-            System.out.println("?? häh");
-        }
-
 
 
         Properties properties = new Properties();
@@ -61,22 +49,17 @@ public class CreateNewController implements Initializable {
         try {
             properties.load(new FileInputStream("config.properties"));
         } catch (IOException e) {
-            System.out.println("Konfiguroinnissa virhe! 2 ");
+            System.out.println("Konfiguroinnissa virhe!");
         }
 
         String urlForDao = properties.getProperty("urlForDao");
 
-        System.out.println(urlForDao);
-
-
-        System.out.printf(properties.getProperty("testi1"));
-*/
 
         this.livc = new LogInViewController();
         PlayerService pService = null;
 
-        //    PlayerSQL playerSQL = new PlayerSQL(urlForDao);
-        PlayerSQL playerSQL = new PlayerSQL();
+        PlayerSQL playerSQL = new PlayerSQL(urlForDao);
+    //    PlayerSQL playerSQL = new PlayerSQL();
 
 
         pService = new PlayerService(playerSQL, livc);

@@ -33,7 +33,6 @@ public class PlayerSQL implements DaoPlayer {
     /**
      * Avaa tietokanta-yhteyden
      *
-     * @throws SQLException
      */
     public void getConnection() {
 
