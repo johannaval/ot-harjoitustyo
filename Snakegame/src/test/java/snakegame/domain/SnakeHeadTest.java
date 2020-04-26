@@ -27,7 +27,7 @@ public class SnakeHeadTest {
     @Test
     public void atTheBeginningSnakeHeadGetRightNumberOfSnakeparts()  {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -37,7 +37,7 @@ public class SnakeHeadTest {
     @Test
     public void settingHeadsDirectionItGetsRightDirection()  {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 

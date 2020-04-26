@@ -29,7 +29,7 @@ public class PlayerService {
      * @return palauttaa true, jos kirjautuminen onnistuu, false jos ei ja samalla katsoo, onko nimellä jo käyttäjä, jos on, kutsuu se controlleria asettamaan
      * virheviestiin salasanan olevan väärin
      */
-    public boolean login(String username, String password)  {
+    public boolean login(String username, String password) {
 
         if (dao.isLogInOK(username, password) == null) {
 
@@ -63,7 +63,7 @@ public class PlayerService {
     /**
      * Asettaa ennätyksen käyttäjälle, jos uusi tulos on parempi kuin vanha ennätys, kutsuu myös Dao-rajapinnan metodia päivittämään tuloksen
      *
-     * @param score
+     * @param score uusi tulos
      */
     public void setHighscore(int score) {
 
@@ -89,7 +89,6 @@ public class PlayerService {
      */
     public void logout() {
 
-        //  dao.stopConnection();
         loggedIn = null;
     }
 

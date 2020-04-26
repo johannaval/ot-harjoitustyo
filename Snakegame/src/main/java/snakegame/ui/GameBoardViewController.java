@@ -20,12 +20,21 @@ public class GameBoardViewController implements Initializable {
     private GameService service;
     private GameUi application;
     private PlayerService ps;
+    /**
+     * AP, eli AnchorPane, näkymän pohja
+     */
     @FXML
     public AnchorPane AP;
     @FXML
     private Label label;
     private boolean enterPressed;
+    /**
+     * Kertoo, haluaako pelaaja pelata reunoilla vai ilman (true=haluaa, false=ei)
+     */
     public boolean borders;
+    /**
+     * Kertoo pelaajan valitseman teeman (1-3)
+     */
     public String theme;
 
 
@@ -60,7 +69,7 @@ public class GameBoardViewController implements Initializable {
     public void start() {
 
         service = new GameService(AP, (this));
-        service.startGame();
+        service.addGameArea();
         AP.requestFocus();
     }
 
@@ -105,9 +114,8 @@ public class GameBoardViewController implements Initializable {
      * Alustaa PlayerServicen ja kutsuu sitä päivittämään ennätyksen, vaihtaa enterin painamisen falseksi, kutsuu GameUi:ta asettamaan asettamaan  pisteet ja
      * asettamaan näkymäksi top-listan
      * @param points pisteet, jotka pelaaja juuri sai
-     * @throws IOException heittää poikkeuksen, jos I/O-poikkeus sattuu
      */
-    public void handleTopList(int points) throws IOException {
+    public void handleTopList(int points) {
 
         PlayerService ps = application.ps();
         this.ps = application.ps();

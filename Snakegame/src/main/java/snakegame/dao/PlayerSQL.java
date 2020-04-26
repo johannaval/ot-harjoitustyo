@@ -46,20 +46,7 @@ public class PlayerSQL implements DaoPlayer {
     }
 
     /**
-     * Sulkee tietokanta-yhteyden
-     *
-     * @throws SQLException
-     */
-    public void stopConnection()  {
-
-        //   statement.close();
-        //  db.close();
-    }
-
-    /**
      * Luo tietokantataulun
-     *
-     * @throws SQLException
      */
     @Override
     public void createTable() {
@@ -72,7 +59,7 @@ public class PlayerSQL implements DaoPlayer {
             s.close();
 
         } catch (SQLException throwables) {
-            System.out.println("virhe");
+            System.out.println("Tietokantataulun luomisessa tapahtui virhe!");
         }
     }
 
@@ -80,7 +67,6 @@ public class PlayerSQL implements DaoPlayer {
      * Lisää pelaajan tietokantatauluun
      *
      * @param player pelaaja
-     * @throws SQLException
      */
     @Override
     public void create(Player player) {
@@ -97,7 +83,7 @@ public class PlayerSQL implements DaoPlayer {
             ps.close();
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println("Käyttäjän luomisessa tapahtui virhe!");
         }
     }
 
@@ -106,7 +92,6 @@ public class PlayerSQL implements DaoPlayer {
      *
      * @param username käyttäjänimi
      * @return null, jos pelaajaa ei ole, muuten palauttaa pelaajan
-     * @throws SQLException
      */
     @Override
     public Player findUser(String username) {
@@ -131,7 +116,7 @@ public class PlayerSQL implements DaoPlayer {
             return pp;
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println("Käyttäjän etsimisessa tapahtui virhe!");
 
         }
         return null;
@@ -143,7 +128,6 @@ public class PlayerSQL implements DaoPlayer {
      *
      * @param player pelaaja
      * @return palauttaa pelaajan, jonka ennätys päivitettiin
-     * @throws SQLException
      */
     @Override
     public Player update(Player player) {
@@ -163,7 +147,7 @@ public class PlayerSQL implements DaoPlayer {
             return player;
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println("Käyttäjän tietojen päivittämisessä tapahtui virhe!");
         }
         return null;
     }
@@ -174,7 +158,6 @@ public class PlayerSQL implements DaoPlayer {
      * @param username käyttäjänimi
      * @param passw    salasana
      * @return pelauttaa null, jos käyttäjää ei ole olemassa, muuten palauttaa pelaajan, jonka kirjaantuminen onnistui
-     * @throws SQLException
      */
     @Override
     public Player isLogInOK(String username, String passw) {
@@ -200,7 +183,7 @@ public class PlayerSQL implements DaoPlayer {
             }
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println("Kirjautumisessa tapahtui virhe!");
         }
         return null;
     }
@@ -231,16 +214,13 @@ public class PlayerSQL implements DaoPlayer {
 
 
         } catch (SQLException throwables) {
-            System.out.println("täs");
-            throwables.printStackTrace();
+            System.out.println("Tietokannan tietojen hakemisessa tapahtui virhe!");
         }
         return true;
     }
 
     /**
      * Tyhjentää Players taulun tiedot
-     *
-     * @throws SQLException
      */
     @Override
     public void clear() {
@@ -248,7 +228,7 @@ public class PlayerSQL implements DaoPlayer {
         try {
             statement.execute("DROP TABLE IF EXISTS PLAYERS");
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println("Tietokannan tyhjentämisessä tapahtui virhe!");
         }
     }
 
@@ -273,7 +253,7 @@ public class PlayerSQL implements DaoPlayer {
             return list;
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println("Top-listan hakemisessa tapahtui virhe!");
         }
         return null;
     }

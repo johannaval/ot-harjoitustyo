@@ -7,19 +7,31 @@ import javafx.scene.shape.Rectangle;
  */
 public class SnakePart extends Rectangle {
 
+    /**
+     * Palan uusi X:arvo
+     */
     public int newX;
+    /**
+     * Palan uusi Y:arvo
+     */
     public int newY;
+    /**
+     * Palan X:arvo ennen päivitystä
+     */
     public int x;
+    /**
+     * Palan Y:arvo ennen päivitystä
+     */
     public int y;
     private String up = "UP";
     private String down = "DOWN";
     private String right = "RIGHT";
     private String left = "LEFT";
     private String direction = "RIGHT";
-    SnakePart previous;
-    int maxSizeX;
-    int maxSizeY;
-    double speed;
+    private SnakePart previous;
+    private int maxSizeX;
+    private int maxSizeY;
+    private double speed;
     private Area area;
 
 
@@ -60,7 +72,7 @@ public class SnakePart extends Rectangle {
     }
 
     /**
-     * Vaihtaa madon suuntaa uuden suunnan mukaan
+     * Kutsuu metodia, joka vaihtaa madon suuntaa, ja päivittää uuden paikan
      */
     public void switchDirection() {
 
@@ -73,22 +85,30 @@ public class SnakePart extends Rectangle {
             this.newY = previous.y;
 
         } else {
-            switch (direction) {
-                case "UP":
-                    goUp();
-                    break;
-                case "LEFT":
-                    goLeft();
-                    break;
-                case "RIGHT":
-                    goRight();
-                    break;
-                case "DOWN":
-                    goDown();
-                    break;
-            }
+            moveWithDirection();
         }
         newPosition();
+    }
+
+    /**
+     * Ohjaa madon menemään suunnan mukaan
+     */
+    public void moveWithDirection() {
+
+        switch (direction) {
+            case "UP":
+                goUp();
+                break;
+            case "LEFT":
+                goLeft();
+                break;
+            case "RIGHT":
+                goRight();
+                break;
+            case "DOWN":
+                goDown();
+                break;
+        }
     }
 
     /**

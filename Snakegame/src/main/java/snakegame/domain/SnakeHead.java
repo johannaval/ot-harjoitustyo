@@ -1,7 +1,6 @@
 package snakegame.domain;
 
 import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 
 /**
@@ -9,13 +8,25 @@ import java.util.ArrayList;
  */
 public class SnakeHead {
 
+    /**
+     * Lista madon osista (vartalo)
+     */
     public ArrayList<SnakePart> parts = new ArrayList<>();
+    /**
+     * Madon pää
+     */
     public SnakePart head;
+    /**
+     * Madon vartalo
+     */
     public SnakePart body;
-    public int x;
-    public int y;
-    public Area area;
-    public int size;
+    private int x;
+    private int y;
+    private Area area;
+    private int size;
+    /**
+     * kertoo madon suunnan
+     */
     public String direction;
 
     public SnakeHead(int size, Area area) {

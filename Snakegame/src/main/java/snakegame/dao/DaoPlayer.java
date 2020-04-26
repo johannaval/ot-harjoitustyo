@@ -10,7 +10,7 @@ public interface DaoPlayer {
 
     void create(Player player);
 
-    Player update(Player player) ;
+    Player update(Player player);
 
     void clear();
 
@@ -23,8 +23,6 @@ public interface DaoPlayer {
     void createTable();
 
     void getConnection();
-
-    void stopConnection();
 
     ObservableList topList(ObservableList list);
 }

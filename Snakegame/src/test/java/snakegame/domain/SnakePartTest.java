@@ -28,7 +28,7 @@ public class SnakePartTest {
     @Test
     public void switchingHeadDirectionSwitchAlsoAllPartsDirection() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -48,7 +48,7 @@ public class SnakePartTest {
     @Test
     public void goingUpMakesYSmaller() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -65,7 +65,7 @@ public class SnakePartTest {
     @Test
     public void goingDownMakesYBigger() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -81,7 +81,7 @@ public class SnakePartTest {
     @Test
     public void goingLeftMakesXSmaller() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -97,7 +97,7 @@ public class SnakePartTest {
     @Test
     public void goingRightMakesXBigger() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -113,7 +113,7 @@ public class SnakePartTest {
     @Test
     public void hittingRightWallWithoutBordersPutsSnakeToLeftWall() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -127,7 +127,7 @@ public class SnakePartTest {
     @Test
     public void hittingLeftWallWithoutBordersPutsSnakeToRightWall() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -141,7 +141,7 @@ public class SnakePartTest {
     @Test
     public void hittingUpWallWithoutBordersPutsSnakeToDownWall() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -155,7 +155,7 @@ public class SnakePartTest {
     @Test
     public void hittingDownWallWithoutBordersPutsSnakeToUpWall() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 

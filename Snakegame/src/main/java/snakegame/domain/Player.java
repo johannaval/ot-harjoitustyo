@@ -6,9 +6,18 @@ package snakegame.domain;
  */
 public class Player {
 
+    /**
+     * Pelaajan käyttäjänimi
+     */
     public String username;
+    /**
+     * Pelaajan salasana
+     */
     public String password;
-    int highscore;
+    /**
+     * Pelaajan ennätys
+     */
+    public int highscore;
 
     public Player(String username, String password, int highscore) {
 

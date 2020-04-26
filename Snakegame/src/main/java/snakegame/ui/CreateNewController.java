@@ -1,8 +1,6 @@
 package snakegame.ui;
 
-
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -77,13 +75,11 @@ public class CreateNewController implements Initializable {
         this.livc = new LogInViewController();
         PlayerService pService = null;
 
-    //    PlayerSQL playerSQL = new PlayerSQL(urlForDao);
+        //    PlayerSQL playerSQL = new PlayerSQL(urlForDao);
         PlayerSQL playerSQL = new PlayerSQL();
 
 
         pService = new PlayerService(playerSQL, livc);
-
-        System.out.println("! " + pService);
 
 
         this.service = pService;

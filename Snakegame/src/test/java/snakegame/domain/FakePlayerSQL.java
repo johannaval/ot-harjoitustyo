@@ -77,12 +77,6 @@ public class FakePlayerSQL implements DaoPlayer {
     }
 
     @Override
-    public void stopConnection() {
-
-
-    }
-
-    @Override
     public ObservableList topList(ObservableList list) {
 
         for (Player p : players) {

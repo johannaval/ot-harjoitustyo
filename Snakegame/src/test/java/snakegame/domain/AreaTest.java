@@ -28,7 +28,7 @@ public class AreaTest {
     @Test
     public void areaGetRightNumberOfSnakeparts() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -38,7 +38,7 @@ public class AreaTest {
     @Test
     public void areaHaveRightLength() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -49,7 +49,7 @@ public class AreaTest {
     @Test
     public void areaHaveRightWidth() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -59,7 +59,7 @@ public class AreaTest {
     @Test
     public void pointsTextGetRightColorByTheme(){
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -76,7 +76,7 @@ public class AreaTest {
     @Test
     public void notHittingTheWallWillContinueTheGame() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -89,7 +89,7 @@ public class AreaTest {
     @Test
     public void hittingTheWallWillReturnTrue() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
         gs.withBorders=true;
@@ -140,7 +140,7 @@ public class AreaTest {
     @Test
     public void hittingEdgeWithoutBoardersWillNotEndTheGame() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
         gs.withBorders=false;
@@ -156,7 +156,7 @@ public class AreaTest {
     @Test
     public void hittingItselfWillReturnTrue() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -196,7 +196,7 @@ public class AreaTest {
     @Test
     public void gameOverReturnTrueWhenOver() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -206,7 +206,7 @@ public class AreaTest {
     @Test
     public void goUpPutSnakeGoUp(){
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -218,7 +218,7 @@ public class AreaTest {
     @Test
     public void goDownPutSnakeGoDown(){
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -230,7 +230,7 @@ public class AreaTest {
     @Test
     public void goRightPutSnakeGoRight(){
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -242,7 +242,7 @@ public class AreaTest {
     @Test
     public void goLeftPutSnakeGoLeft(){
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 

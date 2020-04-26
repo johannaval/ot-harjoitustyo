@@ -136,29 +136,4 @@ public class LogInViewController implements Initializable {
         error.setText("Wrong password!");
 
     }
-
-
-    public String getConfigProperties() {
-
-        String db = "";
-
-        try (InputStream input = LogInViewController.class.getClassLoader().getResourceAsStream("config.properties")) {
-
-            Properties prop = new Properties();
-
-            if (input == null) {
-                System.out.println("Sorry, unable to find config.properties");
-                return null;
-            }
-            prop.load(input);
-
-            db = prop.getProperty("urlForDao");
-            System.out.println(prop.getProperty("urlForDao"));
-
-        } catch (IOException ex) {
-            System.out.println("noupp :(");
-            return null;
-        }
-        return db;
-    }
 }

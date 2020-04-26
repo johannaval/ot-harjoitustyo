@@ -63,7 +63,7 @@ public class GameService {
     /**
      * Alustaa pelialueen
      */
-    public void startGame() {
+    public void addGameArea() {
 
         this.area = new Area(400, 600, pane);
 
@@ -72,7 +72,7 @@ public class GameService {
 
     /**
      * Kutsuu metodia withBorders() asettamaan reunat mikäli pelaaja halusi, kutsuu theme() metodia asettamaan teman, lisää
-     * pelialueelle ruoan, hoitaa madon liikkumisen ja päivittämisen sekä lisää pisteet näkymään
+     * pelialueelle ruoan ja madon, lisää pisteet näkymään, sekä kutsuu startTimer() metodia päivittämään peliä
      */
     public void move() {
 
@@ -93,13 +93,15 @@ public class GameService {
 
     }
 
+    /**
+     * Käynnistä timerin, jonka avulla peli etenee ja mato päivittyy.
+     */
     public void startTimer() {
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                int points = area.getPoints();
-                text.setText("Points: " + points);
+                text.setText("Points: " + area.getPoints());
                 if (area.gameOver() == false) {
                     if (now - start > 16000000) {
                         area.update();
@@ -107,11 +109,7 @@ public class GameService {
                     }
                 } else {
                     stop();
-                    try {
-                        gameIsOver();
-                    } catch (SQLException | IOException throwables) {
-                        throwables.printStackTrace();
-                    }
+                    gameIsOver();
                 }
             }
         };
@@ -122,17 +120,15 @@ public class GameService {
     /**
      * Asettaa gameOver booleaniksi true ja entePressed false, poistaa pelialueelta kaiken, ja kutsuu controlleria
      * hoitamaan top-listan, jolle annetaan parametrina juuri saadut pisteet
-     *
-     * @throws SQLException
-     * @throws IOException
      */
-    public void gameIsOver() throws SQLException, IOException {
+    public void gameIsOver() {
 
         this.points = area.getPoints();
         gameOver = true;
         area.enterPressed = false;
         pane.getChildren().removeAll();
         controller.handleTopList(points);
+
     }
 
     /**

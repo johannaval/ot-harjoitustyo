@@ -25,6 +25,9 @@ import snakegame.domain.PlayerService;
 public class TopListViewController implements Initializable {
 
     private GameUi application;
+    /**
+     * AP, eli AnchorPane, näkymän pohja
+     */
     @FXML
     public AnchorPane AP;
     @FXML
@@ -52,34 +55,27 @@ public class TopListViewController implements Initializable {
 
     /**
      * Sovellus asettaa näkymäksi tämän näkymän
-     * Kutsuu metodia setTopList() hakemaan ennätykset Daolta
+     * Hakee ennätykset Daolta ja asettaa ne listalle
      *
      * @param application Parametrina vaihdosta vastaava luokka
      */
     public void setApplication(GameUi application) {
 
         this.application = application;
-        setTopList();
-        lastScore.setText("You got " + application.getLastPoints() + " points!");
-    }
-
-    public void setTopList() {
-
         PlayerService ps = application.ps();
 
         this.topList = ps.topList(topList);
-
 
         highscore.setCellValueFactory(new PropertyValueFactory<>("highscore"));
         username.setCellValueFactory(new PropertyValueFactory<>("username"));
         TopList.setItems(topList);
 
-        System.out.println(topList.size());
+        lastScore.setText("You got " + application.getLastPoints() + " points!");
     }
 
 
     @FXML
-    private void handleExit(ActionEvent event){
+    private void handleExit(ActionEvent event) {
 
         PlayerService ps = application.ps();
         ps.logout();

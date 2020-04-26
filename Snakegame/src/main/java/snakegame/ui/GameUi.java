@@ -22,7 +22,13 @@ public class GameUi extends Application {
     private Scene sceneGameBoard;
     private PlayerService ps;
     private int lastPoints = 0;
+    /**
+     * Kertoo, haluaako pelaaja pelata reunoilla vai ilman, (true=haluaa), (false=ei)
+     */
     public boolean borders = false;
+    /**
+     * Kertoo pelaajan valitseman teeman (1-3)
+     */
     public String theme;
 
 
@@ -61,26 +67,31 @@ public class GameUi extends Application {
 
     /**
      * Alustaa kirjautumis- ja uuden käyttäjänluontinäkymät
-     *
-     * @throws Exception heittää poikkeuksen, jos lataaminen epäonnistuu
      */
     @Override
-    public void init() throws Exception {
+    public void init() {
 
-        FXMLLoader loginSceneLoader = new FXMLLoader(getClass().getResource("/fxml/LogInView.fxml"));
-        Parent loginPane = loginSceneLoader.load();
-        LogInViewController loginSceneController = loginSceneLoader.getController();
-        loginSceneController.setApplication(this);
-        sceneLogin = new Scene(loginPane);
+        try {
+            FXMLLoader loginSceneLoader = new FXMLLoader(getClass().getResource("/fxml/LogInView.fxml"));
+            Parent loginPane = null;
+            loginPane = loginSceneLoader.load();
+            LogInViewController loginSceneController = loginSceneLoader.getController();
+            loginSceneController.setApplication(this);
+            sceneLogin = new Scene(loginPane);
+        } catch (IOException e) {
+            System.out.println("Kirjautumisnäkymän lataamisessa tapahtui virhe!");
+        }
 
-        FXMLLoader newUserSceneLoader = new FXMLLoader(getClass().getResource("/fxml/CreateNew.fxml"));
-        Parent newUserPane = newUserSceneLoader.load();
-        CreateNewController newUserSceneController = newUserSceneLoader.getController();
-        newUserSceneController.setApplication(this);
-        sceneCreateNew = new Scene(newUserPane);
-
+        try {
+            FXMLLoader newUserSceneLoader = new FXMLLoader(getClass().getResource("/fxml/CreateNew.fxml"));
+            Parent newUserPane = newUserSceneLoader.load();
+            CreateNewController newUserSceneController = newUserSceneLoader.getController();
+            newUserSceneController.setApplication(this);
+            sceneCreateNew = new Scene(newUserPane);
+        } catch (IOException e) {
+            System.out.println("Käyttäjän luomis-näkymän lataamisessa tapahtui virhe!");
+        }
     }
-
 
     /**
      * Kertoo vaihtamisesta huolehtivalle oliolle vaihtaa kirjautumisnäkymään
@@ -104,58 +115,68 @@ public class GameUi extends Application {
 
     /**
      * alustaa GameScenen eli pelivalikko näkymän
-     *
-     * @throws IOException heittää I/O-poikkeuksen, jos lataaminen ei onnistu
      */
-    public void setGameScene() throws IOException {
+    public void setGameScene() {
 
-        FXMLLoader gameStartLoader = new FXMLLoader(getClass().getResource("/fxml/GameView.fxml"));
-        Parent gamePane = gameStartLoader.load();
-        GameViewController gameSceneController = gameStartLoader.getController();
-        gameSceneController.setApplication(this);
-        sceneGame = new Scene(gamePane);
-        stage.setResizable(false);
+        try {
+            FXMLLoader gameStartLoader = new FXMLLoader(getClass().getResource("/fxml/GameView.fxml"));
+            Parent gamePane = null;
+            gamePane = gameStartLoader.load();
+            GameViewController gameSceneController = gameStartLoader.getController();
+            gameSceneController.setApplication(this);
+            sceneGame = new Scene(gamePane);
+            stage.setResizable(false);
 
-        stage.setScene(sceneGame);
-        stage.setTitle("Start!");
-
+            stage.setScene(sceneGame);
+            stage.setTitle("Start!");
+        } catch (IOException e) {
+            System.out.println("Pelivalikon lataamisessa tapahtui virhe!");
+        }
     }
 
     /**
      * alustaa TopListScenen eli top-lista näkymän
-     *
-     * @throws IOException heittää I/O-poikkeuksen, jos lataaminen ei onnistu
      */
-    public void setTopListScene() throws IOException {
+    public void setTopListScene() {
 
-        FXMLLoader toplistLoader = new FXMLLoader(getClass().getResource("/fxml/TopListView.fxml"));
-        Parent listPane = toplistLoader.load();
-        TopListViewController listSceneController = toplistLoader.getController();
-        listSceneController.setApplication(this);
-        sceneHighscore = new Scene(listPane);
-        stage.setResizable(false);
+        try {
+            FXMLLoader toplistLoader = new FXMLLoader(getClass().getResource("/fxml/TopListView.fxml"));
+            Parent listPane = null;
+            listPane = toplistLoader.load();
+            TopListViewController listSceneController = toplistLoader.getController();
+            listSceneController.setApplication(this);
+            sceneHighscore = new Scene(listPane);
+            stage.setResizable(false);
 
-        stage.setScene(sceneHighscore);
-        stage.setTitle("Score board");
+            stage.setScene(sceneHighscore);
+            stage.setTitle("Score board");
+
+        } catch (IOException e) {
+            System.out.println("Top-lista näkymän lataamisessa tapahtui virhe!");
+        }
     }
 
     /**
      * alustaa GameBoardScenen eli pelinäkymän
      *
-     * @throws IOException heittää I/O-poikkeuksen, jos lataaminen ei onnistu
      */
-    public void setGameBoardScene() throws IOException {
+    public void setGameBoardScene() {
 
-        FXMLLoader gameboardLoader = new FXMLLoader(getClass().getResource("/fxml/GameBoardView.fxml"));
-        Parent gameboardPane = gameboardLoader.load();
-        GameBoardViewController gameBoardSceneController = gameboardLoader.getController();
-        gameBoardSceneController.setApplication(this);
-        sceneGameBoard = new Scene(gameboardPane);
+        try {
+            FXMLLoader gameboardLoader = new FXMLLoader(getClass().getResource("/fxml/GameBoardView.fxml"));
+            Parent gameboardPane = null;
+            gameboardPane = gameboardLoader.load();
+            GameBoardViewController gameBoardSceneController = gameboardLoader.getController();
+            gameBoardSceneController.setApplication(this);
+            sceneGameBoard = new Scene(gameboardPane);
 
-        stage.setScene(sceneGameBoard);
-        stage.setResizable(false);
-        stage.setTitle("Let's play!");
+            stage.setScene(sceneGameBoard);
+            stage.setResizable(false);
+            stage.setTitle("Let's play!");
 
+        } catch (IOException e) {
+            System.out.println("Pelialueen lataamisessa tapahtui virhe!");
+        }
     }
 
     /**

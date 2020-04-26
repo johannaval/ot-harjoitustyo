@@ -34,7 +34,7 @@ public class FoodTest {
     @Test
     public void afterEatingFoodPointsIncrease(){
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -53,7 +53,7 @@ public class FoodTest {
     @Test
     public void foodIsColorfullWithTheme1(){
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -68,7 +68,7 @@ public class FoodTest {
     @Test
     public void returnTrueIfFoodWasEaten() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -110,7 +110,7 @@ public class FoodTest {
     @Test
     public void ateFoodReturnFalseIfThereIsNoFood()  {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -122,7 +122,7 @@ public class FoodTest {
     @Test
     public void beforeEatingPointsAreaZero() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 

@@ -26,7 +26,7 @@ public class GameServiceTest {
     @Test
     public void atTheBeginningDirectionIsRight() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -36,7 +36,7 @@ public class GameServiceTest {
     @Test
     public void atTheBeginningPointsAreZero() {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
@@ -46,7 +46,7 @@ public class GameServiceTest {
     @Test
     public void atTheBeginningBooleanGameOverIsFalse()  {
 
-        gs.startGame();
+        gs.addGameArea();
         gs.move();
         gs.enterPressed();
 
