@@ -1,11 +1,16 @@
 
 package snakegame.domain;
 
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import javafx.scene.layout.AnchorPane;
 import snakegame.ui.GameBoardViewController;
+
+import java.awt.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -19,6 +24,9 @@ public class FoodTest {
     @Before
     public void setUp() {
         pane = new AnchorPane();
+        controller = new GameBoardViewController();
+        controller.borders=true;
+        controller.theme="1";
         gs = new GameService(pane, controller);
 
     }
@@ -41,6 +49,20 @@ public class FoodTest {
         gs.area.update();
 
         assertEquals(50, gs.area.getPoints());
+    }
+    @Test
+    public void foodIsColorfullWithTheme1(){
+
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        gs.area.addFood();
+        gs.area.food.setColor();
+
+        boolean result = gs.area.food.color!=Color.BLACK;
+
+        assertTrue(result);
     }
 
     @Test

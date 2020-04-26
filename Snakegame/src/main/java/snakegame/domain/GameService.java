@@ -11,7 +11,9 @@ import snakegame.ui.GameBoardViewController;
 import java.io.IOException;
 import java.sql.SQLException;
 
-
+/**
+ * Pitää huolta peli/sovelluslogiikasta
+ */
 public class GameService {
 
     @FXML
@@ -26,6 +28,8 @@ public class GameService {
     public int points;
     public GameBoardViewController controller;
     public Text text;
+    public boolean withBorders;
+    public String theme;
 
     public GameService(AnchorPane pane, GameBoardViewController controller) {
         this.pane = pane;
@@ -37,27 +41,65 @@ public class GameService {
         this.controller = controller;
     }
 
+    /**
+     * Katsoo, halusiko pelaaja pelata reunoilla vai ilman, asettaa pelialueen boolean withBorders arvoksi saadun tuloksen
+     */
+    public void withBorders() {
+
+        this.withBorders = controller.borders;
+        area.withBorders = this.withBorders;
+    }
+
+    /**
+     * Saa controllerilta teeman, jonka tallettaa teemaksi pelialueelle
+     */
+    public void theme() {
+
+        this.theme = controller.theme;
+        area.theme = this.theme;
+        area.setTheme();
+    }
+
+    /**
+     * Alustaa pelialueen
+     */
     public void startGame() {
 
         this.area = new Area(400, 600, pane);
 
     }
 
+
+    /**
+     * Kutsuu metodia withBorders() asettamaan reunat mikäli pelaaja halusi, kutsuu theme() metodia asettamaan teman, lisää
+     * pelialueelle ruoan, hoitaa madon liikkumisen ja päivittämisen sekä lisää pisteet näkymään
+     */
     public void move() {
 
+
+        withBorders();
+        theme();
         area.addFood();
         this.text = new Text(500, 370, "Points: " + area.getPoints());
         text.setStroke(Color.WHITE);
+        if (theme.equals("3")) {
+            text.setStroke(Color.BLACK);
+        }
         pane.getChildren().add(text);
 
         area.addNewSnake(new SnakeHead(50, area));
+
+        startTimer();
+
+    }
+
+    public void startTimer() {
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 int points = area.getPoints();
                 text.setText("Points: " + points);
-
                 if (area.gameOver() == false) {
                     if (now - start > 16000000) {
                         area.update();
@@ -77,6 +119,13 @@ public class GameService {
         area.head.setDirection("RIGHT");
     }
 
+    /**
+     * Asettaa gameOver booleaniksi true ja entePressed false, poistaa pelialueelta kaiken, ja kutsuu controlleria
+     * hoitamaan top-listan, jolle annetaan parametrina juuri saadut pisteet
+     *
+     * @throws SQLException
+     * @throws IOException
+     */
     public void gameIsOver() throws SQLException, IOException {
 
         this.points = area.getPoints();
@@ -86,18 +135,27 @@ public class GameService {
         controller.handleTopList(points);
     }
 
+    /**
+     * Asettaa madon suunnaksi "alas"
+     */
     public void goDown() {
 
         area.head.setDirection("DOWN");
         area.head.switchDirection("DOWN");
     }
 
+    /**
+     * Asettaa madon suunnaksi "oikea"
+     */
     public void goRigh() {
 
         area.head.setDirection("RIGHT");
         area.head.switchDirection("RIGHT");
     }
 
+    /**
+     * Asettaa madon suunnaksi "vasen"
+     */
     public void goLeft() {
 
         area.head.setDirection("LEFT");
@@ -105,6 +163,9 @@ public class GameService {
 
     }
 
+    /**
+     * Asettaa madon suunnaksi "ylös"
+     */
     public void goUp() {
 
         area.head.setDirection("UP");
@@ -112,6 +173,9 @@ public class GameService {
 
     }
 
+    /**
+     * Laittaa enterPressed arvoksi true
+     */
     public void enterPressed() {
 
         area.enterPressed = true;

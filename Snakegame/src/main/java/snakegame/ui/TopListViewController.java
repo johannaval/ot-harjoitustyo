@@ -2,11 +2,9 @@ package snakegame.ui;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +19,9 @@ import snakegame.domain.Player;
 import snakegame.domain.PlayerService;
 
 
+/**
+ * Top-listanäkymästä vastaava luokka (controller)
+ */
 public class TopListViewController implements Initializable {
 
     private GameUi application;
@@ -35,44 +36,50 @@ public class TopListViewController implements Initializable {
     @FXML
     private TableColumn<Player, Integer> highscore;
     private String tableUrl = "jdbc:sqlite:testsql.db";
+    private ObservableList<Player> topList = FXCollections.observableArrayList();
 
-
-    ObservableList<Player> topList = FXCollections.observableArrayList();
-
+    /**
+     * Metodi
+     *
+     * @param url url
+     * @param rb  emt?
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         AP.setFocusTraversable(true);
+    }
 
-        try {
-            Connection db = DriverManager.getConnection(tableUrl);
-            ResultSet rs = db.createStatement().executeQuery("select * from Players order by highscore desc limit 10");
+    /**
+     * Sovellus asettaa näkymäksi tämän näkymän
+     * Kutsuu metodia setTopList() hakemaan ennätykset Daolta
+     *
+     * @param application Parametrina vaihdosta vastaava luokka
+     */
+    public void setApplication(GameUi application) {
 
-            while (rs.next()) {
+        this.application = application;
+        setTopList();
+        lastScore.setText("You got " + application.getLastPoints() + " points!");
+    }
 
-                if (rs.getInt("highscore") > 0) {
-                    topList.add(new Player(rs.getString("username"), rs.getString("password"), rs.getInt("highscore")));
-                }
-            }
-            db.close();
+    public void setTopList() {
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        PlayerService ps = application.ps();
+
+        this.topList = ps.topList(topList);
+
 
         highscore.setCellValueFactory(new PropertyValueFactory<>("highscore"));
         username.setCellValueFactory(new PropertyValueFactory<>("username"));
         TopList.setItems(topList);
+
+        System.out.println(topList.size());
     }
 
-    public void setApplication(GameUi application) {
-
-        this.application = application;
-        lastScore.setText("You got " + application.getLastPoints() + " points!");
-    }
 
     @FXML
-    private void handleExit(ActionEvent event) throws SQLException {
+    private void handleExit(ActionEvent event){
 
         PlayerService ps = application.ps();
         ps.logout();

@@ -6,15 +6,15 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import snakegame.dao.PlayerSQL;
 import snakegame.domain.GameService;
 import snakegame.domain.PlayerService;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * Pelialue-näkymästä vastaava luokka (controller)
+ */
 public class GameBoardViewController implements Initializable {
 
     private GameService service;
@@ -24,9 +24,16 @@ public class GameBoardViewController implements Initializable {
     public AnchorPane AP;
     @FXML
     private Label label;
-    boolean enterPressed;
+    private boolean enterPressed;
+    public boolean borders;
+    public String theme;
 
 
+    /**
+     * kutsuu metodia aloittamaan pelin
+     * @param url url
+     * @param rb ResourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -34,11 +41,21 @@ public class GameBoardViewController implements Initializable {
         start();
     }
 
+    /**
+     * Alustaa GameUi:n applikaatioksi ja tarkistaa siltä, onko pelaaja halunnut reunat, ja minkä teeman hän on valinnut
+     * @param application saa parametrinaan gameUi:n
+     *
+     */
     public void setApplication(GameUi application) {
 
         this.application = application;
+       this.borders=application.borders;
+       this.theme=application.theme;
     }
 
+    /**
+     * Alustaa GameServicen eli pelilogiikasta vastaavan luokan ja aloittaa pelin
+     */
     @FXML
     public void start() {
 
@@ -47,8 +64,12 @@ public class GameBoardViewController implements Initializable {
         AP.requestFocus();
     }
 
+    /**
+     * Kertoo pelilogiikasta vastaavalle luokalle GameServicelle käyttäjän painamista näppäimistä
+     * @param keyEvent näppäinten tapahtumat
+     */
     @FXML
-    public void handleKeyPressed(KeyEvent keyEvent) throws IOException {
+    public void handleKeyPressed(KeyEvent keyEvent)  {
 
 
         if (keyEvent.getCode().equals(KeyCode.ENTER) && this.enterPressed == false) {
@@ -80,7 +101,13 @@ public class GameBoardViewController implements Initializable {
         }
     }
 
-    public void handleTopList(int points) throws SQLException, IOException {
+    /**
+     * Alustaa PlayerServicen ja kutsuu sitä päivittämään ennätyksen, vaihtaa enterin painamisen falseksi, kutsuu GameUi:ta asettamaan asettamaan  pisteet ja
+     * asettamaan näkymäksi top-listan
+     * @param points pisteet, jotka pelaaja juuri sai
+     * @throws IOException heittää poikkeuksen, jos I/O-poikkeus sattuu
+     */
+    public void handleTopList(int points) throws IOException {
 
         PlayerService ps = application.ps();
         this.ps = application.ps();

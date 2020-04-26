@@ -2,28 +2,31 @@ package snakegame.dao;
 
 import java.sql.*;
 
+import javafx.collections.ObservableList;
 import snakegame.domain.Player;
 
 
 public interface DaoPlayer {
 
-    void create(Player player) throws SQLException;
+    void create(Player player);
 
-    Player update(Player player) throws SQLException;
+    Player update(Player player) ;
 
-    void clear() throws SQLException;
+    void clear();
 
-    boolean isThereAccountWithThisName(String username) throws SQLException;
+    boolean isThereAccountWithThisName(String username);
 
-    Player isLogInOK(String username, String passw) throws SQLException;
+    Player isLogInOK(String username, String passw);
 
-    Player findUser(String username) throws SQLException;
+    Player findUser(String username);
 
-    void createTable() throws SQLException;
+    void createTable();
 
-    void getConnection() throws SQLException;
+    void getConnection();
 
-    void stopConnection() throws SQLException;
+    void stopConnection();
+
+    ObservableList topList(ObservableList list);
 }
 
 

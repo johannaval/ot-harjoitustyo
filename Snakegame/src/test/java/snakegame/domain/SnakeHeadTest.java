@@ -17,7 +17,11 @@ public class SnakeHeadTest {
     @Before
     public void setUp() {
         pane = new AnchorPane();
+        controller = new GameBoardViewController();
+        controller.borders=true;
+        controller.theme="1";
         gs = new GameService(pane, controller);
+        gs.withBorders=true;
     }
 
     @Test

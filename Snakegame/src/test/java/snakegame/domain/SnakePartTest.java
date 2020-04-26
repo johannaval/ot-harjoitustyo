@@ -19,6 +19,9 @@ public class SnakePartTest {
     public void setUp() {
 
         pane = new AnchorPane();
+        controller = new GameBoardViewController();
+        controller.borders=true;
+        controller.theme="1";
         gs = new GameService(pane, controller);
     }
 
@@ -108,58 +111,58 @@ public class SnakePartTest {
     }
 
     @Test
-    public void hittingRightWallWithoutEatingFirstFoodPutsSnakeToLeftWall() {
+    public void hittingRightWallWithoutBordersPutsSnakeToLeftWall() {
 
         gs.startGame();
         gs.move();
         gs.enterPressed();
 
         gs.area.head.head.setNewYposition(200);
-        gs.area.head.head.setNewXposition(gs.area.getAreaWidth() - 15);
+        gs.area.head.head.setNewXposition(gs.area.getAreaWidth());
         gs.area.head.parts.get(0).goRight();
 
-        assertEquals(13, gs.area.head.parts.get(0).newX);
+        assertEquals(0, gs.area.head.parts.get(0).newX);
     }
 
     @Test
-    public void hittingLeftWallWithoutEatingFirstFoodPutsSnakeToRightWall() {
+    public void hittingLeftWallWithoutBordersPutsSnakeToRightWall() {
 
         gs.startGame();
         gs.move();
         gs.enterPressed();
 
         gs.area.head.head.setNewYposition(200);
-        gs.area.head.head.setNewXposition(15);
+        gs.area.head.head.setNewXposition(0);
         gs.area.head.parts.get(0).goLeft();
 
-        assertEquals(gs.area.getAreaWidth() - 10, gs.area.head.parts.get(0).newX);
+        assertEquals(600, gs.area.head.parts.get(0).newX);
     }
 
     @Test
-    public void hittingUpWallWithoutEatingFirstFoodPutsSnakeToDownWall() {
+    public void hittingUpWallWithoutBordersPutsSnakeToDownWall() {
 
         gs.startGame();
         gs.move();
         gs.enterPressed();
 
-        gs.area.head.head.setNewYposition(15);
+        gs.area.head.head.setNewYposition(0);
         gs.area.head.head.setNewXposition(200);
         gs.area.head.parts.get(0).goUp();
 
-        assertEquals(gs.area.getAreaLength() - 20, gs.area.head.parts.get(0).newY);
+        assertEquals(400, gs.area.head.parts.get(0).newY);
     }
 
     @Test
-    public void hittingDownWallWithoutEatingFirstFoodPutsSnakeToUpWall() {
+    public void hittingDownWallWithoutBordersPutsSnakeToUpWall() {
 
         gs.startGame();
         gs.move();
         gs.enterPressed();
 
-        gs.area.head.head.setNewYposition(gs.area.getAreaLength() - 30);
+        gs.area.head.head.setNewYposition(gs.area.getAreaLength());
         gs.area.head.head.setNewXposition(200);
         gs.area.head.parts.get(0).goDown();
 
-        assertEquals(13, gs.area.head.parts.get(0).newY);
+        assertEquals(0, gs.area.head.parts.get(0).newY);
     }
 }

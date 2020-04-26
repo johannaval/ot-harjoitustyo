@@ -1,8 +1,12 @@
 package snakegame.domain;
 
 import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 
+/**
+ * Madon päästä vastaava luokka
+ */
 public class SnakeHead {
 
     public ArrayList<SnakePart> parts = new ArrayList<>();
@@ -24,7 +28,7 @@ public class SnakeHead {
         addBody();
     }
 
-    public void addHead() {
+    private void addHead() {
 
         head = new SnakePart(x, y, null, area);
         head.setStroke(Color.AQUA);
@@ -33,7 +37,7 @@ public class SnakeHead {
         this.body = head;
     }
 
-    public void addBody() {
+    private void addBody() {
 
         for (int i = 1; i < size; i++) {
             SnakePart part = new SnakePart(this.x, this.y, body, area);
@@ -43,6 +47,11 @@ public class SnakeHead {
         }
     }
 
+    /**
+     * Vaihtaa madon suunnaksi parametrina saadun suunnan
+     *
+     * @param direction saatu suunta
+     */
     public void switchDirection(String direction) {
 
         for (SnakePart part : parts) {
@@ -50,11 +59,21 @@ public class SnakeHead {
         }
     }
 
+    /**
+     * Asettaa suunnaksi parametrina saadun suunnan
+     *
+     * @param direction asetettava suunta
+     */
     public void setDirection(String direction) {
 
         this.direction = direction;
     }
 
+    /**
+     * Testejä varten oleva metodi
+     *
+     * @return palauttaa suunnan
+     */
     public String getDirection() {
 
         return this.direction;

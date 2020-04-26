@@ -2,6 +2,9 @@ package snakegame.domain;
 
 import javafx.scene.shape.Rectangle;
 
+/**
+ * Madon osista vastaava luokka
+ */
 public class SnakePart extends Rectangle {
 
     public int newX;
@@ -35,113 +38,167 @@ public class SnakePart extends Rectangle {
 
     }
 
+    /**
+     * asettaa uudeksi suunnaksi parametrin suunnan
+     *
+     * @param direction suunta
+     */
     public void setDirection(String direction) {
 
         this.direction = direction;
         switchDirection();
     }
 
+    /**
+     * palauttaa madon suunnan
+     *
+     * @return suunta
+     */
     public String getDirection() {
 
         return this.direction;
     }
 
+    /**
+     * Vaihtaa madon suuntaa uuden suunnan mukaan
+     */
     public void switchDirection() {
 
+        this.speed = area.getSnakeSize() / 200;
         this.x = newX;
         this.y = newY;
-        this.speed = area.getSnakeSize() / 200;
 
         if (previous != null) {
             this.newX = previous.x;
             this.newY = previous.y;
 
         } else {
-
-            if (direction == "UP") {
-                goUp();
-            }
-            if (direction == "LEFT") {
-                goLeft();
-            }
-            if (direction == "RIGHT") {
-                goRight();
-            }
-            if (direction == "DOWN") {
-                goDown();
+            switch (direction) {
+                case "UP":
+                    goUp();
+                    break;
+                case "LEFT":
+                    goLeft();
+                    break;
+                case "RIGHT":
+                    goRight();
+                    break;
+                case "DOWN":
+                    goDown();
+                    break;
             }
         }
         newPosition();
     }
 
+    /**
+     * Päivittää uuden paikan X:llä ja Y:lle
+     */
     public void newPosition() {
 
         setTranslateX(newX);
         setTranslateY(newY);
     }
 
+    /**
+     * Suuntaa matoa ylös pienentäen Y arvoa nopeuden mukaan
+     */
     public void goUp() {
 
         newY = (int) (newY - 2 - speed);
-        if (newY <= 14) {
-            newY = maxSizeY - 20;
+        if (newY <= 1) {
+            newY = maxSizeY;
         }
     }
 
+    /**
+     * Suuntaa matoa alas kasvattaen Y arvoa nopeuden mukaan
+     */
     public void goDown() {
 
         newY = (int) (newY + 2 + speed);
-        if (newY >= maxSizeY - 30) {
-            newY = 13;
+        if (newY >= maxSizeY) {
+            newY = 0;
         }
     }
 
+    /**
+     * Suuntaa matoa vasemmalle pienentäen X arvoa nopeuden mukaan
+     */
     public void goLeft() {
         newX = (int) (newX - 2 - speed);
-        if (newX <= 14) {
-            newX = maxSizeX - 10;
+        if (newX <= 1) {
+            newX = maxSizeX;
         }
     }
 
+    /**
+     * Suuntaa matoa oikealle kasvattaen X arvoa nopeuden mukaan
+     */
     public void goRight() {
         newX = (int) (newX + 2 + speed);
-        if (newX >= maxSizeX - 30) {
-            newX = 13;
+        if (newX >= maxSizeX) {
+            newX = 0;
         }
     }
 
+    /**
+     * palayttaa X:n arvon
+     *
+     * @return X
+     */
     public int getXposition() {
 
         return this.x;
     }
 
+    /**
+     * palauttaa Y:n arvon
+     *
+     * @return Y
+     */
     public int getYposition() {
 
         return this.y;
     }
 
-    //testei varten
+    /**
+     * Metodi testejä varten! Asettaa X:n arvoksi parametrina saadun x:n
+     *
+     * @param x asetettava x
+     */
     public void setXposition(Integer x) {
 
         this.x = x;
     }
 
-    //tstei varten
+    /**
+     * Metodi testejä varten! Asettaa Y:n arvoksi parametrina saadun y:n
+     *
+     * @param y asetettava y
+     */
     public void setYposition(Integer y) {
 
         this.y = y;
     }
 
-    //testei varten
+    /**
+     * Metodi testejä varten! Asettaa X:n arvoksi parametrina saadun x:n
+     *
+     * @param x asetettava x
+     */
     public void setNewXposition(Integer x) {
 
         this.newX = x;
     }
 
-    //tstei varten
+    /**
+     * Metodi testejä varten! Asettaa Y:n arvoksi parametrina saadun y:n
+     *
+     * @param y asetettava y
+     */
     public void setNewYposition(Integer y) {
 
         this.newY = y;
     }
-
 }

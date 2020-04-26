@@ -17,6 +17,9 @@ public class GameServiceTest {
     @Before
     public void setUp() {
         this.pane = new AnchorPane();
+        controller = new GameBoardViewController();
+        controller.borders=true;
+        controller.theme="1";
         this.gs = new GameService(pane, controller);
     }
 

@@ -1,5 +1,6 @@
 package snakegame.domain;
 
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.Pane;
@@ -10,7 +11,9 @@ import java.util.Random;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderWidths;
 
-
+/**
+ * Pelialueesta vastaava luokka
+ */
 public class Area {
 
     private int length;
@@ -22,6 +25,8 @@ public class Area {
     public Food food;
     public boolean enterPressed;
     public boolean gameOver;
+    public boolean withBorders;
+    public String theme;
 
     public Area(Integer length, Integer width, Pane pane) {
 
@@ -29,29 +34,78 @@ public class Area {
         this.width = width;
         this.pane = pane;
         this.points = 0;
-        pane.setMinSize(width, length);
-        pane.setBorder(new Border(new BorderStroke(Color.GREENYELLOW, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
         pane.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
+        pane.setMinSize(width, length);
         enterPressed = false;
         gameOver = false;
     }
 
+    /**
+     * Asettaa pelaajan valitseman teeman mukaisen taustan ja reunat
+     */
+    public void setTheme() {
+
+        if (this.theme.equals("1")) {
+            if (withBorders) {
+                pane.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
+
+            }
+        } else if (this.theme.equals("2")) {
+
+            Image image = new Image(String.valueOf(getClass().getResource("/spacetheme1.jpg")));
+            pane.setBackground(new Background(new BackgroundImage(image, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
+
+            if (withBorders) {
+                pane.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
+            }
+        } else if (this.theme.equals("3")) {
+
+
+            Image image = new Image(String.valueOf(getClass().getResource("/greentheme.png")));
+            pane.setBackground(new Background(new BackgroundImage(image, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
+
+            if (withBorders) {
+                pane.setBorder(new Border(new BorderStroke(Color.DARKOLIVEGREEN, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
+            }
+        }
+    }
+
+    /**
+     * Palauttaa pelialueen leveyden
+     *
+     * @return leveys
+     */
     public int getAreaWidth() {
 
         return this.width;
 
     }
 
+    /**
+     * Palauttaa madon palojen määrän
+     *
+     * @return palojen koko
+     */
     public int getSnakeSize() {
 
         return parts.size();
     }
 
+    /**
+     * Palauttaa pelialueen pituuden
+     *
+     * @return pituus
+     */
     public int getAreaLength() {
 
         return this.length;
     }
 
+    /**
+     * Saa parametrina madon pään, josta luo madon
+     *
+     * @param headNew madon pää
+     */
     public void addNewSnake(SnakeHead headNew) {
 
         this.head = headNew;
@@ -61,17 +115,37 @@ public class Area {
         }
     }
 
+    /**
+     * Lisää matoon paloja
+     *
+     * @param sp pala, joka lisätään
+     */
     public void addParts(SnakePart sp) {
 
         pane.getChildren().add(sp);
         parts.add(sp);
 
         if (parts.size() > 10) {
-            sp.setStroke(food.color);
-            pane.setBorder(new Border(new BorderStroke(food.color, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
+            if (theme.equals("1")) {
+                sp.setStroke(food.color);
+                if (withBorders) {
+                    pane.setBorder(new Border(new BorderStroke(food.color, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
+                }
+            }
+            if (theme.equals("2")) {
+                sp.setStroke(Color.ORANGERED);
+            }
+            if (theme.equals("3")) {
+                sp.setFill(Color.DARKOLIVEGREEN);
+                sp.setStroke(Color.DARKOLIVEGREEN);
+            }
         }
     }
 
+
+    /**
+     * Metodi päivittää madon sijaintia ja suuntaa, tarkistaa jatkuvasti onko mato syönyt ruoan tai osuuko se itseensä tai reunaan
+     */
     public void update() {
 
         for (SnakePart part : parts) {
@@ -90,38 +164,56 @@ public class Area {
         }
     }
 
+    /**
+     * Lisää uuden osan matoon
+     */
     public void addNewPart() {
 
         for (int i = 1; i < 15; i++) {
 
             SnakePart newPart = new SnakePart(head.body.x, head.body.y, head.body, this);
             head.body = newPart;
-            head.body.setStroke(Color.AQUA);
+            //head.body.setStroke(Color.AQUA);
             addParts(newPart);
         }
     }
 
+    /**
+     * Lisää ruoan pelialueelle satunnaiseen kohtaan
+     */
     public void addFood() {
 
         Random random = new Random();
         int x = random.nextInt(width - 60);
         int y = random.nextInt(length - 60);
 
-        Food newFood = new Food(30 + x, 30 + y);
+        Food newFood = new Food(30 + x, 30 + y, this.theme);
         pane.getChildren().add(newFood);
         pane.getChildren().remove(food);
         food = newFood;
 
     }
 
+    /**
+     * Tarkistaa, osuiko mato reunaan, jos käyttäjä on halunnut pelata reunoilla
+     *
+     * @return palauttaa true, jos osui, muuten false
+     */
     public boolean hitWall() {
 
-        if ((head.head.getXposition() >= this.width - 15 || head.head.getXposition() <= 15 || head.head.getYposition() <= 15 || head.head.getYposition() >= this.length - 30)) {
-            return true;
+        if (withBorders) {
+            if ((head.head.getXposition() >= this.width - 30 || head.head.getXposition() <= 15 || head.head.getYposition() <= 15 || head.head.getYposition() >= this.length - 30)) {
+                return true;
+            }
         }
         return false;
     }
 
+    /**
+     * Tarkistaa, osuiko mato itseensä
+     *
+     * @return palauttaa true, jos osui, muuten false
+     */
     public boolean hitItself() {
 
         for (SnakePart part : parts) {
@@ -132,6 +224,12 @@ public class Area {
         return false;
     }
 
+    /**
+     * Tarkistaa, osuiko mato pelialueen ruokaan
+     *
+     * @param food ruoka minkä koordinaatteja tarkistetaan
+     * @return true, jos osui, false muuten
+     */
     public boolean ateFood(Food food) {
 
         if (food == null) {
@@ -143,13 +241,24 @@ public class Area {
         return false;
     }
 
+    /**
+     * Palauttaa pelaajan keräämät pistete
+     *
+     * @return pisteet
+     */
     public int getPoints() {
 
         return this.points;
     }
 
+    /**
+     * Palauttaa gameOver booleanin arvon
+     *
+     * @return
+     */
     public boolean gameOver() {
 
         return gameOver;
     }
+
 }

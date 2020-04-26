@@ -1,7 +1,11 @@
 package snakegame.domain;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javafx.collections.ObservableList;
 import snakegame.dao.DaoPlayer;
 
 
@@ -43,7 +47,7 @@ public class FakePlayerSQL implements DaoPlayer {
     }
 
     @Override
-    public Player isLogInOK(String username, String passw)  {
+    public Player isLogInOK(String username, String passw) {
         for (Player player : players) {
             if (player.getUsername().equals(username) && player.getPassword().equals(passw)) {
                 return player;
@@ -53,7 +57,7 @@ public class FakePlayerSQL implements DaoPlayer {
     }
 
     @Override
-    public Player findUser(String username)  {
+    public Player findUser(String username) {
         for (Player player : players) {
             if (player.getUsername().equals(username)) {
                 return player;
@@ -68,13 +72,27 @@ public class FakePlayerSQL implements DaoPlayer {
     }
 
     @Override
-    public void getConnection()  {
+    public void getConnection() {
 
     }
 
     @Override
     public void stopConnection() {
 
+
+    }
+
+    @Override
+    public ObservableList topList(ObservableList list) {
+
+        for (Player p : players) {
+
+            if (p.highscore > 0) {
+                list.add(new Player(p.username, p.password, p.highscore));
+            }
+        }
+
+        return list;
 
     }
 }

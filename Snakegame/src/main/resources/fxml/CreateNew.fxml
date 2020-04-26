@@ -7,15 +7,22 @@
 
 
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane fx:id="AP" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="snakegame.ui.CreateNewController">
     <children>
-        <Label fx:id="usernameLabel" layoutX="60.0" layoutY="118.0" prefHeight="26.0" prefWidth="400.0" text="Username: (must contain at least 3 letters)" />
-        <TextField fx:id="username" layoutX="62.0" layoutY="150.0" />
-        <Label layoutX="60.0" layoutY="176.0" prefHeight="26.0" prefWidth="94.0" text="Password: " />
-        <PasswordField fx:id="password" layoutX="62.0" layoutY="202.0" />
-        <Button layoutX="414.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleBack" text="Return" />
-        <Button fx:id="createNewUserButton" layoutX="60.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleCreate"  text="Create user" />
-        <Label fx:id="error" layoutX="62.0" layoutY="234.0" prefHeight="17.0" prefWidth="285.0" text="" />
+        <ImageView fitHeight="420.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../greentheme.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="usernameLabel" layoutX="94.0" layoutY="118.0" prefHeight="26.0" prefWidth="300.0" text="Username: (must contain at least 3 letters)" />
+        <TextField fx:id="username" layoutX="94.0" layoutY="150.0" prefHeight="26.0" prefWidth="157.0" />
+        <Label layoutX="94.0" layoutY="176.0" prefHeight="26.0" prefWidth="111.0" text="Password: " />
+        <PasswordField fx:id="password" layoutX="94.0" layoutY="202.0" prefHeight="26.0" prefWidth="157.0" />
+        <Button layoutX="414.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleBack" text="Return" />
+        <Button fx:id="createNewUserButton" layoutX="94.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleCreate"  text="Create user" />
+        <Label fx:id="error" layoutX="94.0" layoutY="234.0" prefHeight="17.0" prefWidth="360.0" text="" />
     </children>
 </AnchorPane>
 

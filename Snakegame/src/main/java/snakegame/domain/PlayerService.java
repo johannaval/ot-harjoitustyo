@@ -1,11 +1,12 @@
 package snakegame.domain;
 
+import javafx.collections.ObservableList;
 import snakegame.dao.DaoPlayer;
 import snakegame.ui.LogInViewController;
 
-import java.sql.SQLException;
-
-
+/**
+ * Luokka, joka huolehtii pelaajan tiedoista
+ */
 public class PlayerService {
 
     private Player loggedIn;
@@ -13,14 +14,22 @@ public class PlayerService {
     private DaoPlayer dao;
 
 
-    public PlayerService(DaoPlayer playerSQL, LogInViewController controller) throws SQLException {
+    public PlayerService(DaoPlayer playerSQL, LogInViewController controller) {
 
         this.dao = playerSQL;
         this.controller = controller;
     }
 
 
-    public boolean login(String username, String password) throws SQLException {
+    /**
+     * Kutsuu Daota tarkistamaan, onnistuuko kirjautuminen
+     *
+     * @param username käyttäjänimi
+     * @param password salasana
+     * @return palauttaa true, jos kirjautuminen onnistuu, false jos ei ja samalla katsoo, onko nimellä jo käyttäjä, jos on, kutsuu se controlleria asettamaan
+     * virheviestiin salasanan olevan väärin
+     */
+    public boolean login(String username, String password)  {
 
         if (dao.isLogInOK(username, password) == null) {
 
@@ -35,7 +44,13 @@ public class PlayerService {
         return true;
     }
 
-    public boolean isThereAccountWithThisName(String username) throws SQLException {
+    /**
+     * Tarkistaa Daolta, onko kyseisellä nimellä tehty jo tunnus
+     *
+     * @param username käyttäjänimi jota tarkistetaan
+     * @return palauttaa true, jos kyseisellä nimellä on jo tunnus, false muuten
+     */
+    public boolean isThereAccountWithThisName(String username) {
 
         if (dao.isThereAccountWithThisName(username)) {
             return true;
@@ -45,7 +60,12 @@ public class PlayerService {
 
     }
 
-    public void setHighscore(int score) throws SQLException {
+    /**
+     * Asettaa ennätyksen käyttäjälle, jos uusi tulos on parempi kuin vanha ennätys, kutsuu myös Dao-rajapinnan metodia päivittämään tuloksen
+     *
+     * @param score
+     */
+    public void setHighscore(int score) {
 
         if (loggedIn.getHighscore() < score) {
             loggedIn.putHighscore(score);
@@ -54,18 +74,33 @@ public class PlayerService {
     }
 
 
+    /**
+     * Palauttaa kirjautuneen käyttäjän
+     *
+     * @return kirjautunut käyttäjä
+     */
     public Player getLoggedUser() {
 
         return loggedIn;
     }
 
-    public void logout() throws SQLException {
+    /**
+     * Uloskirjaa käyttäjän
+     */
+    public void logout() {
 
         //  dao.stopConnection();
         loggedIn = null;
     }
 
-    public boolean createUser(String username, String password) throws SQLException {
+    /**
+     * Luo uuden käyttäjän parametreina saadun nimen ja salasanan mukaan
+     *
+     * @param username käyttäjänimi
+     * @param password salasana
+     * @return palauttaa true, jos luonti onnistui,  false jos kyseisellä käyttäjänimellä oli jo tunnus
+     */
+    public boolean createUser(String username, String password) {
 
         if (dao.findUser(username) != null) {
             return false;
@@ -75,6 +110,19 @@ public class PlayerService {
             dao.create(p);
             return true;
         }
+    }
+
+    /**
+     * Kutsuu dao:ta palauttamaan toplistan
+     *
+     * @param list tyhjä lista
+     * @return täytetty lista
+     */
+    public ObservableList topList(ObservableList list) {
+
+        ObservableList topList = dao.topList(list);
+
+        return topList;
     }
 }
 

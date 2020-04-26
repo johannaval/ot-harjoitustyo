@@ -1,5 +1,6 @@
 package snakegame.domain;
 
+import javafx.scene.paint.Color;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,6 +18,9 @@ public class AreaTest {
     @Before
     public void setUp() {
         pane = new AnchorPane();
+        controller = new GameBoardViewController();
+        controller.borders=true;
+        controller.theme="1";
         gs = new GameService(pane, controller);
 
     }
@@ -53,6 +57,23 @@ public class AreaTest {
     }
 
     @Test
+    public void pointsTextGetRightColorByTheme(){
+
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        gs.theme="1";
+        assertEquals(gs.text.getStroke(), Color.WHITE);
+
+        gs.theme="2";
+        assertEquals(gs.text.getStroke(), Color.WHITE);
+
+        gs.theme="1";
+        assertEquals(gs.text.getStroke(), Color.WHITE);
+    }
+
+    @Test
     public void notHittingTheWallWillContinueTheGame() {
 
         gs.startGame();
@@ -71,6 +92,7 @@ public class AreaTest {
         gs.startGame();
         gs.move();
         gs.enterPressed();
+        gs.withBorders=true;
 
         gs.area.head.head.setXposition(gs.area.getAreaWidth() - 15);
         gs.area.head.head.setYposition(100);
@@ -116,11 +138,12 @@ public class AreaTest {
 
 
     @Test
-    public void hittingTheWallWithoutEatingAnythingWillNotEndTheGame() {
+    public void hittingEdgeWithoutBoardersWillNotEndTheGame() {
 
         gs.startGame();
         gs.move();
         gs.enterPressed();
+        gs.withBorders=false;
 
         gs.area.update();
 
@@ -179,6 +202,54 @@ public class AreaTest {
 
         gs.area.gameOver = true;
         assertTrue(gs.area.gameOver());
+    }
+    @Test
+    public void goUpPutSnakeGoUp(){
+
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        gs.goUp();
+
+        assertEquals(gs.area.head.direction, "UP");
+
+    }
+    @Test
+    public void goDownPutSnakeGoDown(){
+
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        gs.goDown();
+
+        assertEquals(gs.area.head.direction, "DOWN");
+
+    }
+    @Test
+    public void goRightPutSnakeGoRight(){
+
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        gs.goRigh();
+
+        assertEquals(gs.area.head.direction, "RIGHT");
+
+    }
+    @Test
+    public void goLeftPutSnakeGoLeft(){
+
+        gs.startGame();
+        gs.move();
+        gs.enterPressed();
+
+        gs.goLeft();
+
+        assertEquals(gs.area.head.direction, "LEFT");
+
     }
 
 }

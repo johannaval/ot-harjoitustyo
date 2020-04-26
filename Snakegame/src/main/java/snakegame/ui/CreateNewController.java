@@ -1,12 +1,9 @@
 package snakegame.ui;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Properties;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,7 +14,9 @@ import snakegame.domain.Player;
 import snakegame.dao.PlayerSQL;
 import snakegame.domain.PlayerService;
 
-
+/**
+ * Uuden käyttäjän luomis-näkymästä vastaava luokka (controller)
+ */
 public class CreateNewController implements Initializable {
 
     private GameUi application;
@@ -33,10 +32,73 @@ public class CreateNewController implements Initializable {
     private PlayerService service;
 
 
+    /**
+     * Metodi alustaa PlayerSQL ja PlayerService -luokat, hakee config.properties tiedostosta yhteyden playerSQL:lle
+     *
+     * @param url url
+     * @param rb  resourceBundle?
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+        /*
+        String urlForDao = "";
+
+        try (InputStream input = new FileInputStream("config.properties")) {
+
+            Properties prop = new Properties();
+            prop.load(input);
+
+            System.out.println(prop.getProperty("urlForDao") + "!!");
+            urlForDao = prop.getProperty("urlForDao");
+
+        } catch (IOException ex) {
+            System.out.println("?? häh");
+        }
+
+
+
+        Properties properties = new Properties();
+
+        try {
+            properties.load(new FileInputStream("config.properties"));
+        } catch (IOException e) {
+            System.out.println("Konfiguroinnissa virhe! 2 ");
+        }
+
+        String urlForDao = properties.getProperty("urlForDao");
+
+        System.out.println(urlForDao);
+
+
+        System.out.printf(properties.getProperty("testi1"));
+*/
+
+        this.livc = new LogInViewController();
+        PlayerService pService = null;
+
+    //    PlayerSQL playerSQL = new PlayerSQL(urlForDao);
+        PlayerSQL playerSQL = new PlayerSQL();
+
+
+        pService = new PlayerService(playerSQL, livc);
+
+        System.out.println("! " + pService);
+
+
+        this.service = pService;
+    }
+
+    /**
+     * Alustaa GameUi:n applikaatioksi
+     *
+     * @param application saa parametrinaan gameUi:n
+     */
     public void setApplication(GameUi application) {
 
         this.application = application;
     }
+
 
     @FXML
     private void handleBack(ActionEvent event) {
@@ -46,8 +108,9 @@ public class CreateNewController implements Initializable {
         application.setLogInScene();
     }
 
+
     @FXML
-    private void handleCreate(ActionEvent event) throws SQLException {
+    private void handleCreate(ActionEvent event) {
 
 
         String name = username.getText().toLowerCase();
@@ -55,6 +118,10 @@ public class CreateNewController implements Initializable {
 
         if (name.length() < 3) {
             error.setText("Too short username!");
+            return;
+        }
+        if (passw.isEmpty()) {
+            error.setText("Password must contain at least 1 letter!");
             return;
         }
         if (service.isThereAccountWithThisName(name)) {
@@ -71,30 +138,5 @@ public class CreateNewController implements Initializable {
             error.setText("");
             application.setLogInScene();
         }
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        /*Properties properties = new Properties();
-
-        try {
-            properties.load(new FileInputStream("config.properties"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        String urlForSQL = properties.getProperty("urlForDao");
-*/
-
-        this.livc = new LogInViewController();
-        PlayerService pService = null;
-        try {
-            PlayerSQL playerSQL = new PlayerSQL();
-            pService = new PlayerService(playerSQL, livc);
-        } catch (SQLException throwables) {
-            //      throwables.printStackTrace();
-        }
-        this.service = pService;
     }
 }
