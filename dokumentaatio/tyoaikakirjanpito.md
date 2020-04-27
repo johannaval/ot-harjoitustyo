@@ -12,6 +12,10 @@
 | 12.3               |  5h           | Pelin päättyminen toimimaan              |
 | 14.3              |  3h           | Lisää testejä ja Dao rajapinnan hyödynnys               |
 | 20.3               |  4h           | Config propertieseihin tutustumista, UI:n ja logiikan päivittämistä               |
-|                |             |                |
-| yht:               |  48h           |                |
+| 23.5               | 5h            | Peliin teemat ja reunojen valinta               |
+| 25.4               | 3h            | Java Doc:sit                                 |
+| 26.4               | 1h            | Config.Properties saatu toimimaan            |
+|                    |               |                                             |
+|                    |               |                                              |
+| yht:               |  52h           |                |
 

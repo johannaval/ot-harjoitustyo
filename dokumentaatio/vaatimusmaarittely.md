@@ -2,8 +2,8 @@
 
 - [x] Kirjautumisnäkymä
 - [x] Pystytään luomaan uusi käyttäjä tai kirjautua sisään jo olemassa olevalla tunnuksella
-- [ ] Pelaaja voi valita yhden kolmesta teemasta
-- [ ] Pelaaja voi valita, haluaako pelata pelin reunoilla vai ilman reunoja
+- [x] Pelaaja voi valita yhden kolmesta teemasta
+- [x] Pelaaja voi valita, haluaako pelata pelin reunoilla vai ilman reunoja
 - [x] Voidaan aloittaa peli
 - [x] Matoa pystyy liikuttaa ja se pystyy syömään ruokaa
 - [x] Mato kuolee osuessaan itseensä tai seinään
@@ -11,7 +11,7 @@
 
 ## Sovelluksen tarkoitus:
 
-Sovelluksen ideana on matopeli. Käyttäjä luo tunnuksen (ellei sitä jo ole), ja pääsee pelaamaan. Käyttäjä myös näkee oman ennätyksensä ja peliä pelatessa kasvavat pisteet. Peliä pystyy pelaamaan usea käyttäjä, ja jokaisen oma henkilökohtainen paras tulos näkyy hänellä itsellään. Kun peli loppuu, näytölle tulee top 10 lista, jossa näkyy pelissa saadut 10 korkeinta pistettä ja kyseiset pisteet saaneet pelaajat.
+Sovelluksen ideana on matopeli. Käyttäjä luo tunnuksen (ellei sitä jo ole), ja pääsee pelaamaan. Käyttäjä myös näkee oman ennätyksensä ja peliä pelatessa kasvavat pisteet. Peliä pystyy pelaamaan usea käyttäjä omalla tunnuksellaan, ja jokaisen oma henkilökohtainen paras tulos näkyy hänellä itsellään. Kun peli loppuu, näytölle tulee top 10 lista, jossa näkyy pelissa saadut 10 korkeinta pistettä ja kyseiset pisteet saaneet pelaajat.
 
 ## Käyttäjät
 
@@ -34,26 +34,28 @@ Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjau
 * kirjautuminen onnistuu, mikäli käyttäjätunnus on rekisteröity. Muuten ohjelma ilmoittaa, ettei käyttäjää vielä ole.
 
 
-#### Kirjautumisen jälkeen: (perusvalikko :white_check_mark:, vielä puuttuu teeman ja reunojen valinta)
+#### Kirjautumisen jälkeen: :white_check_mark:
 * Käyttäjälle avautuu pelivalikko, jossa hän saa valita yhden kolmesta teemasta, sekä valita, pelaako reunoilla vai ilman.
 * Pelaaja voi aloittaa pelin painamalla "Start game!", tai kirjautua ulos napilla "log out".
 
 
-#### Pelin aloitettua: (perusominausuudet :white_check_mark:, vielä puuttuu teemat ja ilman reunoja oleva alue)
+#### Pelin aloitettua:  :white_check_mark:
 * peli toimii matopelin idealla, mato kerää satunnaisesti tulevia “ruokia”, joista se saa pisteitä. Samalla mato kasvaa pituutta, ja sen liikenopeus kasvaa. 
 * Peli päättyy, kun mato kuolee. Riippuen onko pelaaja halunnut pelata reunojen kanssa, mato kuolee osuessaan itseensä tai osuessaan reunaan.
 
 
 
 #### Pelin loputtua: :white_check_mark:
-* tulostuu matopelin top 10, eli siihen kootaan pelistä saadut 10 kaikkein suurinta pistettä ja pisteiden saaneiden käyttäjänmimet. 
+* tulostuu matopelin top 10, eli siihen kootaan pelistä saadut 10 kaikkein suurinta pistettä ja pisteiden saaneiden käyttäjänmimet. Jokainen käyttäjä voi olla ennätys-taulussa korkeintaan kerran.
 
 
-## Jatkokehitysideoita:
+
+#### Jatkokehitysideoita:
 
 - Kun perusversio on tehty, voisi sovellusta esimerkiksi jatkaa tälläisillä osilla:
 
 * Kun peli loppuu, top 10-listan lisäksi voisi tulostua päivän top 10, jossa näkyisi viimeisen 24h ajan parhaimmat pisteet saaneet pelaajat.
-* Pelaaja voisi oman ennätys pistemäärän lisäksi nähdä, milloin ennätys on tullut.
+* Pelaaja voisi oman ennätyksen lisäksi nähdä, milloin ennätys on tullut.
 * Vaikeustasoja, esim 1-3. Taso 1 on helpoin, 3 vaikein. Helpoimmassa mato liikkuu hitaiten, 3. taas mato liikkuu jo reilusti nopeammin, jolloin pelaaminen on jo vaikeampaa.
+* Reunojen lisäksi pelialueen sisälle tulevia seiniä, jolloin pelialue olisi "sokkelo", jossa väistellään seiniä.
 

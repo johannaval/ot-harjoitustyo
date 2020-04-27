@@ -3,7 +3,7 @@
 
 ## Rakenne
 
-Ohjelman pakkausrakenteeseen kuuluu ui, domain ja dao-pakkaukset. Snakegame.ui huolehtii ohjelman käyttöliittymästä, joka on toteutettu Java FXML:n tarjoamien controllereiden avulla. Snakegame.domain huolehtii sovelluslogiikasta, niin käyttäjästä kuin pelilogiikastakin. Snakegame.dao huolehtii käyttäjän tietojen pysyväistallennuksesta tietokannan avulla.
+Ohjelman pakkausrakenteeseen kuuluu 3 pakkausta, ui, domain ja dao. Snakegame.ui huolehtii ohjelman käyttöliittymästä, joka on toteutettu Java FXML:n tarjoamien controllereiden avulla. Snakegame.domain huolehtii sovelluslogiikasta, niin käyttäjästä kuin pelilogiikastakin. Snakegame.dao huolehtii käyttäjän tietojen pysyväistallennuksesta tietokannan avulla.
 
 <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/IMG_0507.jpeg" width="200" height="350">
 
@@ -18,7 +18,7 @@ Käyttöliittymä sisältää viisi eri näkymää
 * pelin
 * top-listan
 
-Käyttöliittymästä ja näkymistä pitää huolta GameUi luokka, mutta itse näkymien toiminnoista vastaa kyseisen näkymän controller, joka huolehtii esim. napin painalluksista, käyttäjän syöttämistä teksteistä tai painetuista näppäimistä. Näkymät on toteutettu Scene-olioina, jotka sijoitetaan GameUi:ssa olevaan stageen aina kerrallaan.
+Käyttöliittymästä ja näkymien vaihdosta pitää huolta GameUi luokka, mutta itse näkymien toiminnoista vastaa kyseisen näkymän controller, joka huolehtii esim. napin painalluksista, käyttäjän syöttämistä teksteistä tai painetuista näppäimistä. Näkymät on toteutettu Scene-olioina, jotka sijoitetaan GameUi:ssa olevaan stageen aina kerrallaan, riippuen näkymästä, minne käyttäjä on siirtymässä.
 
 
 
@@ -43,9 +43,15 @@ Sovelluksen rakenne luokka/pakkauskaaviona:
  
 ## Tietokanta
 
-Ohjelma tallentaa käyttäjät tietokantatauluun Players, johon kirjataan pelaajan id, käyttäjänimi, salasana ja ennätys. Id ja käyttäjänimi ovat uniikkeja, joten kellään toisella pelaajalla ei voi olla samaa tunnusta. Ennätys on käyttäjän luomisen jälkeen 0, mutta kasvaa heti, kun pelaaja pelaa peliä ja saa pisteitä.
-(tulossa kun saan toimimaan.. Tietokannan yhteys niin ohjelmaa, kuin testejä varten tallennetaan ohjelman juuressa sijaitsevaan "config.properties" konfiguraatiotiedostoon.)
+Ohjelma tallentaa käyttäjät tietokantatauluun Players, johon kirjataan pelaajan id, käyttäjänimi, salasana ja ennätys. Id ja käyttäjänimi ovat uniikkeja, joten kellään toisella pelaajalla ei voi olla samaa tunnusta. Ennätys on heti käyttäjän luomisen jälkeen 0, mutta kasvaa, kun pelaaja pelaa peliä ja saa pisteitä. Tauluun talletetaan tiedot muodossa
+(player_id INTEGER PRIMARY KEY, username TEXT unique, password TEXT, highscore INTEGER)
+Testeille on oma testitietokanta, jottei niiden tulokset vaikuta itse ohjelman käytössä olevaan tietokantaan ja näin sekoita sen tuloksia. Niin ohjelman, kuin testien käytössä olevat tietokannat sijoitetaan ohjelman juuressa sijaitsevaan "config.properties" konfiguraatiotiedostoon jotta niitä voi halutessaan muuttaa.
+Tietokannat tallennetaan config.properties-tiedostoon muodossa:
+
+```urlForDao=jdbc:sqlite:sqlConnectionUrl.db```
+```urlForDaoUnitTests=jdbc:sqlite:forUnitTests.db```
  
+
  
 
 ## Päätoiminnallisuudet sekvenssikaavioina 
@@ -75,3 +81,9 @@ Tähän on kuvattu ohjelman yleinen toiminnallisuus. Kun käyttäjä on kirjautu
 Kun peli aloitetaan, kutsuu GameBoardViewController GameServicen metodia startGame, jossa alustetaan pelialue. GameBoardViewController myös huolehtii käyttäjän painamista napeista. Kun käyttäjä painaa Enter, kutsuu controller GameServicen metodia move, jossa lisätään ensimmäinen ruoka sattumanvaraiseen kohtaan ja luodaan SnakeHead, eli mato. Mato koostuu päästä sekä "paloista" eli vartalosta. Mato lisätään pelialueelle, ja kun pelaaja painaa nuolinäppäimistä, asettaa madon pää suunnakseen juuri painetun suunnan sekä asettaa suunnan myös jokaiselle palalleen. Jokainen pala seuraa siis päätä, joka näyttää suunnan. Suunnan pää saa käyttäjän näppäimiltä. Riippuen suunnasta, aina joko madon x tai y arvo pienenee tai kasvaa. Samalla kun peli on käynnissä, on myös pelialueen metodi update toiminnassa, jossa se jatkuvasti tarkistaa, onko mato osunut ruokaan, itseensä tai seinään. Ruokaan osuessaan pisteet kasvavat 50p, ja madon koko kasvaa. Kaaviossa mato törmää seinään, joten peli päättyy. 
 
 <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/IMG_0414.jpeg" width="600" height="700">
+
+
+
+## Ohjelmaan jääneet hetkkoudet
+Ohjelman domain-pakkauksen luokista löytyy FX-elementtejä, sillä niiden eriyttäminen vain UI:n hallintaan oli hankalaa. Pelilogiikkaan liittyviä luokkia on useita (GameService, Area, Food, SnakeHead ja SnakePart), nämä olisi varmasti saanut tiivistettyä vähempään määrään luokkia, jolloin koodin hahmottaminen olisi voinut helpottua. Jos madon vauhti on peliä pelatessa hyvin nopea, saattaa se hetkeksi pysähtyä, joka vaikeuttaa pelin pelaamista. Tosin tällöin tapahtuessa mato jatkaa matkaansa samasta kohtaa kuin mihin pysähtyikin, jolloin se ei automaattisesti hyppää kauemmas ja pilaa peliä.
+
