@@ -17,9 +17,22 @@ public class Food extends Rectangle {
     private int x;
     private int y;
     private ArrayList<Paint> colors;
+    /**
+     * Ruoan väri
+     */
     public Paint color;
+    /**
+     * Pelaajan valitsema teema
+     */
     public String theme;
 
+    /**
+     * Ruoka-olion konstruktori, saa parametreina x ja y koordinaatit, ja teeman jonka pelaaja on valinnut
+     *
+     * @param x     x-koordinaatti
+     * @param y     y-koordinaatti
+     * @param theme pelaajan teema
+     */
     public Food(int x, int y, String theme) {
         super(15, 15);
         this.x = x;
@@ -75,7 +88,6 @@ public class Food extends Rectangle {
         List<Color> colors = Arrays.asList(Color.PURPLE, Color.AQUAMARINE, Color.DARKORANGE, Color.HOTPINK, Color.GREENYELLOW, Color.LIGHTSKYBLUE,
                 Color.TOMATO, Color.LIME, Color.MISTYROSE, Color.SALMON, Color.PEACHPUFF, Color.HONEYDEW, Color.AQUAMARINE, Color.SPRINGGREEN,
                 Color.RED, Color.BLUE, Color.YELLOW);
-
 
         Random r = new Random();
         this.color = colors.get(r.nextInt((colors.size() - 0)));

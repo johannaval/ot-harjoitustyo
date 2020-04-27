@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -51,8 +52,8 @@ public class GameViewController implements Initializable {
 
     /**
      * Alustaa GameUi:n applikaatioksi, kutsuu metodia showHighscore() näyttämään kirjautuneen pelaajan ennätyksen
-     * @param application saa parametrinaan gameUi:n
      *
+     * @param application saa parametrinaan gameUi:n
      */
     public void setApplication(GameUi application) {
 
@@ -76,7 +77,7 @@ public class GameViewController implements Initializable {
 
 
     @FXML
-    private void handleExit(ActionEvent event){
+    private void handleExit(ActionEvent event) {
 
         PlayerService ps = application.ps();
         ps.logout();

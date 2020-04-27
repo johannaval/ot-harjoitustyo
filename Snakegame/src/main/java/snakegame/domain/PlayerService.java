@@ -14,6 +14,12 @@ public class PlayerService {
     private DaoPlayer dao;
 
 
+    /**
+     * PlayerServicen kontruktori, saa parametrinaan playerSQL:n ja kirjautumisnäkymän controllerin
+     *
+     * @param playerSQL  playerSQL luokka, joka vastaa pelaajan tietojen pysyväistallennuksesta
+     * @param controller controller, huolehtii sisäänkirjautumisesta
+     */
     public PlayerService(DaoPlayer playerSQL, LogInViewController controller) {
 
         this.dao = playerSQL;

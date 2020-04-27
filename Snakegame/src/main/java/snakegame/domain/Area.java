@@ -1,6 +1,7 @@
 package snakegame.domain;
 
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.Pane;
@@ -10,6 +11,7 @@ import java.util.Random;
 
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderWidths;
+import snakegame.ui.GameBoardViewController;
 
 /**
  * Pelialueesta vastaava luokka
@@ -18,16 +20,49 @@ public class Area {
 
     private int length;
     private int width;
+    /**
+     * Madon palat (vartalo)
+     */
     public ArrayList<SnakePart> parts = new ArrayList<>();
+    /**
+     * Madon pää
+     */
     public SnakeHead head;
+    /**
+     * Pelialueen pohja
+     */
     public Pane pane;
+    /**
+     * Pelaajan pisteet
+     */
     public int points;
+    /**
+     * Pelialueen ruoka
+     */
     public Food food;
+    /**
+     * Boolean arvo, onko peli jo aloitettu, eli enteristä painettu
+     */
     public boolean enterPressed;
+    /**
+     * Boolean arvo, onko peli loppunut
+     */
     public boolean gameOver;
+    /**
+     * Boolean arvo, haluaako pelaaja peliin reunat vai ei
+     */
     public boolean withBorders;
+    /**
+     * Teema, jonka pelaaja valitsi
+     */
     public String theme;
 
+    /**
+     * Alueen konstruktori, saa parametreinaan pelialueen pituuden, leveyden ja AnchorPanen, eli pelialueen pohjan
+     * @param length pelialueen pituus
+     * @param width pelialueen leveys
+     * @param pane pelialueen pohja
+     */
     public Area(Integer length, Integer width, Pane pane) {
 
         this.length = length;
@@ -44,6 +79,7 @@ public class Area {
      * Asettaa pelaajan valitseman teeman mukaisen taustan ja reunat
      */
     public void setTheme() {
+
 
         if (this.theme.equals("1")) {
             if (withBorders) {

@@ -35,6 +35,13 @@ public class SnakePart extends Rectangle {
     private Area area;
 
 
+    /**
+     * Konstruktori, joka saa parametreinaan
+     * @param x madon x, koordinaatti
+     * @param y madon y koordinaatti
+     * @param part madon pala
+     * @param area pelialueesta vastaava luokka
+     */
     public SnakePart(int x, int y, SnakePart part, Area area) {
         super(15, 15);
         this.newX = x;

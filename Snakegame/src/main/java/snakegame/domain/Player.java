@@ -19,6 +19,13 @@ public class Player {
      */
     public int highscore;
 
+    /**
+     * Pelaaja-olio, jokaisella pelaajalla on käyttäjänimi, salasana ja ennätys
+     *
+     * @param username  käyttäjänimi
+     * @param password  salasana
+     * @param highscore ennätys
+     */
     public Player(String username, String password, int highscore) {
 
         this.username = username;
@@ -26,7 +33,9 @@ public class Player {
         this.highscore = highscore;
     }
 
-    /** Palauttaa käyttäjän käyttäjänimen
+    /**
+     * Palauttaa käyttäjän käyttäjänimen
+     *
      * @return käyttäjänimi
      */
     public String getUsername() {
@@ -34,8 +43,10 @@ public class Player {
         return this.username;
     }
 
-    /** Palauttaa käyttäjän ennätyksen
-     * @return  ennätys
+    /**
+     * Palauttaa käyttäjän ennätyksen
+     *
+     * @return ennätys
      */
     public int getHighscore() {
 
@@ -45,6 +56,7 @@ public class Player {
 
     /**
      * palauttaa käyttäjän salasanan
+     *
      * @return salasana
      */
     public String getPassword() {
@@ -54,6 +66,7 @@ public class Player {
 
     /**
      * Tarkistaa, onko kyseinen pelaaja sama kuin parametrina saatu pelaaja
+     *
      * @param o verrattava pelaaja
      * @return palauttaa true, jos pelaajat ovat samat, false muuten
      */
@@ -70,6 +83,7 @@ public class Player {
 
     /**
      * Asettaa ennätyksen
+     *
      * @param score ennätys
      */
     public void putHighscore(int score) {

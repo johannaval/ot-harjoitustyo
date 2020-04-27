@@ -3,6 +3,7 @@ package snakegame.domain;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -13,21 +14,57 @@ import snakegame.ui.GameBoardViewController;
  */
 public class GameService {
 
+    /**
+     * AnchorPane, pelialueen runko/alusta
+     */
     @FXML
     public AnchorPane pane;
     private int boardLength;
     private int boardWidth;
     private long start = System.nanoTime();
+    /**
+     * Madon palan koko
+     */
     public int partSize = 10;
+    /**
+     * Madon koko
+     */
     public int snakeSize = 5;
+    /**
+     * Pelialue
+     */
     public Area area;
+    /**
+     * Boolean arvo sille, onko peli päättynyt
+     */
     public boolean gameOver;
+    /**
+     * Pelaajan pistete
+     */
     public int points;
+    /**
+     * Pelialueesta vastaava controller
+     */
     public GameBoardViewController controller;
+    /**
+     * Tekstikenttä, jossa näkyy pelaajan pisteet
+     */
     public Text text;
+    /**
+     * Boolean arvo sille, haluaako pelaaja reunat vai ei
+     */
     public boolean withBorders;
+    /**
+     * Pelaajan valitsema teema
+     */
     public String theme;
 
+    /**
+     * GameServicen konstruktori, parametreina saa AnchorPanen (pelin pohja), ja pelialueen controllerin
+     *
+     * @param pane       pohja
+     * @param controller kontroller, vastaa pelialueesta (esim näppäinten kuuntelu)
+     */
     public GameService(AnchorPane pane, GameBoardViewController controller) {
         this.pane = pane;
         this.boardLength = 400;
@@ -129,6 +166,8 @@ public class GameService {
 
     /**
      * Asettaa madon suunnaksi "alas"
+     *
+     * @see GameBoardViewController#handleKeyPressed(KeyEvent)
      */
     public void goDown() {
 
@@ -138,6 +177,8 @@ public class GameService {
 
     /**
      * Asettaa madon suunnaksi "oikea"
+     *
+     * @see GameBoardViewController#handleKeyPressed(KeyEvent)
      */
     public void goRigh() {
 
@@ -147,6 +188,8 @@ public class GameService {
 
     /**
      * Asettaa madon suunnaksi "vasen"
+     *
+     * @see GameBoardViewController#handleKeyPressed(KeyEvent)
      */
     public void goLeft() {
 
@@ -157,6 +200,8 @@ public class GameService {
 
     /**
      * Asettaa madon suunnaksi "ylös"
+     *
+     * @see GameBoardViewController#handleKeyPressed(KeyEvent)
      */
     public void goUp() {
 
@@ -167,6 +212,8 @@ public class GameService {
 
     /**
      * Laittaa enterPressed arvoksi true
+     *
+     * @see GameBoardViewController#handleKeyPressed(KeyEvent)
      */
     public void enterPressed() {
 

@@ -8,6 +8,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import snakegame.domain.GameService;
 import snakegame.domain.PlayerService;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,8 +41,9 @@ public class GameBoardViewController implements Initializable {
 
     /**
      * kutsuu metodia aloittamaan pelin
+     *
      * @param url url
-     * @param rb ResourceBundle
+     * @param rb  ResourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -52,14 +54,14 @@ public class GameBoardViewController implements Initializable {
 
     /**
      * Alustaa GameUi:n applikaatioksi ja tarkistaa siltä, onko pelaaja halunnut reunat, ja minkä teeman hän on valinnut
-     * @param application saa parametrinaan gameUi:n
      *
+     * @param application saa parametrinaan gameUi:n
      */
     public void setApplication(GameUi application) {
 
         this.application = application;
-       this.borders=application.borders;
-       this.theme=application.theme;
+        this.borders = application.borders;
+        this.theme = application.theme;
     }
 
     /**
@@ -75,10 +77,11 @@ public class GameBoardViewController implements Initializable {
 
     /**
      * Kertoo pelilogiikasta vastaavalle luokalle GameServicelle käyttäjän painamista näppäimistä
+     *
      * @param keyEvent näppäinten tapahtumat
      */
     @FXML
-    public void handleKeyPressed(KeyEvent keyEvent)  {
+    public void handleKeyPressed(KeyEvent keyEvent) {
 
 
         if (keyEvent.getCode().equals(KeyCode.ENTER) && this.enterPressed == false) {
@@ -113,6 +116,7 @@ public class GameBoardViewController implements Initializable {
     /**
      * Alustaa PlayerServicen ja kutsuu sitä päivittämään ennätyksen, vaihtaa enterin painamisen falseksi, kutsuu GameUi:ta asettamaan asettamaan  pisteet ja
      * asettamaan näkymäksi top-listan
+     *
      * @param points pisteet, jotka pelaaja juuri sai
      */
     public void handleTopList(int points) {

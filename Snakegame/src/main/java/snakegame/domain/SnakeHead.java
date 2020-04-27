@@ -1,6 +1,7 @@
 package snakegame.domain;
 
 import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 
 /**
@@ -29,6 +30,11 @@ public class SnakeHead {
      */
     public String direction;
 
+    /**
+     * Madon pään konstruktori, saa parametrinaan madon koon ja pelialueesta vastaavan luokan
+     * @param size koko
+     * @param area pelialueesta vastaava luokka
+     */
     public SnakeHead(int size, Area area) {
 
         this.size = size;

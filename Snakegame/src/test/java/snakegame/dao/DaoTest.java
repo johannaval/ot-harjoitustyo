@@ -13,7 +13,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Properties;
 
 import snakegame.domain.Player;
 
@@ -21,9 +24,19 @@ public class DaoTest {
 
     PlayerSQL pd;
 
-    public DaoTest() throws SQLException {
+    public DaoTest() {
 
-        this.pd = new PlayerSQL("jdbc:sqlite:thisIsForUnittestss.db");
+        Properties properties = new Properties();
+
+        try {
+            properties.load(new FileInputStream("config.properties"));
+        } catch (IOException e) {
+            System.out.println("Konfiguroinnissa virhe!");
+        }
+
+        String urlForDaoUnitTests = properties.getProperty("urlForDao");
+
+        this.pd = new PlayerSQL(urlForDaoUnitTests);
     }
 
     @BeforeAll

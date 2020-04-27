@@ -31,16 +31,12 @@ public class LogInViewController implements Initializable {
     private PasswordField password;
     @FXML
     private Label error;
-    private PlayerSQL playerSQL;
-    private Player loggedIn;
-    private PlayerService servise;
-
 
     /**
      * Metodi alustaa PlayerSQL ja PlayerService -luokat, hakee config.properties tiedostosta yhteyden playerSQL:lle
      *
      * @param url url
-     * @param rb  resourceBundle?
+     * @param rb  resourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,7 +55,6 @@ public class LogInViewController implements Initializable {
         PlayerService pService = null;
 
         PlayerSQL playerSQL = new PlayerSQL(urlForDao);
-     //   PlayerSQL playerSQL = new PlayerSQL();
         pService = new PlayerService(playerSQL, this);
 
         this.service = pService;
@@ -76,7 +71,7 @@ public class LogInViewController implements Initializable {
     }
 
     @FXML
-    private void handleLogin(ActionEvent event) throws  IOException {
+    private void handleLogin(ActionEvent event) {
 
         String name = username.getText().toLowerCase();
         String passw = password.getText().toLowerCase();

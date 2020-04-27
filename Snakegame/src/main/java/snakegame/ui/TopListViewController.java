@@ -38,14 +38,13 @@ public class TopListViewController implements Initializable {
     private TableColumn<Player, String> username;
     @FXML
     private TableColumn<Player, Integer> highscore;
-    private String tableUrl = "jdbc:sqlite:testsql.db";
     private ObservableList<Player> topList = FXCollections.observableArrayList();
 
     /**
      * Metodi
      *
      * @param url url
-     * @param rb  emt?
+     * @param rb  ResourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -83,7 +82,7 @@ public class TopListViewController implements Initializable {
     }
 
     @FXML
-    private void handleBackToGame(ActionEvent event) throws IOException {
+    private void handleBackToGame(ActionEvent event) {
 
         application.setGameScene();
     }

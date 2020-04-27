@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -43,7 +44,6 @@ public class CreateNewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
 
-
         Properties properties = new Properties();
 
         try {
@@ -59,8 +59,6 @@ public class CreateNewController implements Initializable {
         PlayerService pService = null;
 
         PlayerSQL playerSQL = new PlayerSQL(urlForDao);
-    //    PlayerSQL playerSQL = new PlayerSQL();
-
 
         pService = new PlayerService(playerSQL, livc);
 
@@ -98,6 +96,16 @@ public class CreateNewController implements Initializable {
         if (name.length() < 3) {
             error.setText("Too short username!");
             return;
+        }
+        if (name.length() > 20) {
+            error.setText("Too long username! Limit is 20!");
+            return;
+
+        }
+        if (passw.length() > 20) {
+            error.setText("Too long password! Limit is 20!");
+            return;
+
         }
         if (passw.isEmpty()) {
             error.setText("Password must contain at least 1 letter!");
