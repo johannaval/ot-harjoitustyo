@@ -8,11 +8,13 @@ Peliin luodaan ensin omat tunnukset, joilla kirjaudutaan sisään. Pelissä ker�
 * [Työaikakirjanpito](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 * [Vaativuusmäärittely](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 * [Arkkitehtuuri](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+* [Käyttöohje](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
 
 ### Releaset: 
-* (Jotta Jar-tiedoston saa auki, lataa releasen jar-tiedosto, hyväksy tiedoston permissions kohdasta "Allow executing file as program", ja voit nyt avata jarin joko graafisesti tai komentokentän kautta ~/Downloads kansiossa komennolla "java -jar snakegame.jar")
+* (Jotta Jar-tiedoston saa auki, lataa releasen jar-tiedosto, hyväksy tiedoston permissions kohdasta "Allow executing file as program", ja voit nyt avata jarin komentokentän kautta ~/Downloads kansiossa komennolla "java -jar snakegame.jar")
 * [Viikko 5](https://github.com/johannaval/ot-harjoitustyo/releases/tag/viikko5)
+* [Viikko 6](https://github.com/johannaval/ot-harjoitustyo/releases/tag/2)
 
 
 ## Komentorivin toiminnot:
@@ -45,3 +47,8 @@ Peliin luodaan ensin omat tunnukset, joilla kirjaudutaan sisään. Pelissä ker�
 * Checkstyle
 
    ```mvn jxr:jxr checkstyle:checkstyle```
+   
+   
+* Java Doc (kuvaukset löytyvät avaamalla target/site/apidocs/index.html)
+
+   ```mvn javadoc:javadoc```
