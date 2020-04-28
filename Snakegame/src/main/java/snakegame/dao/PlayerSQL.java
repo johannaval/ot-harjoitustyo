@@ -40,7 +40,7 @@ public class PlayerSQL implements DaoPlayer {
             db = DriverManager.getConnection(url);
             statement = db.createStatement();
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            System.out.println("Virhe yhteyden luomisessa!");
         }
     }
 

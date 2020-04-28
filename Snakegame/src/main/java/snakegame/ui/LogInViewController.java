@@ -54,8 +54,12 @@ public class LogInViewController implements Initializable {
 
         PlayerService pService = null;
 
-        PlayerSQL playerSQL = new PlayerSQL(urlForDao);
-        pService = new PlayerService(playerSQL, this);
+        try {
+            PlayerSQL playerSQL = new PlayerSQL(urlForDao);
+            pService = new PlayerService(playerSQL, this);
+        } catch (Exception e) {
+            System.out.println("Virhe ladattaessa config.properties tiedostoa!");
+        }
 
         this.service = pService;
     }
@@ -76,22 +80,29 @@ public class LogInViewController implements Initializable {
         String name = username.getText().toLowerCase();
         String passw = password.getText().toLowerCase();
 
-        if (!service.login(name, passw)) {
+        try {
 
-            if (!error.getText().equals("Wrong password!")) {
-                error.setText("Create your account first!");
+            if (!service.login(name, passw)) {
+
+                if (!error.getText().equals("Wrong password!")) {
+                    error.setText("Create your account first!");
+                    username.setText("");
+                    password.setText("");
+                }
+            } else {
+
+                application.setPlayerService(this.service);
+                application.setGameScene();
+
                 username.setText("");
                 password.setText("");
+                error.setText("");
             }
-        } else {
-
-            application.setPlayerService(this.service);
-            application.setGameScene();
-            username.setText("");
-            password.setText("");
-            error.setText("");
+        } catch (Exception e) {
+            System.out.println("Kirjautumisessa tapahtui virhe!");
         }
     }
+
 
     @FXML
     private void handleNewUser(ActionEvent event) {

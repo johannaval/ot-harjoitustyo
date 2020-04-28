@@ -58,10 +58,12 @@ public class CreateNewController implements Initializable {
         this.livc = new LogInViewController();
         PlayerService pService = null;
 
-        PlayerSQL playerSQL = new PlayerSQL(urlForDao);
-
-        pService = new PlayerService(playerSQL, livc);
-
+        try {
+            PlayerSQL playerSQL = new PlayerSQL(urlForDao);
+            pService = new PlayerService(playerSQL, livc);
+        } catch (Exception e) {
+            System.out.println("Virhe ladattaessa config.properties tiedostoa!");
+        }
 
         this.service = pService;
     }
@@ -93,37 +95,45 @@ public class CreateNewController implements Initializable {
         String name = username.getText().toLowerCase();
         String passw = password.getText().toLowerCase();
 
-        if (name.length() < 3) {
-            error.setText("Too short username!");
-            return;
-        }
-        if (name.length() > 20) {
-            error.setText("Too long username! Limit is 20!");
-            return;
+        try {
 
-        }
-        if (passw.length() > 20) {
-            error.setText("Too long password! Limit is 20!");
-            return;
+            if (name.length() < 3) {
+                error.setText("Too short username!");
+                return;
+            }
+            if (name.length() > 20) {
+                error.setText("Too long username! Limit is 20!");
+                return;
 
-        }
-        if (passw.isEmpty()) {
-            error.setText("Password must contain at least 1 letter!");
-            return;
-        }
-        if (service.isThereAccountWithThisName(name)) {
-            username.setText("");
-            password.setText("");
-            error.setText("Oops! This username is already registered");
-            return;
+            }
+            if (passw.length() > 20) {
+                error.setText("Too long password! Limit is 20!");
+                return;
 
-        }
-        if (service.createUser(name, password.getText())) {
+            }
+            if (passw.isEmpty()) {
+                error.setText("Password must contain at least 1 letter!");
+                return;
+            }
+            if (service.isThereAccountWithThisName(name)) {
+                username.setText("");
+                password.setText("");
+                error.setText("Oops! This username is already registered");
+                return;
 
-            username.setText("");
-            password.setText("");
-            error.setText("");
-            application.setLogInScene();
+            }
+            if (service.createUser(name, password.getText())) {
+
+                username.setText("");
+                password.setText("");
+                error.setText("");
+
+                application.setLogInScene();
+            }
+
+        } catch (Exception e) {
+            System.out.println("Käyttäjän luomisessa tapahtui virhe!");
+
         }
     }
 }
