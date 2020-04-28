@@ -32,6 +32,7 @@ public class SnakeHead {
 
     /**
      * Madon pään konstruktori, saa parametrinaan madon koon ja pelialueesta vastaavan luokan
+     *
      * @param size koko
      * @param area pelialueesta vastaava luokka
      */

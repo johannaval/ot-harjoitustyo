@@ -59,9 +59,10 @@ public class Area {
 
     /**
      * Alueen konstruktori, saa parametreinaan pelialueen pituuden, leveyden ja AnchorPanen, eli pelialueen pohjan
+     *
      * @param length pelialueen pituus
-     * @param width pelialueen leveys
-     * @param pane pelialueen pohja
+     * @param width  pelialueen leveys
+     * @param pane   pelialueen pohja
      */
     public Area(Integer length, Integer width, Pane pane) {
 

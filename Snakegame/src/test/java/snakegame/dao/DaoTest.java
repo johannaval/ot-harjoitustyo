@@ -34,7 +34,7 @@ public class DaoTest {
             System.out.println("Konfiguroinnissa virhe!");
         }
 
-        String urlForDaoUnitTests = properties.getProperty("urlForDao");
+        String urlForDaoUnitTests = properties.getProperty("urlForDaoUnitTests");
 
         this.pd = new PlayerSQL(urlForDaoUnitTests);
     }

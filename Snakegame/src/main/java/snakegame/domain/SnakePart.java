@@ -37,8 +37,9 @@ public class SnakePart extends Rectangle {
 
     /**
      * Konstruktori, joka saa parametreinaan
-     * @param x madon x, koordinaatti
-     * @param y madon y koordinaatti
+     *
+     * @param x    madon x, koordinaatti
+     * @param y    madon y koordinaatti
      * @param part madon pala
      * @param area pelialueesta vastaava luokka
      */
@@ -133,7 +134,7 @@ public class SnakePart extends Rectangle {
     public void goUp() {
 
         newY = (int) (newY - 2 - speed);
-        if (newY <= 1) {
+        if (newY <= 0) {
             newY = maxSizeY;
         }
     }
@@ -154,7 +155,7 @@ public class SnakePart extends Rectangle {
      */
     public void goLeft() {
         newX = (int) (newX - 2 - speed);
-        if (newX <= 1) {
+        if (newX <= 0) {
             newX = maxSizeX;
         }
     }
