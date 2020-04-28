@@ -39,7 +39,7 @@ Peliin luodaan ensin omat tunnukset, joilla kirjaudutaan sis채채n. Peliss채 ker�
    ```mvn package```
    
    
-* Jar ohjelman suorittaminen target-kansion sis채ll채 
+* Jar ohjelman suorittaminen target-kansion sis채ll채 (vaatii, ett채 suorituskansiossa on config.properties-tiedosto! Voit esim kopioida sen juurikansiosta target-kansioon)
 
    ```java -jar Snakegame-1.0-SNAPSHOT.jar```
    
