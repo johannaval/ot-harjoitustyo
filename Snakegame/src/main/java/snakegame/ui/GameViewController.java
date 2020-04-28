@@ -32,7 +32,7 @@ public class GameViewController implements Initializable {
     private ComboBox theme;
     @FXML
     private Label error;
-    ObservableList<String> themes = FXCollections.observableArrayList("1. Rainbow", "2. Space", "3. Leaves");
+    ObservableList<String> themes = FXCollections.observableArrayList("1. Rainbow", "2. Space", "3. Beach");
 
 
     /**

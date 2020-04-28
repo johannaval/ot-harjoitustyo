@@ -53,9 +53,9 @@ public class Food extends Rectangle {
         } else if (this.theme.equals("2")) {
             setFill(Color.WHITE);
         } else if (this.theme.equals("3")) {
-            setFill(Color.BLACK);
+            setFill(Color.DARKOLIVEGREEN);
+            setStroke(Color.WHITE);
         }
-
     }
 
     /**

@@ -97,12 +97,11 @@ public class Area {
             }
         } else if (this.theme.equals("3")) {
 
-
-            Image image = new Image(String.valueOf(getClass().getResource("/greentheme.png")));
+            Image image = new Image(String.valueOf(getClass().getResource("/palms.jpg")));
             pane.setBackground(new Background(new BackgroundImage(image, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
 
             if (withBorders) {
-                pane.setBorder(new Border(new BorderStroke(Color.DARKOLIVEGREEN, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
+                pane.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, null, new BorderWidths(15))));
             }
         }
     }
@@ -173,7 +172,7 @@ public class Area {
                 sp.setStroke(Color.ORANGERED);
             }
             if (theme.equals("3")) {
-                sp.setFill(Color.DARKOLIVEGREEN);
+                sp.setFill(Color.BLACK);
                 sp.setStroke(Color.DARKOLIVEGREEN);
             }
         }
