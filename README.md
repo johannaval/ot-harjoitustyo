@@ -1,18 +1,21 @@
 ## Ohjelmistotekniikka, harjoitystyö:
 
 ###  :snake: Snake game AKA Matopeli  :bug:
-Peliin luodaan ensin omat tunnukset, joilla kirjaudutaan sisään. Pelissä kerätään pisteitä nappaamalla "ruokia" ja selviämällä mahdollisimman pitkään elossa. Peli loppuu kun mato kuolee, joka voi olla seuraus joko itseensä osumisesta tai seinään päin menemisestä. Lopuksi peli näyttää top10 listan, jonne vain parhaimmat pisteet keränneet pääsevät. Pelissä on myös mahdollista valita, haluaako pelata reunoilla vai ilman, sekä yhden kolmesta teemasta.
+Sovellus toteutettu Helsingin yliopiston Ohjelmistotekniikan harjoitustyönä.
+
+Peliin luodaan ensin omat tunnukset, joilla kirjaudutaan sisään. Peli toimii kuten kaikkien tuntema matopeli, jossa tarkoituksena on saada mahdollisimman paljon pisteitä keräämällä "ruokia". Peli päättyy, kun mato kuolee. Mato kuolee jos se
+osuu itseensä, tai jos pelaaja on valinnut pelin reunoilla, peli päättyy myös madon osuessa reunaan. Lopuksi peli näyttää top 10 listan, jonne vain parhaimmat pisteet keränneet pääsevät. Pelissä on mahdollista valita, haluaako pelata reunoilla vai ilman, sekä yhden kolmesta teemasta.
 
 
 ### Dokumentaatio:
-* [Työaikakirjanpito](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
-* [Vaativuusmäärittely](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
-* [Arkkitehtuuri](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 * [Käyttöohje](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
+* [Vaativuusmäärittely](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+* [Arkkitehtuurikuvaus](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+* [Testausdokumentti](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/testaus.md)
+* [Työaikakirjanpito](https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 
 
 ### Releaset: 
-* (Jotta Jar-tiedoston saa auki, lataa releasen jar-tiedosto, hyväksy tiedoston permissions kohdasta "Allow executing file as program", ja voit nyt avata jarin komentokentän kautta ~/Downloads kansiossa komennolla "java -jar snakegame.jar")
 * [Viikko 5](https://github.com/johannaval/ot-harjoitustyo/releases/tag/viikko5)
 * [Viikko 6](https://github.com/johannaval/ot-harjoitustyo/releases/tag/2)
 
