@@ -15,7 +15,7 @@
 | 23.5               | 5h            | Peliin teemat ja reunojen valinta               |
 | 25.4               | 3h            | Java Doc:sit                                 |
 | 26.4               | 1h            | Config.Properties saatu toimimaan            |
-|                    |               |                                             |
-|                    |               |                                              |
-| yht:               |  52h           |                |
+| 7.5                   |   5h            | Päivitetty dokumentaatiota ajantasalle, testausdokumentaatio |                                           
+| 8.5                  | 4h              | Ohjelman viimeistely ja repositio valmiiksi                                             |
+| yht:               |  61h           |                |
 
