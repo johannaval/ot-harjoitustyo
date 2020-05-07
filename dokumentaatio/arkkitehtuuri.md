@@ -36,7 +36,7 @@ Pelaajan tiedoista huolehtii luokka PlayerService, johon liittyy kirjautunut kä
 
 Sovelluksen rakenne luokka/pakkauskaaviona:
 
- <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/CamScanner%2005-07-2020%2013.54.49-20200507135546.pdf" width="400" height="550">
+ <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/999999.jpg" width="400" height="550">
  
  
  ## Tietojen pysyväistallennus
@@ -81,7 +81,7 @@ Kun käyttäjä painaa "Enter"-näppäimestä, peli alkaa ja näppäinten kuunte
 Kun peli päättyy, kutsuu ohjelma gameBoardViewControllerin metodia handleTopList, joka saa parametrinaan juuri pelatun pelin pistemäärän. Controlleri kutsuu PlayerServicen metodia setHighscore(pistemäärä), jonka myötä PlayerService tarkistaa, onko kirjautuneen käyttäjän aiempi ennätys pienempi, kuin äsken pelatun pelin pistemäärä. Jos on, asettaa se pelaajan uudeksi ennätykseksi uuden pistemäärän ja samalla kutsutaan rajapinnan DaoPlayer metodia update, joka päivittää uuden ennätyksen myös tietokantaan. Kun tämä on suoritettu, tulee näkymäksi TopListScene, jossa näkyy 10 parasta tulosta ja tulosten saaneiden käyttäjänimet. Top 10-listan TopListViewController saa kutsumalla PlayerServicen metodia topList(topList), jossa parametrin lista on tyhjä. PlayerService kutsuu rajapinnan metodia palauttamaan annetun listan täytettynä oikeilla tiedoilla. 
 Jos käyttäjä painaa tässä näkymässä log out napista, PlayerService kirjaa käyttäjän ulos, ja näkymäksi vaihdetaan LogInScene. Jos käyttäjä painaa new game, näkymäksi tulee gameScene ja uuden pelin voi aloittaa.
 
- <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/CamScanner%2005-07-2020%2013.44.34-20200507134717.pdf" width="700" height="900">
+ <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/9999.jpg" width="700" height="900">
 
 
 ### Pelin ominaisuudet ja toiminta:
@@ -90,7 +90,7 @@ Metodi myös lisää pelialueelle SnakeHead:in, eli madon pään, johon liittyy 
 Kaaviossa mato osuu ruokaan, jolloin vanha ruoka poistuu ja uusi tulee tilalle, pisteet kasvavat ja madon palojen määrä kasvaa. Update metodi tarkastaa, onko mato osunut itseensä tai reunaan. Jos jompikumpi palauttaa true, peli päättyy. Tässä kaaviossa mato osuu pelialueen reunaan, eli updaten kutsuessa metodia hitWall se palauttaa true, jolloin se kutsuu GameServicen metodia GameIsOver lopettamaan pelin ja peli päättyy.
 
 
-<img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/CamScanner%2005-07-2020%2013.44.34-20200507134641.pdf" width="700" height="900">
+<img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/999.jpg" width="700" height="900">
 
 
 
