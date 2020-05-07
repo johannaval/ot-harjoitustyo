@@ -82,6 +82,7 @@ Kun peli päättyy, kutsuu ohjelma gameBoardViewControllerin metodia handleTopLi
 Jos käyttäjä painaa tässä näkymässä log out napista, PlayerService kirjaa käyttäjän ulos, ja näkymäksi vaihdetaan LogInScene. Jos käyttäjä painaa new game, näkymäksi tulee gameScene ja uuden pelin voi aloittaa.
 
  <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/9999.jpg" width="700" height="900">
+(Nuolen "Press "ENTER" pitäisi osoittaa GameBoardViewContolleriin, jossa metodi move() on, ei PlayerServiceen)
 
 
 ### Pelin ominaisuudet ja toiminta:
