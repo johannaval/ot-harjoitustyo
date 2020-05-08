@@ -18,6 +18,7 @@ osuu itseensä, tai jos pelaaja on valinnut pelin reunoilla, peli päättyy myö
 ### Releaset: 
 * [Viikko 5](https://github.com/johannaval/ot-harjoitustyo/releases/tag/viikko5)
 * [Viikko 6](https://github.com/johannaval/ot-harjoitustyo/releases/tag/2)
+* [Loppupalautus](https://github.com/johannaval/ot-harjoitustyo/releases/tag/3)
 
 
 ## Komentorivin toiminnot:

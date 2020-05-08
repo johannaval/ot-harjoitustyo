@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa tiedosto  (linkki vikaan releaseen)
+Lataa tiedosto [Snakegame.jar](https://github.com/johannaval/ot-harjoitustyo/releases/tag/3)
 
 
 ## Konfigurointi
@@ -9,12 +9,13 @@ Ohjelma olettaa, että käynnistyshakemistossa on konfiguraatiotiedosto "config.
 tietokantayhteyden sen toiminnoille ja testeille. Tiedosto on seuraavassa muodossa:
 
 ``` urlForDao=jdbc:sqlite:sqlConnectionUrl.db ```
+
 ``` urlForDaoUnitTests=jdbc:sqlite:forUnitTests.db ```
 
 
 ## Ohjelman käynnistäminen
 
-```java -jar snakegame.jar```
+```java -jar Snakegame.jar```
 
 
 
