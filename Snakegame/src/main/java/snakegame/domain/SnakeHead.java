@@ -1,6 +1,7 @@
 package snakegame.domain;
 
 import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 
 /**

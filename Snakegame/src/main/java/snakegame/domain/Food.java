@@ -3,6 +3,7 @@ package snakegame.domain;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;

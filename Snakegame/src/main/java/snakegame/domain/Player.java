@@ -84,7 +84,6 @@ public class Player {
                 Objects.equals(getPassword(), player.getPassword());
     }
 
-
     /**
      * Asettaa ennätyksen
      *

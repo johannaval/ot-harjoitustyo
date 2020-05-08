@@ -55,7 +55,6 @@ public class SnakePart extends Rectangle {
         setArcWidth(10);
         setArcHeight(10);
         this.area = area;
-
     }
 
     /**

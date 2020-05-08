@@ -4,8 +4,10 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.Pane;
+
 import java.util.ArrayList;
 import java.util.Random;
+
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderWidths;
 
@@ -48,6 +50,7 @@ public class Area {
      * Teema, jonka pelaaja valitsi
      */
     public String theme;
+
     /**
      * Alueen konstruktori, saa parametreinaan pelialueen pituuden, leveyden ja AnchorPanen, eli pelialueen pohjan
      *
@@ -290,5 +293,4 @@ public class Area {
 
         return gameOver;
     }
-
 }

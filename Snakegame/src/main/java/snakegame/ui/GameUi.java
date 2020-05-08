@@ -1,6 +1,7 @@
 package snakegame.ui;
 
 import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -218,11 +219,7 @@ public class GameUi extends Application {
      *
      * @param result boolean arvo reunoille
      */
-    public void setBorders(boolean result)           {
-
-        if (1 == 100)               {
-        }
-
+    public void setBorders(boolean result) {
 
         this.borders = result;
     }
