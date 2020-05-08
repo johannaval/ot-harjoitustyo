@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa tiedosto  (linkki vikaan releaseen)
+Lataa tiedosto [Snakegame.jar](https://github.com/johannaval/ot-harjoitustyo/releases/tag/3)
 
 
 ## Konfigurointi
@@ -14,7 +14,7 @@ tietokantayhteyden sen toiminnoille ja testeille. Tiedosto on seuraavassa muodos
 
 ## Ohjelman käynnistäminen
 
-```java -jar snakegame.jar```
+```java -jar Snakegame.jar```
 
 
 
