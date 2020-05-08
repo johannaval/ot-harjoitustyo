@@ -3,6 +3,7 @@ package snakegame.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javafx.collections.ObservableList;
 import snakegame.dao.DaoPlayer;
 
@@ -18,6 +19,7 @@ public class FakePlayerSQL implements DaoPlayer {
 
     @Override
     public void create(Player player) {
+
         players.add(player);
 
     }
@@ -31,12 +33,14 @@ public class FakePlayerSQL implements DaoPlayer {
 
     @Override
     public void clear() {
+
         players.clear();
 
     }
 
     @Override
     public boolean isThereAccountWithThisName(String username) {
+
         for (Player player : players) {
             if (player.getUsername().equals(username)) {
                 return true;
@@ -47,6 +51,7 @@ public class FakePlayerSQL implements DaoPlayer {
 
     @Override
     public Player isLogInOK(String username, String passw) {
+
         for (Player player : players) {
             if (player.getUsername().equals(username) && player.getPassword().equals(passw)) {
                 return player;
@@ -57,6 +62,7 @@ public class FakePlayerSQL implements DaoPlayer {
 
     @Override
     public Player findUser(String username) {
+
         for (Player player : players) {
             if (player.getUsername().equals(username)) {
                 return player;

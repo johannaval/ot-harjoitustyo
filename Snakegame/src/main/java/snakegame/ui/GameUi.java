@@ -1,7 +1,6 @@
 package snakegame.ui;
 
 import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -158,7 +157,6 @@ public class GameUi extends Application {
 
     /**
      * alustaa GameBoardScenen eli pelinäkymän
-     *
      */
     public void setGameBoardScene() {
 
@@ -196,7 +194,9 @@ public class GameUi extends Application {
     }
 
     /**
-     * @param points asettaa pelaajan viimeiset pisteet
+     * Pitää tiedossa pelaajan viimeksi saadut pisteet
+     *
+     * @param points pisteet
      */
     public void setLastScore(int points) {
 
@@ -204,7 +204,9 @@ public class GameUi extends Application {
     }
 
     /**
-     * @return palauttaa pelaajan viimeiset pisteet
+     * Palauttaa pelaajan viimeksi saadut pisteet
+     *
+     * @return pisteet
      */
     public int getLastPoints() {
 
@@ -216,7 +218,11 @@ public class GameUi extends Application {
      *
      * @param result boolean arvo reunoille
      */
-    public void setBorders(boolean result) {
+    public void setBorders(boolean result)           {
+
+        if (1 == 100)               {
+        }
+
 
         this.borders = result;
     }
@@ -224,7 +230,7 @@ public class GameUi extends Application {
     /**
      * asettaa teeman käyttäjän valitseman teeman mukaan
      *
-     * @param themeNumber teemanumero
+     * @param themeNumber teeman numero
      */
     public void setTheme(String themeNumber) {
 

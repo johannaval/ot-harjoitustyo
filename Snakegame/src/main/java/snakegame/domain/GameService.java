@@ -3,7 +3,6 @@ package snakegame.domain;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -15,7 +14,7 @@ import snakegame.ui.GameBoardViewController;
 public class GameService {
 
     /**
-     * AnchorPane, pelialueen runko/alusta
+     * AnchorPane, pelialueen pohja
      */
     @FXML
     public AnchorPane pane;
@@ -39,7 +38,7 @@ public class GameService {
      */
     public boolean gameOver;
     /**
-     * Pelaajan pistete
+     * Pelaajan pisteet
      */
     public int points;
     /**
@@ -95,7 +94,7 @@ public class GameService {
     }
 
     /**
-     * Alustaa pelialueen
+     * Luo pelialueen
      */
     public void addGameArea() {
 
@@ -104,8 +103,8 @@ public class GameService {
     }
 
     /**
-     * Kutsuu metodia withBorders() asettamaan reunat mikäli pelaaja halusi, kutsuu theme() metodia asettamaan teman, lisää
-     * pelialueelle ruoan ja madon, lisää pisteet näkymään, sekä kutsuu startTimer() metodia päivittämään peliä
+     * Kutsuu metodia withBorders() asettamaan reunat mikäli pelaaja halusi, kutsuu theme() metodia asettamaan teeman, lisää
+     * pelialueelle ruoan ja madon, lisää pisteet näkymään, sekä kutsuu startTimer() metodia aloittamaan ja päivittämään peliä
      */
     public void move() {
 
@@ -119,15 +118,13 @@ public class GameService {
             text.setStroke(Color.BLACK);
         }
         pane.getChildren().add(text);
-
         area.addNewSnake(new SnakeHead(50, area));
-
         startTimer();
 
     }
 
     /**
-     * Käynnistä timerin, jonka avulla peli etenee ja mato päivittyy.
+     * Käynnistä AnimationTimerin, jonka avulla peli etenee ja mato päivittyy.
      */
     public void startTimer() {
 
@@ -151,23 +148,19 @@ public class GameService {
     }
 
     /**
-     * Asettaa gameOver booleaniksi true ja entePressed false, poistaa pelialueelta kaiken, ja kutsuu controlleria
+     * Asettaa gameOver booleaniksi trueksi, poistaa pelialueelta kaiken, ja kutsuu controlleria
      * hoitamaan top-listan, jolle annetaan parametrina juuri saadut pisteet
      */
     public void gameIsOver() {
 
         this.points = area.getPoints();
         gameOver = true;
-        area.enterPressed = false;
         pane.getChildren().removeAll();
         controller.handleTopList(points);
-
     }
 
     /**
      * Asettaa madon suunnaksi "alas"
-     *
-     * @see GameBoardViewController#handleKeyPressed(KeyEvent)
      */
     public void goDown() {
 
@@ -177,8 +170,6 @@ public class GameService {
 
     /**
      * Asettaa madon suunnaksi "oikea"
-     *
-     * @see GameBoardViewController#handleKeyPressed(KeyEvent)
      */
     public void goRigh() {
 
@@ -188,35 +179,19 @@ public class GameService {
 
     /**
      * Asettaa madon suunnaksi "vasen"
-     *
-     * @see GameBoardViewController#handleKeyPressed(KeyEvent)
      */
     public void goLeft() {
 
         area.head.setDirection("LEFT");
         area.head.switchDirection("LEFT");
-
     }
 
     /**
      * Asettaa madon suunnaksi "ylös"
-     *
-     * @see GameBoardViewController#handleKeyPressed(KeyEvent)
      */
     public void goUp() {
 
         area.head.setDirection("UP");
         area.head.switchDirection("UP");
-
-    }
-
-    /**
-     * Laittaa enterPressed arvoksi true
-     *
-     * @see GameBoardViewController#handleKeyPressed(KeyEvent)
-     */
-    public void enterPressed() {
-
-        area.enterPressed = true;
     }
 }

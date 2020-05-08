@@ -19,14 +19,14 @@ public class PlayerServiceUserTest {
     LogInViewController controller;
 
     @Before
-    public void setUp() throws SQLException {
+    public void setUp() {
         playerSQL = new FakePlayerSQL();
         controller = new LogInViewController();
         service = new PlayerService(playerSQL, controller);
     }
 
     @Test
-    public void updatingHighscoreWorks() throws SQLException {
+    public void updatingHighscoreWorks() {
 
         boolean creatingResult = service.createUser("lasku", "varjo");
         assertTrue(creatingResult);
@@ -35,13 +35,14 @@ public class PlayerServiceUserTest {
         assertTrue(loginResult);
 
         service.getLoggedUser().putHighscore(100);
+        int result = service.getLoggedUser().getHighscore();
 
-        assertEquals(100, service.getLoggedUser().getHighscore());
+        assertEquals(100, result);
     }
 
 
     @Test
-    public void isThereAccountWithThisNameReturnTrueIfThereIs() throws SQLException {
+    public void isThereAccountWithThisNameReturnTrueIfThereIs() {
 
         service.createUser("kyna", "kotelo");
 
@@ -51,15 +52,15 @@ public class PlayerServiceUserTest {
     }
 
     @Test
-    public void isThereAccountWithThisNameReturnFalseIfThereIsNot() throws SQLException {
+    public void isThereAccountWithThisNameReturnFalseIfThereIsNot() {
 
-        boolean result = service.isThereAccountWithThisName("Liitovarjo");
+        boolean result = service.isThereAccountWithThisName("liitovarjo");
 
         assertFalse(result);
     }
 
     @Test
-    public void existingUserCanLogIn() throws SQLException {
+    public void existingUserCanLogIn() {
 
         boolean result = service.login("lento", "kone");
         assertTrue(result);
@@ -69,11 +70,9 @@ public class PlayerServiceUserTest {
     }
 
     @Test
-    public void logOutAfterLoggingIn() throws SQLException {
+    public void logOutWorks() {
 
-        boolean result = service.login("lento", "kone");
-        assertTrue(result);
-
+        service.login("lento", "kone");
         service.logout();
 
         assertEquals(null, service.getLoggedUser());
@@ -91,39 +90,44 @@ public class PlayerServiceUserTest {
     }
 
     @Test
-    public void playerDoesNotEqualOtherWithDifferentName() {
+    public void playerDoesNotEqualOtherWithDifferentData() {
 
         Player first = new Player("ilma", "pallo", 0);
         Player second = new Player("lento", "pallo", 0);
-
         boolean result = first.equals(second);
 
         assertFalse(result);
+
+        Player first2 = new Player("meri", "lokki", 0);
+        Player second2 = new Player("meri", "leijona", 0);
+        boolean result2 = first2.equals(second2);
+
+        assertFalse(result2);
+
+        Player first3 = new Player("leija", "ilija", 100);
+        Player second3 = new Player("leija", "ilija", 0);
+        boolean result3 = first3.equals(second3);
+
+        assertFalse(result3);
+
+
     }
 
     @Test
-    public void updatingHighshcoreWorks() throws SQLException {
+    public void updatingHighshcoreWorks() {
 
-        boolean creatingResult = service.createUser("mikko", "mallikas");
-        assertTrue(creatingResult);
-
-        boolean loginResult = service.login("mikko", "mallikas");
-        assertTrue(loginResult);
-
+        service.createUser("mikko", "mallikas");
+        service.login("mikko", "mallikas");
         service.setHighscore(500);
 
         assertEquals(500, service.getLoggedUser().highscore);
-
     }
 
     @Test
-    public void updatingHighshcoreDontUpdateIfScoreIsLessThanHighscore() throws SQLException {
+    public void updatingHighscoreDontUpdateIfScoreIsLessThanHighscore() {
 
-        boolean creatingResult = service.createUser("mikko", "mallikas");
-        assertTrue(creatingResult);
-
-        boolean loginResult = service.login("mikko", "mallikas");
-        assertTrue(loginResult);
+        service.createUser("mikko", "mallikas");
+        service.login("mikko", "mallikas");
 
         service.setHighscore(500);
         service.setHighscore(300);
@@ -143,7 +147,7 @@ public class PlayerServiceUserTest {
     }
 
     @Test
-    public void nonExistingUserCanNotLogIn() throws SQLException {
+    public void nonExistingUserCanNotLogIn() {
 
         boolean result = service.login("tester", "test");
         assertFalse(result);
@@ -153,7 +157,7 @@ public class PlayerServiceUserTest {
     }
 
     @Test
-    public void creationFailsIfThereIsAlreadyUserWithThisName() throws Exception {
+    public void creationFailsIfThereIsAlreadyUserWithThisName() {
 
         boolean result = service.createUser("lento", "simulaattori");
 
@@ -162,7 +166,7 @@ public class PlayerServiceUserTest {
 
 
     @Test
-    public void createdUserCanLogIn() throws Exception {
+    public void createdUserCanLogIn() {
 
         boolean result = service.createUser("ilma", "pallo");
         assertTrue(result);
@@ -174,7 +178,7 @@ public class PlayerServiceUserTest {
     }
 
     @Test
-    public void topListReturnRightSizeList() throws SQLException {
+    public void topListReturnRightSizeList() {
 
         service.createUser("pyyhe", "kumi");
         service.login("pyyhe", "kumi");
@@ -186,19 +190,14 @@ public class PlayerServiceUserTest {
         service.getLoggedUser().putHighscore(20);
         service.logout();
 
-
         service.createUser("tero", "tin");
         service.login("tero", "tin");
         service.getLoggedUser().putHighscore(0);
         service.logout();
 
-
         ObservableList<Player> emptyList = FXCollections.observableArrayList();
-
         ObservableList listWithScores = service.topList(emptyList);
 
-
         assertEquals(2, listWithScores.size());
-
     }
 }

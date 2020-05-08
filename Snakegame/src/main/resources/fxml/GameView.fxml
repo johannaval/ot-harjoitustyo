@@ -19,17 +19,17 @@
         </ImageView>
         <Label fx:id="error" layoutX="230.0" layoutY="185.0" prefHeight="26.0" prefWidth="186.0" text="" />
         <Label fx:id="highscore" layoutX="233.0" layoutY="276.0" prefHeight="32.0" prefWidth="172.0" text="Your highscore: " textFill="black" />
-        <Button layoutX="503.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleExit" text="Log out" />
-        <Button fx:id="startGameButton" layoutX="232.0" layoutY="238.0" mnemonicParsing="false" onAction="#handleStartGame" text="Start game!" textFill="#132211" textOverrun="CLIP">
-            <effect>
-                <Reflection />
-            </effect>
-        </Button>
-      <CheckBox fx:id="borders" layoutX="232.0" layoutY="131.0" mnemonicParsing="false" text="With borders?" />
-      <ComboBox fx:id="theme" layoutX="232.0" layoutY="160.0" prefWidth="150.0" promptText="Select your theme" visibleRowCount="3">
+      <ComboBox fx:id="theme" layoutX="232.0" layoutY="160.0" prefHeight="29.0" prefWidth="123.0" promptText="Select your theme" style="-fx-faint-focus-color: transparent; -fx-focus-color: #556B2F;" visibleRowCount="3">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </ComboBox>
+        <Button fx:id="startGameButton" layoutX="232.0" layoutY="238.0" mnemonicParsing="false" onAction="#handleStartGame" style="-fx-faint-focus-color: transparent; -fx-focus-color: #556B2F;" text="Start game!" textFill="#132211" textOverrun="CLIP">
+            <effect>
+                <Reflection />
+            </effect>
+        </Button>
+        <Button blendMode="DARKEN" layoutX="450.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleExit" style="-fx-faint-focus-color: transparent; -fx-focus-color: #556B2F;" text="Log out" />
+        <CheckBox fx:id="borders" layoutX="232.0" layoutY="131.0" mnemonicParsing="false" style="-fx-faint-focus-color: transparent; -fx-focus-color: #556B2F;" text="With borders?" />
     </children>
 </AnchorPane>

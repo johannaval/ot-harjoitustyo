@@ -8,8 +8,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import snakegame.domain.GameService;
 import snakegame.domain.PlayerService;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -40,7 +38,8 @@ public class GameBoardViewController implements Initializable {
 
 
     /**
-     * kutsuu metodia aloittamaan pelin
+     * Alustaa näkymän
+     * Kutsuu start-metodia aloittamaan pelin
      *
      * @param url url
      * @param rb  ResourceBundle
@@ -54,8 +53,9 @@ public class GameBoardViewController implements Initializable {
 
     /**
      * Alustaa GameUi:n applikaatioksi ja tarkistaa siltä, onko pelaaja halunnut reunat, ja minkä teeman hän on valinnut
+     * Asettaa näkymäksi tämän näkymän
      *
-     * @param application saa parametrinaan gameUi:n
+     * @param application Parametrina gameUi:n luokka, joka huolehtii näkymien vaihtamisesta
      */
     public void setApplication(GameUi application) {
 
@@ -76,7 +76,7 @@ public class GameBoardViewController implements Initializable {
     }
 
     /**
-     * Kertoo pelilogiikasta vastaavalle luokalle GameServicelle käyttäjän painamista näppäimistä
+     * Kertoo GameServicelle käyttäjän painamista näppäimistä
      *
      * @param keyEvent näppäinten tapahtumat
      */
@@ -86,7 +86,6 @@ public class GameBoardViewController implements Initializable {
 
         if (keyEvent.getCode().equals(KeyCode.ENTER) && this.enterPressed == false) {
             label.setText("");
-            service.enterPressed();
             this.enterPressed = true;
             service.move();
         }
@@ -114,8 +113,8 @@ public class GameBoardViewController implements Initializable {
     }
 
     /**
-     * Alustaa PlayerServicen ja kutsuu sitä päivittämään ennätyksen, vaihtaa enterin painamisen falseksi, kutsuu GameUi:ta asettamaan asettamaan  pisteet ja
-     * asettamaan näkymäksi top-listan
+     * Alustaa PlayerServicen ja kutsuu sitä päivittämään ennätyksen, vaihtaa enterin painamisen falseksi
+     * kutsuu GameUi:ta asettamaan  pisteet ja näkymäksi top-listan
      *
      * @param points pisteet, jotka pelaaja juuri sai
      */

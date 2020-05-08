@@ -1,8 +1,10 @@
 
 package snakegame.domain;
 
+import java.util.Objects;
+
 /**
- * Pelaaja-luokka, pelaajan ominaisuudet
+ * Pelaaja-luokka, pitää kirjaa pelaajan nimestä, salasanasta ja ennätyksestä
  */
 public class Player {
 
@@ -76,10 +78,12 @@ public class Player {
         if (!(o instanceof Player)) {
             return false;
         }
-
-        Player other = (Player) o;
-        return username.equals(other.username);
+        Player player = (Player) o;
+        return getHighscore() == player.getHighscore() &&
+                Objects.equals(getUsername(), player.getUsername()) &&
+                Objects.equals(getPassword(), player.getPassword());
     }
+
 
     /**
      * Asettaa ennätyksen

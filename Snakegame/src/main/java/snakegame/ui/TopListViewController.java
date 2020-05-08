@@ -1,10 +1,7 @@
 package snakegame.ui;
 
-import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,7 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import snakegame.domain.Player;
 import snakegame.domain.PlayerService;
-
 
 /**
  * Top-listanäkymästä vastaava luokka (controller)
@@ -41,7 +37,7 @@ public class TopListViewController implements Initializable {
     private ObservableList<Player> topList = FXCollections.observableArrayList();
 
     /**
-     * Metodi
+     * Alustaa näkymän
      *
      * @param url url
      * @param rb  ResourceBundle
@@ -54,9 +50,10 @@ public class TopListViewController implements Initializable {
 
     /**
      * Sovellus asettaa näkymäksi tämän näkymän
-     * Hakee ennätykset Daolta ja asettaa ne listalle
+     * Hakee PlayerService luokan GameUi:lta
+     * Kutsuu PlayerServicen metodia  hakemaan top10-listan ja asettaa sen näkymään
      *
-     * @param application Parametrina vaihdosta vastaava luokka
+     * @param application Parametrina gameUi:n luokka, joka huolehtii näkymien vaihtamisesta
      */
     public void setApplication(GameUi application) {
 

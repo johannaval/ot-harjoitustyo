@@ -2,12 +2,9 @@ package snakegame.ui;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.Properties;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import snakegame.dao.PlayerSQL;
-import snakegame.domain.Player;
 import snakegame.domain.PlayerService;
 
 /**
@@ -34,6 +30,7 @@ public class LogInViewController implements Initializable {
 
     /**
      * Metodi alustaa PlayerSQL ja PlayerService -luokat, hakee config.properties tiedostosta yhteyden playerSQL:lle
+     * Alustaa näkymän
      *
      * @param url url
      * @param rb  resourceBundle
@@ -65,9 +62,9 @@ public class LogInViewController implements Initializable {
     }
 
     /**
-     * Alustaa GameUi:n applikaatioksi
+     * Sovellus asettaa näkymäksi tämän näkymän
      *
-     * @param application saa parametrinaan gameUi:n
+     * @param application Parametrina gameUi:n luokka, joka huolehtii näkymien vaihtamisesta
      */
     public void setApplication(GameUi application) {
 

@@ -40,7 +40,7 @@ public class SnakePart extends Rectangle {
      *
      * @param x    madon x, koordinaatti
      * @param y    madon y koordinaatti
-     * @param part madon pala
+     * @param part madon aiempi pala
      * @param area pelialueesta vastaava luokka
      */
     public SnakePart(int x, int y, SnakePart part, Area area) {
@@ -191,7 +191,7 @@ public class SnakePart extends Rectangle {
     }
 
     /**
-     * Metodi testejä varten! Asettaa X:n arvoksi parametrina saadun x:n
+     * Asettaa X:n arvoksi parametrina saadun x:n
      *
      * @param x asetettava x
      */
@@ -201,7 +201,7 @@ public class SnakePart extends Rectangle {
     }
 
     /**
-     * Metodi testejä varten! Asettaa Y:n arvoksi parametrina saadun y:n
+     * Asettaa Y:n arvoksi parametrina saadun y:n
      *
      * @param y asetettava y
      */
@@ -211,7 +211,7 @@ public class SnakePart extends Rectangle {
     }
 
     /**
-     * Metodi testejä varten! Asettaa X:n arvoksi parametrina saadun x:n
+     * Asettaa uudeksi X:n arvoksi parametrina saadun x:n
      *
      * @param x asetettava x
      */
@@ -221,7 +221,7 @@ public class SnakePart extends Rectangle {
     }
 
     /**
-     * Metodi testejä varten! Asettaa Y:n arvoksi parametrina saadun y:n
+     * Asettaa uudeksi Y:n arvoksi parametrina saadun y:n
      *
      * @param y asetettava y
      */

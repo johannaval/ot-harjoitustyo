@@ -1,10 +1,7 @@
 package snakegame.ui;
 
-import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -36,7 +33,8 @@ public class GameViewController implements Initializable {
 
 
     /**
-     * Lisää teema-valikkoon teemat
+     * Lisää teema-valikkoon teemat sekä ruksin reunojen valintaan
+     * Alustaa näkymän
      *
      * @param url url
      * @param rb  ResourceBundle
@@ -51,9 +49,10 @@ public class GameViewController implements Initializable {
     }
 
     /**
-     * Alustaa GameUi:n applikaatioksi, kutsuu metodia showHighscore() näyttämään kirjautuneen pelaajan ennätyksen
+     * Sovellus asettaa näkymäksi tämän näkymän
+     * Kutsuu metodia showHighscore() näyttämään kirjautuneen pelaajan ennätyksen
      *
-     * @param application saa parametrinaan gameUi:n
+     * @param application Parametrina gameUi:n luokka, joka huolehtii näkymien vaihtamisesta
      */
     public void setApplication(GameUi application) {
 
@@ -86,7 +85,7 @@ public class GameViewController implements Initializable {
 
 
     @FXML
-    private void handleStartGame(ActionEvent event) throws IOException {
+    private void handleStartGame(ActionEvent event) {
 
         if (!theme.getSelectionModel().getSelectedItem().toString().contains("1.") && !theme.getSelectionModel().getSelectedItem().toString().contains("2.") &&
                 !theme.getSelectionModel().getSelectedItem().toString().contains("3.")) {

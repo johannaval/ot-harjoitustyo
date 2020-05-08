@@ -32,8 +32,8 @@ public class PlayerService {
      *
      * @param username käyttäjänimi
      * @param password salasana
-     * @return palauttaa true, jos kirjautuminen onnistuu, false jos ei ja samalla katsoo, onko nimellä jo käyttäjä, jos on, kutsuu se controlleria asettamaan
-     * virheviestiin salasanan olevan väärin
+     * @return palauttaa true, jos kirjautuminen onnistuu, false jos ei ja samalla katsoo, onko nimellä jo käyttäjä, jos on, kutsuu se
+     * controlleria asettamaan virheviestiin salasanan olevan väärin
      */
     public boolean login(String username, String password) {
 
@@ -103,7 +103,7 @@ public class PlayerService {
      *
      * @param username käyttäjänimi
      * @param password salasana
-     * @return palauttaa true, jos luonti onnistui,  false jos kyseisellä käyttäjänimellä oli jo tunnus
+     * @return palauttaa true, jos luonti onnistui, false jos kyseisellä käyttäjänimellä oli jo tunnus
      */
     public boolean createUser(String username, String password) {
 

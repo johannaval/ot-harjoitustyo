@@ -25,7 +25,6 @@ public class SnakeHeadTest {
         gs.withBorders = true;
         gs.addGameArea();
         gs.move();
-        gs.enterPressed();
     }
 
     @Test

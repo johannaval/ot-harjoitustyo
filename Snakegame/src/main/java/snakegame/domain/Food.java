@@ -3,8 +3,6 @@ package snakegame.domain;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -16,7 +14,6 @@ public class Food extends Rectangle {
 
     private int x;
     private int y;
-    private ArrayList<Paint> colors;
     /**
      * Ruoan väri
      */
@@ -39,7 +36,6 @@ public class Food extends Rectangle {
         this.y = y;
         setTranslateX(x);
         setTranslateY(y);
-        ArrayList<String> colors = new ArrayList<>();
         this.theme = theme;
         setColor();
     }
@@ -59,9 +55,9 @@ public class Food extends Rectangle {
     }
 
     /**
-     * Palauttaa ruoan X:n arvon
+     * Palauttaa ruoan X:n koordinaatin
      *
-     * @return ruoan x koordinaatti
+     * @return koordinaatti
      */
     public int getXposition() {
 
@@ -69,9 +65,9 @@ public class Food extends Rectangle {
     }
 
     /**
-     * Palattaa ruoan Y:n arvon
+     * Palattaa ruoan Y:n koordinaatin
      *
-     * @return ruoan y koordinaatti
+     * @return koordinaatti
      */
     public int getYposition() {
 

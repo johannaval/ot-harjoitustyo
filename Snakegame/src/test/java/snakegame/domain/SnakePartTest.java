@@ -9,11 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SnakePartTest {
 
-
     GameService gs;
     AnchorPane pane;
     GameBoardViewController controller;
-
 
     @Before
     public void setUp() {
@@ -25,12 +23,10 @@ public class SnakePartTest {
         gs = new GameService(pane, controller);
         gs.addGameArea();
         gs.move();
-        gs.enterPressed();
     }
 
     @Test
     public void switchingHeadDirectionSwitchAlsoAllPartsDirection() {
-
 
         gs.area.head.switchDirection("UP");
         assertEquals("UP", gs.area.head.parts.get(1).getDirection());
@@ -61,7 +57,6 @@ public class SnakePartTest {
     @Test
     public void goingDownMakesYBigger() {
 
-
         SnakePart part = gs.area.head.parts.get(1);
 
         part.goDown();
@@ -74,7 +69,6 @@ public class SnakePartTest {
     @Test
     public void goingLeftMakesXSmaller() {
 
-
         SnakePart part = gs.area.head.parts.get(1);
 
         part.goLeft();
@@ -86,7 +80,6 @@ public class SnakePartTest {
 
     @Test
     public void goingRightMakesXBigger() {
-
 
         SnakePart part = gs.area.head.parts.get(1);
 
@@ -103,7 +96,7 @@ public class SnakePartTest {
 
         gs.area.head.head.setNewYposition(200);
         gs.area.head.head.setNewXposition(gs.area.getAreaWidth());
-        gs.area.head.parts.get(0).goRight();
+        gs.area.head.head.goRight();
 
         assertEquals(0, gs.area.head.parts.get(0).newX);
     }
@@ -114,7 +107,7 @@ public class SnakePartTest {
 
         gs.area.head.head.setNewYposition(200);
         gs.area.head.head.setNewXposition(0);
-        gs.area.head.parts.get(0).goLeft();
+        gs.area.head.head.goLeft();
 
         assertEquals(600, gs.area.head.parts.get(0).newX);
     }
@@ -124,7 +117,7 @@ public class SnakePartTest {
 
         gs.area.head.head.setNewYposition(0);
         gs.area.head.head.setNewXposition(200);
-        gs.area.head.parts.get(0).goUp();
+        gs.area.head.head.goUp();
 
         assertEquals(400, gs.area.head.parts.get(0).newY);
     }
@@ -132,10 +125,9 @@ public class SnakePartTest {
     @Test
     public void hittingDownWallWithoutBordersPutsSnakeToUpWall() {
 
-
         gs.area.head.head.setNewYposition(gs.area.getAreaLength());
         gs.area.head.head.setNewXposition(200);
-        gs.area.head.parts.get(0).goDown();
+        gs.area.head.head.goDown();
 
         assertEquals(0, gs.area.head.parts.get(0).newY);
     }

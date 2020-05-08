@@ -2,27 +2,25 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<AnchorPane fx:id="AP" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="snakegame.ui.CreateNewController">
+<AnchorPane fx:id="AP" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="snakegame.ui.CreateNewController">
     <children>
         <ImageView fitHeight="420.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../greentheme.png" />
             </image>
         </ImageView>
-        <Label fx:id="usernameLabel" layoutX="94.0" layoutY="118.0" prefHeight="26.0" prefWidth="300.0" text="Username: (must contain at least 3 letters)" />
-        <TextField fx:id="username" layoutX="94.0" layoutY="150.0" prefHeight="26.0" prefWidth="157.0" />
+        <Label fx:id="usernameLabel" layoutX="94.0" layoutY="118.0" prefHeight="26.0" prefWidth="330.0" text="Username: (must contain at least 3 character)" />
+        <TextField fx:id="username" cache="true" cacheHint="SPEED" layoutX="94.0" layoutY="150.0" prefHeight="26.0" prefWidth="157.0" style="-fx-faint-focus-color: transparent; -fx-focus-color: #556B2F;" />
         <Label layoutX="94.0" layoutY="176.0" prefHeight="26.0" prefWidth="111.0" text="Password: " />
-        <PasswordField fx:id="password" layoutX="94.0" layoutY="202.0" prefHeight="26.0" prefWidth="157.0" />
-        <Button layoutX="414.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleBack" text="Return" />
-        <Button fx:id="createNewUserButton" layoutX="94.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleCreate"  text="Create user" />
+        <PasswordField fx:id="password" layoutX="94.0" layoutY="202.0" prefHeight="26.0" prefWidth="157.0" style="-fx-faint-focus-color: transparent; -fx-focus-color: #556B2F;" />
+        <Button fx:id="createNewUserButton" layoutX="94.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleCreate" style="-fx-faint-focus-color: transparent; -fx-focus-color: #556B2F;" text="Create user" />
         <Label fx:id="error" layoutX="94.0" layoutY="234.0" prefHeight="17.0" prefWidth="360.0" text="" />
+        <Button blendMode="DARKEN" cache="true" layoutX="440.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleBack" style="-fx-faint-focus-color: transparent; -fx-focus-color: #556B2F;" text="Return" textOverrun="CLIP" />
     </children>
 </AnchorPane>
-

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,7 +37,7 @@ public class CreateNewController implements Initializable {
      * Metodi alustaa PlayerSQL ja PlayerService -luokat, hakee config.properties tiedostosta yhteyden playerSQL:lle
      *
      * @param url url
-     * @param rb  resourceBundle?
+     * @param rb  resourceBundle
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,9 +68,9 @@ public class CreateNewController implements Initializable {
     }
 
     /**
-     * Alustaa GameUi:n applikaatioksi
+     * Asettaa näkymäksi tämän näkymän
      *
-     * @param application saa parametrinaan gameUi:n
+     * @param application Parametrina gameUi:n luokka, joka huolehtii näkymien vaihtamisesta
      */
     public void setApplication(GameUi application) {
 
@@ -97,6 +96,15 @@ public class CreateNewController implements Initializable {
 
         try {
 
+            if (name.contains(" ")) {
+                error.setText("Username can not have any spaces!");
+                return;
+            }
+            if (passw.contains(" ")) {
+                error.setText("Password can not have any spaces!");
+                return;
+            }
+
             if (name.length() < 3) {
                 error.setText("Too short username!");
                 return;
@@ -112,7 +120,7 @@ public class CreateNewController implements Initializable {
 
             }
             if (passw.isEmpty()) {
-                error.setText("Password must contain at least 1 letter!");
+                error.setText("Password must contain at least 1 character!");
                 return;
             }
             if (service.isThereAccountWithThisName(name)) {

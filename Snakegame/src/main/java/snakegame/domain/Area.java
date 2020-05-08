@@ -1,17 +1,13 @@
 package snakegame.domain;
 
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.Pane;
-
 import java.util.ArrayList;
 import java.util.Random;
-
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderWidths;
-import snakegame.ui.GameBoardViewController;
 
 /**
  * Pelialueesta vastaava luokka
@@ -41,10 +37,6 @@ public class Area {
      */
     public Food food;
     /**
-     * Boolean arvo, onko peli jo aloitettu, eli enteristä painettu
-     */
-    public boolean enterPressed;
-    /**
      * Boolean arvo, onko peli loppunut
      */
     public boolean gameOver;
@@ -56,7 +48,6 @@ public class Area {
      * Teema, jonka pelaaja valitsi
      */
     public String theme;
-
     /**
      * Alueen konstruktori, saa parametreinaan pelialueen pituuden, leveyden ja AnchorPanen, eli pelialueen pohjan
      *
@@ -72,7 +63,6 @@ public class Area {
         this.points = 0;
         pane.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
         pane.setMinSize(width, length);
-        enterPressed = false;
         gameOver = false;
     }
 
@@ -81,11 +71,10 @@ public class Area {
      */
     public void setTheme() {
 
-
         if (this.theme.equals("1")) {
+
             if (withBorders) {
                 pane.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
-
             }
         } else if (this.theme.equals("2")) {
 
@@ -162,6 +151,9 @@ public class Area {
         parts.add(sp);
 
         if (parts.size() > 10) {
+
+            sp.setFill(Color.TRANSPARENT);
+
             if (theme.equals("1")) {
                 sp.setStroke(food.color);
                 if (withBorders) {
@@ -170,6 +162,7 @@ public class Area {
             }
             if (theme.equals("2")) {
                 sp.setStroke(Color.ORANGERED);
+
             }
             if (theme.equals("3")) {
                 sp.setFill(Color.BLACK);
@@ -192,13 +185,12 @@ public class Area {
             addFood();
             addNewPart();
         }
-        if (enterPressed) {
-            if (hitWall() || hitItself()) {
-                gameOver = true;
-                return;
-            }
+        if (hitWall() || hitItself()) {
+            gameOver = true;
+            return;
         }
     }
+
 
     /**
      * Lisää uuden osan matoon
@@ -209,8 +201,10 @@ public class Area {
 
             SnakePart newPart = new SnakePart(head.body.x, head.body.y, head.body, this);
             head.body = newPart;
-            //head.body.setStroke(Color.AQUA);
-            addParts(newPart);
+            addParts(head.body);
+        }
+        for (int i = 1; i < parts.size() - 20; i++) {
+            parts.get(i).setFill(Color.BLACK);
         }
     }
 
@@ -278,7 +272,7 @@ public class Area {
     }
 
     /**
-     * Palauttaa pelaajan keräämät pistete
+     * Palauttaa pelaajan keräämät pisteet
      *
      * @return pisteet
      */
@@ -290,7 +284,7 @@ public class Area {
     /**
      * Palauttaa gameOver booleanin arvon
      *
-     * @return
+     * @return gameOver arvo
      */
     public boolean gameOver() {
 

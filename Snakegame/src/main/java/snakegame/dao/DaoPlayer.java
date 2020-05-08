@@ -1,7 +1,5 @@
 package snakegame.dao;
 
-import java.sql.*;
-
 import javafx.collections.ObservableList;
 import snakegame.domain.Player;
 
@@ -12,14 +10,14 @@ import snakegame.domain.Player;
 public interface DaoPlayer {
 
     /**
-     * Rajapinnan metodi, kutsuu DaoPlayer-luokan metodia luomaan pelaajan
+     * Luo pelaajan ja lisää tietokantaan
      *
      * @param player pelaaja
      */
     void create(Player player);
 
     /**
-     * Rajapinnan metodi, kutsuu DaoPlayer-luokan metodia päivittämään pelaajan ennätyksen
+     * Päivittää pelaajan ennätyksen
      *
      * @param player pelaaja
      * @return päivitetty pelaaja
@@ -27,12 +25,12 @@ public interface DaoPlayer {
     Player update(Player player);
 
     /**
-     * Rajapinnan metodi, kutsuu DaoPlayer-luokan metodia tyhjentämään tietokantataulun
+     * Tyhjentää tietokantataulun
      */
     void clear();
 
     /**
-     * Rajapinnan metodi, kutsuu DaoPlayer-luokan metodia tarkistamaan, onko kyseisellä käyttäjänimellä jo käyttäjää
+     * Tarkistaa, onko kyseisellä käyttäjänimellä jo käyttäjää
      *
      * @param username käyttäjänimi
      * @return true, jos on, false, jos ei ole
@@ -40,7 +38,7 @@ public interface DaoPlayer {
     boolean isThereAccountWithThisName(String username);
 
     /**
-     * Rajapinnan metodi, kutsuu DaoPlayer-luokan metodia tarkistamaan, onnistuuko sisäänkirjautuminen kyseisellä nimellä ja salasanalla
+     * Tarkistaa, onnistuuko sisäänkirjautuminen kyseisellä nimellä ja salasanalla
      *
      * @param username käyttäjänimi
      * @param passw    salasana
@@ -49,7 +47,7 @@ public interface DaoPlayer {
     Player isLogInOK(String username, String passw);
 
     /**
-     * Rajapinnan metodi, kutsuu DaoPlayer-luokan metodia tarkistamaan, onko kyseisellä nimellä jo luotu käyttäjä
+     * Tarkistaa, onko kyseisellä nimellä jo luotu käyttäjä
      *
      * @param username käyttäjänimi
      * @return null, jos käyttäjää ei ole olemassa, muuten palauttaa pelaajan jolla on kyseinen käyttäjänimi
@@ -57,17 +55,17 @@ public interface DaoPlayer {
     Player findUser(String username);
 
     /**
-     * Rajapinnan metodi, kutsuu DaoPlayer-luokan metodia luomaan tietokantataulun
+     * Luo tietokantataulun
      */
     void createTable();
 
     /**
-     * Rajapinnan metodi, kutsuu DaoPlayer-luokan metodia ottamaan yhteyden tietokantaan
+     * Ottaa yhteyden tietokantaan
      */
     void getConnection();
 
     /**
-     * Rajapinnan metodi, kutsuu DaoPlayer-luokan metodia tallettamaan listalle top 10-pelaajat pisteineen
+     * Tallentaa listalle top 10-pelaajat pisteineen
      *
      * @param list tyhjä lista
      * @return täytetty lista

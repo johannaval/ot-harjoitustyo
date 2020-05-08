@@ -1,7 +1,6 @@
 package snakegame.dao;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.sql.*;
 import java.sql.DriverManager;
 
@@ -26,7 +25,6 @@ public class PlayerSQL implements DaoPlayer {
      */
     public PlayerSQL(String url) {
         this.url = url;
-        this.db = db;
         getConnection();
         createTable();
     }
@@ -45,7 +43,7 @@ public class PlayerSQL implements DaoPlayer {
     }
 
     /**
-     * Luo tietokantataulun, elleisitä jo ole
+     * Luo tietokantataulun, ellei sitä jo ole
      */
     @Override
     public void createTable() {
@@ -65,7 +63,7 @@ public class PlayerSQL implements DaoPlayer {
     /**
      * Lisää pelaajan tietokantatauluun
      *
-     * @param player pelaaja
+     * @param player lisättävä pelaaja
      */
     @Override
     public void create(Player player) {
@@ -229,6 +227,12 @@ public class PlayerSQL implements DaoPlayer {
         }
     }
 
+    /**
+     * Lisää tyhjään listaan top-pelaajien pisteet
+     *
+     * @param list tyhjä lista
+     * @return täytetty lista
+     */
     @Override
     public ObservableList topList(ObservableList list) {
 

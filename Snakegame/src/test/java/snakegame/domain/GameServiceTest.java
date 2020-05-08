@@ -25,8 +25,8 @@ public class GameServiceTest {
         controller.theme = "1";
         this.gs = new GameService(pane, controller);
         gs.addGameArea();
+        gs.withBorders = true;
         gs.move();
-        gs.enterPressed();
     }
 
     @Test
@@ -38,14 +38,17 @@ public class GameServiceTest {
     @Test
     public void atTheBeginningPointsAreZero() {
 
-
         assertEquals(0, gs.area.getPoints());
     }
 
     @Test
     public void atTheBeginningBooleanGameOverIsFalse() {
 
+        gs.area.withBorders = false;
+        SnakeHead head = new SnakeHead(20, gs.area);
+        gs.area.addNewSnake(head);
 
+        assertFalse(gs.gameOver);
         assertFalse(gs.area.gameOver);
     }
 }

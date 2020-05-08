@@ -30,7 +30,6 @@ public class FoodTest {
         gs = new GameService(pane, controller);
         gs.addGameArea();
         gs.move();
-        gs.enterPressed();
 
     }
 
@@ -51,7 +50,7 @@ public class FoodTest {
     }
 
     @Test
-    public void foodIsColorfullWithTheme1() {
+    public void foodCanNotBeBlackIfThemeIs1() {
 
         gs.area.addFood();
         gs.area.food.setColor();
@@ -69,39 +68,17 @@ public class FoodTest {
         int foodX = gs.area.food.getXposition();
         int foodY = gs.area.food.getYposition();
 
-        gs.area.head.head.setXposition(foodX);
-        gs.area.head.head.setYposition(foodY);
-        assertTrue(gs.area.ateFood(gs.area.food));
+        for (int i = -9; i <= 9; i++) {
 
-        gs.area.head.head.setXposition(foodX - 1);
-        gs.area.head.head.setYposition(foodY - 1);
-        assertTrue(gs.area.ateFood(gs.area.food));
+            gs.area.head.head.setXposition(foodX + i);
+            gs.area.head.head.setYposition(foodY + i);
 
-        gs.area.head.head.setXposition(foodX - 2);
-        gs.area.head.head.setYposition(foodY - 2);
-        assertTrue(gs.area.ateFood(gs.area.food));
-
-        gs.area.head.head.setXposition(foodX + 1);
-        gs.area.head.head.setYposition(foodY + 1);
-        assertTrue(gs.area.ateFood(gs.area.food));
-
-        gs.area.head.head.setXposition(foodX + 2);
-        gs.area.head.head.setYposition(foodY + 2);
-        assertTrue(gs.area.ateFood(gs.area.food));
-
-        gs.area.head.head.setXposition(foodX + 3);
-        gs.area.head.head.setYposition(foodY + 3);
-        assertTrue(gs.area.ateFood(gs.area.food));
-
-        gs.area.head.head.setXposition(foodX - 3);
-        gs.area.head.head.setYposition(foodY - 3);
-        assertTrue(gs.area.ateFood(gs.area.food));
-
+            assertTrue(gs.area.ateFood(gs.area.food));
+        }
     }
 
     @Test
     public void ateFoodReturnFalseIfThereIsNoFood() {
-
 
         gs.area.food = null;
 
@@ -112,6 +89,5 @@ public class FoodTest {
     public void beforeEatingPointsAreaZero() {
 
         assertEquals(0, gs.area.getPoints());
-
     }
 }
