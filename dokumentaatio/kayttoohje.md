@@ -1,19 +1,18 @@
 # Käyttöohje
 
-Lataa tiedosto
+Lataa tiedosto  (linkki vikaan releaseen)
 
 
 ## Konfigurointi
----
+
+Ohjelma olettaa, että käynnistyshakemistossa on konfiguraatiotiedosto "config.properties", josta ohjelma hakee
+tietokantayhteyden sen toiminnoille ja testeille. Tiedosto on seuraavassa muodossa:
+
+``` urlForDao=jdbc:sqlite:sqlConnectionUrl.db ```
+``` urlForDaoUnitTests=jdbc:sqlite:forUnitTests.db ```
 
 
 ## Ohjelman käynnistäminen
-
-Ohjelma käynnistyy komennolla:
-
-```mvn compile exec:java -Dexec.mainClass=snakegame.Main```
-
-tai releasen ladattua komennolla:
 
 ```java -jar snakegame.jar```
 
@@ -47,14 +46,13 @@ Teeman saa päälle valitsemalla napin jonkun vaihtoehdoista. Peli aloitetaan pa
 
 
 ## Peli
-Peli alkaa, kun käyttäjä painaa ENTER-näppäimestä. Ruudulle ilmestyy mato, jota ohjataan nuolinäppäimillä. Tarkoituksena on  saada mahdollisimman paljon pisteitä, joita kerätään nappaamalla ruokia, eli pelialueelle ilmestyviä neliöitä, jolloin myös madon nopeus kasvaa. Mato kuolee, jos osuu itseensä, tai jos pelaaja on valinnut pelin reunoilla, kuolee mato osuessaan myös pelialueen reunoihin. 
+Peli alkaa, kun käyttäjä painaa ENTER-näppäimestä. Ruudulle ilmestyy mato, jota ohjataan nuolinäppäimillä. Tarkoituksena on  saada mahdollisimman paljon pisteitä, joita kerätään nappaamalla ruokia, eli pelialueelle ilmestyviä neliöitä, jolloin myös madon nopeus ja koko kasvaa. Mato kuolee, jos osuu itseensä, tai jos pelaaja on valinnut pelin reunoilla, kuolee mato osuessaan myös pelialueen reunoihin. 
 
 <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Screenshot%20from%202020-04-25%2019-35-56.png" width="300" height="200">
 
 
 
 ## Top-lista
-Kun peli on päättynyt, tulee näkymäksi top-lista. Top-listaan tulee pelin 10 parhainta pistettä saanutta pelaajaa. Mikäli pelaajia ei ole täyttä kymmentä,
-ovat loput ruudut tyhjiä. Myöskään 0 pisteellä pelaaja ei pääse top-listalle.
+Kun peli on päättynyt, tulee näkymäksi top-lista. Top-listaan tulee pelin 10 parhainta pistettä saanutta pelaajaa. Mikäli pelaajia ei ole täyttä kymmentä, ovat loput ruudut tyhjiä. Myöskään 0 pisteellä pelaaja ei pääse top-listalle.
 
 <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Screenshot%20from%202020-04-25%2019-42-02.png" width="300" height="200">

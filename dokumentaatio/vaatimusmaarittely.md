@@ -19,9 +19,9 @@ Kaikki käyttäjät yhdenlaisia käyttäjiä
 
 ## Käyttöliittymäluonnos:
 
- <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/IMG_0186.jpeg" width="600" height="500">
+ <img src="https://github.com/johannaval/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/99999.jpg" width="600" height="500">
  
-Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjautumaan omalla käyttäjänimellä sekä salasanalla sisään mikäli käyttäjän on jo luonut. Jos käyttäjää ei ole vielä luotu, käyttäjä painaa kohdasta "Create new user", jolloin aukeaa uusi kuvake, jossa pyydetään syöttämään käyttäjänimi ja salasana. Tämän jälkeen painetaan Create user, josta palataan aikaisempaan tilaan, ja syötetään juuri luodut tunnukset sinne. Kun tämä onnistuu, eli tunnukset ovat kelvolliset, siirtyy ohjelma pelin valikkoon, jossa käyttäjä saa valita itselleen yhden teeman kolmesta, ja sen, haluaako pelata pelin reunoilla vai ilman reunoja. Painamalla Start game!, peli käynnistyy. Pelin päätyttyä siirrytään viimeiseen näkymään, jossa listataan parhaimmat tulokset. Tässä kohdassa on myös mahdollisuus kirjautua ulos tai aloittaa uusi peli.
+Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjautumaan omalla käyttäjänimellä sekä salasanalla sisään mikäli käyttäjän on jo luonut. Jos käyttäjää ei ole vielä luotu, käyttäjä painaa kohdasta "Create new user", jolloin aukeaa uusi näkymä, jossa pyydetään syöttämään käyttäjänimi ja salasana. Tämän jälkeen painetaan Create user, josta palataan aikaisempaan tilaan, ja syötetään juuri luodut tunnukset sinne. Kun tämä onnistuu, eli tunnukset ovat kelvolliset, siirtyy ohjelma pelivalikkoon, jossa käyttäjä saa valita itselleen yhden teeman kolmesta, ja sen, haluaako pelata pelin reunoilla vai ilman reunoja. Painamalla Start game!, peli käynnistyy. Pelin päätyttyä siirrytään Top-lista näkymään, johon listamaan  parhaimmat tulokset. Tässä näkymässä on myös mahdollisuus kirjautua ulos tai palata pelivalikkoon, josta aloittaa uusi peli.
 
 
 
@@ -36,7 +36,7 @@ Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjau
 
 #### Kirjautumisen jälkeen: :white_check_mark:
 * Käyttäjälle avautuu pelivalikko, jossa hän saa valita yhden kolmesta teemasta, sekä valita, pelaako reunoilla vai ilman.
-* Pelaaja voi aloittaa pelin painamalla "Start game!", tai kirjautua ulos napilla "log out".
+* Pelaaja voi aloittaa pelin painamalla "Start game!", tai kirjautua ulos napilla "Log out".
 
 
 #### Pelin aloitettua:  :white_check_mark:
@@ -46,7 +46,7 @@ Kun sovellus avataan, aukeaa ensin kirjautumisnäkymä. Siinä pystyään kirjau
 
 
 #### Pelin loputtua: :white_check_mark:
-* tulostuu matopelin top 10, eli siihen kootaan pelistä saadut 10 kaikkein suurinta pistettä ja pisteiden saaneiden käyttäjänmimet. Jokainen käyttäjä voi olla ennätys-taulussa korkeintaan kerran.
+* tulostuu matopelin top 10, eli siihen kootaan pelistä saadut 10 kaikkein suurinta pistettä ja pisteiden saaneiden käyttäjänmimet. Jokainen käyttäjä voi olla ennätys-taulussa korkeintaan kerran, eikä siihen pääse, jos pisteet on 0.
 
 
 
